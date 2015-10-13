@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
  *
  * @author Tanman
  */
+
 @Entity
 @Table
 public class Booking implements Serializable {
