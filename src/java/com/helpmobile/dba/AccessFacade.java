@@ -18,4 +18,8 @@ public class AccessFacade {
     
     @PersistenceContext
     EntityManager entityManager;
+    
+    public void createUser(User newUser){
+        entityManager.persist(newUser);
+    }
 }

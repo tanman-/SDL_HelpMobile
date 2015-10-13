@@ -9,9 +9,11 @@
     </h:head>
     <h:body>
         <h:form>
-        <p>First Name:<h:inputText value="#{registerUser.firstName}"/></p>
-        <p>Last Name:<h:inputText value="#{registerUser.lastName}"/></p>
-        <p>Password Name:<input type="text" value="#{registerUser.password}"></input></p>
+            <p>UTS ID:<h:inputText value="#{registerUser.user.id}"/></p>
+            <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
+            <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
+            <h:commandButton value="Register" action="#{registerUser.register}"/>
         </h:form>
     </h:body>
 </html>
