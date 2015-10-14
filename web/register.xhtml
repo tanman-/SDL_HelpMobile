@@ -6,7 +6,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputScript library="js" name="jquery.js"/>
         <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
+        <h:outputScript library="js" name="jquery-ui.js"/>
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <script>
+            $(document).ready(function(){
+               $(".datepicker").datepicker(); 
+            });
+        </script>
     </h:head>
     <h:body>
         <h:form>
@@ -14,7 +22,7 @@
             <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
             <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
             <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
-                    <f:convertDateTime pattern="yyyy/mm/dd"/>
+                    <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText></p>
             <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
             <h:commandButton value="Register" action="#{registerUser.register}"/>
