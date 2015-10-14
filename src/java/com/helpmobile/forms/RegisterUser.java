@@ -24,28 +24,19 @@ public class RegisterUser {
     @Inject
     private AccessFacade facade;
     
-    private User user = new User();
-    private Date dob; // is this usable?
+    private final User user = new User();
 
     /**
      * @return the firstName
      */
     
-    public void register(){
-        facade.createUser(getUser());
-    }
-
-    /**
-     * @return the user
-     */
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(User user) {
-        this.user = user;
+    public String register(){
+        try{
+        facade.createUser(user);
+        return "done";
+        }
+        catch(Exception e){
+        return "failed";
+        }
     }
 }
