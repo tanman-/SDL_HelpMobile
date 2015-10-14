@@ -40,26 +40,11 @@ public class User implements Serializable {
     private String countryOrigin;
     private String yearLevel;
     private String degree;
+    
+    
 
     public User(){
         
-    }
-    
-    public User(String id, String password, String firstName, String lastName, 
-            String email, int phone, Date dob, int gender, String firstLanguage,
-            String countryOrigin, String yearLevel, String degree) {
-        this.id = id;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.dob = dob;
-        this.gender = gender;
-        this.firstLanguage = firstLanguage;
-        this.countryOrigin = countryOrigin;
-        this.yearLevel = yearLevel;
-        this.degree = degree;
     }
 
     public String getId() {
