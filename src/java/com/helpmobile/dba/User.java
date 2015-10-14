@@ -7,11 +7,13 @@ package com.helpmobile.dba;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -41,6 +43,8 @@ public class User implements Serializable {
     private String yearLevel;
     private String degree;
     
+    @OneToMany(mappedBy = "user")
+    private List<Reminder> reminders;
     
 
     public User(){
@@ -142,4 +146,18 @@ public class User implements Serializable {
     public void setDegree(String degree) {
         this.degree = degree;
     }    
+
+    /**
+     * @return the reminders
+     */
+    public List<Reminder> getReminders() {
+        return reminders;
+    }
+
+    /**
+     * @param reminders the reminders to set
+     */
+    public void setReminders(List<Reminder> reminders) {
+        this.reminders = reminders;
+    }
 }

@@ -7,9 +7,11 @@ package com.helpmobile.dba;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,6 +38,8 @@ public class Activity implements Serializable {
     @OneToOne
     @JoinColumn(name = "waitingListId")
     private WaitingList waitingList;
+    @ManyToMany
+    private List<Booking> bookings;
 
     public Long getId() {
         return id;

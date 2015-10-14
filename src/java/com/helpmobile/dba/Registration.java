@@ -24,7 +24,6 @@ public class Registration implements Serializable {
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "userId")
     private User user;
     
     public User getUser() {

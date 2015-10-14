@@ -26,10 +26,8 @@ public class Reminder implements Serializable {
     @Id
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "activityId")
     private Activity activity;
     @ManyToOne
-    @JoinColumn(name = "userId")
     private User user;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date reminderDate;
