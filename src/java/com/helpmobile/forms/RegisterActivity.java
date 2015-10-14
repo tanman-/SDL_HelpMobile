@@ -15,27 +15,26 @@ import javax.inject.Named;
  *
  * @author Tanman
  */
-
 @Named
 @RequestScoped
 public class RegisterActivity {
-    
+
     @Inject
     private AccessFacade facade;
-    
-    private Activity activity = new Activity();
-    
-    public void register() {
-        facade.createActivity(getActivity());
+
+    private final Activity activity = new Activity();
+
+    public String register() {
+        try {
+            facade.createActivity(activity);
+            return "done";
+        } catch (Exception e) {
+            return "failed";
+        }
     }
 
     public Activity getActivity() {
         return activity;
     }
 
-    public void setActivity(Activity activity) {
-        this.activity = activity;
-    }
-    
-    
 }

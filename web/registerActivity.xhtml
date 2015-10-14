@@ -5,14 +5,25 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>RegisterActivity</title>
+        <title>Register Activity</title>
+        <h:outputScript library="js" name="jquery.js"/>
+        <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
+        <h:outputScript library="js" name="jquery-ui.js"/>
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <script>
+            $(document).ready(function(){
+               $(".datepicker").datepicker(); 
+            });
+        </script>
     </h:head>
     <h:body>
-        <h1>RegisterActivity</h1>
+        <h1>Register Activity</h1>
         <h:form>
-            <p>ID:<h:inputText value="#{registerActivity.activity.id}"/></p>
+            <p>Activity ID:<h:inputText value="#{registerActivity.activity.id}"/></p>
             <p>Available (bool):<h:inputText value="#{registerActivity.activity.available}"/></p>
-            <p>Date (Date):<h:inputText value="#{registerActivity.activity.activityDate}"/></p>
+            <p>Date:<h:inputText class="datepicker" value="#{registerActivity.activity.activityDate}">
+                    <f:convertDateTime pattern="dd/mm/yyyy"/>
+                </h:inputText></p>
             <p>Activity type:<h:inputText value="#{registerActivity.activity.activityType}"/></p>
             <p>Duration (int): <h:inputText value="#{registerActivity.activity.duration}"/></p>
             <p>Location: <h:inputText value="#{registerActivity.activity.location}"/></p>
