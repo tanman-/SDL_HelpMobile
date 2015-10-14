@@ -8,7 +8,12 @@ package com.helpmobile.controller;
 import com.helpmobile.dba.User;
 import com.helpmobile.proxy.UserProxyLocal;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +43,13 @@ public class UserServlet extends HttpServlet {
         String phoneStr = request.getParameter("phone");
         int phone = phoneStr.equals("") ? -1 : Integer.parseInt(phoneStr);
         String dobStr = request.getParameter("dob");
-        Date dob = null;
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date dob;
+        try {
+            dob = df.parse(dobStr);
+        } catch (ParseException ex) {
+            Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String genderStr = request.getParameter("gender");
         int gender = genderStr.equals("") ? -1 : Integer.parseInt(genderStr);
         String firstLanguage = request.getParameter("firstLanguage");
