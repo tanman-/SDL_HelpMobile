@@ -21,10 +21,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author Tanman
  */
+/*
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends HttpServlet {
     
@@ -93,3 +95,4 @@ public class UserServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+*/
