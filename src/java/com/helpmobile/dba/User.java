@@ -41,6 +41,10 @@ public class User implements Serializable {
     private String yearLevel;
     private String degree;
 
+    public User(){
+        
+    }
+    
     public User(String id, String password, String firstName, String lastName, 
             String email, int phone, Date dob, int gender, String firstLanguage,
             String countryOrigin, String yearLevel, String degree) {
