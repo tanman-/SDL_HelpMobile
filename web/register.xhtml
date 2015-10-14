@@ -6,12 +6,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
     </h:head>
     <h:body>
         <h:form>
             <p>UTS ID:<h:inputText value="#{registerUser.user.id}"/></p>
             <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
             <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
+                    <f:convertDateTime pattern="yyyy/mm/dd"/>
+                </h:inputText></p>
             <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
             <h:commandButton value="Register" action="#{registerUser.register}"/>
         </h:form>
