@@ -16,6 +16,7 @@ import javax.inject.Named;
  *
  * @author terra
  */
+
 @Named
 @RequestScoped
 public class RegisterUser {
@@ -24,7 +25,7 @@ public class RegisterUser {
     private AccessFacade facade;
     
     private User user = new User();
-    private Date dob;
+    private Date dob; // is this usable?
 
     /**
      * @return the firstName
