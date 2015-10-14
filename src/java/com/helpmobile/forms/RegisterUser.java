@@ -39,4 +39,8 @@ public class RegisterUser {
         return "failed";
         }
     }
+    
+    public User getUser(){
+        return user;
+    }
 }
