@@ -15,7 +15,7 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/register.xhtml</from-view-id>
+        <from-view-id>/registerUser.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>error</from-outcome>
             <to-view-id>/error/registration.xhtml</to-view-id>
