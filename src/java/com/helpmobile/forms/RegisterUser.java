@@ -16,31 +16,28 @@ import javax.inject.Named;
  *
  * @author terra
  */
-
 @Named
 @RequestScoped
 public class RegisterUser {
-    
+
     @Inject
     private AccessFacade facade;
-    
+
     private final User user = new User();
 
     /**
      * @return the firstName
      */
-    
-    public String register(){
-        try{
-        facade.createUser(user);
-        return "done";
-        }
-        catch(Exception e){
-        return "failed";
+    public String register() {
+        try {
+            facade.createUser(user);
+            return "done";
+        } catch (Exception e) {
+            return "failed";
         }
     }
-    
-    public User getUser(){
+
+    public User getUser() {
         return user;
     }
 }
