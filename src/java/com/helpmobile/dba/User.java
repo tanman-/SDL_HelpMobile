@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -19,6 +21,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name="applicant") //applicant?
+@NamedQueries(@NamedQuery(name="User.getAll", query="SELECT e FROM User e"))
 public class User implements Serializable {
     
     @Id
@@ -37,6 +40,23 @@ public class User implements Serializable {
     private String countryOrigin;
     private String yearLevel;
     private String degree;
+
+    public User(String id, String password, String firstName, String lastName, 
+            String email, int phone, Date dob, int gender, String firstLanguage,
+            String countryOrigin, String yearLevel, String degree) {
+        this.id = id;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.dob = dob;
+        this.gender = gender;
+        this.firstLanguage = firstLanguage;
+        this.countryOrigin = countryOrigin;
+        this.yearLevel = yearLevel;
+        this.degree = degree;
+    }
 
     public String getId() {
         return id;
