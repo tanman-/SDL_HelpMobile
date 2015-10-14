@@ -25,7 +25,6 @@ public class UserServlet extends HttpServlet {
     
     @EJB
     private UserProxyLocal userProxy;
-
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -64,7 +63,6 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("allUsers", userProxy.getAllUsers());
         // request.getRequestDispatcher("");
     }
-
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -77,7 +75,6 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
     @Override
     public String getServletInfo() {
