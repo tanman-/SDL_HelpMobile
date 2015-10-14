@@ -44,7 +44,7 @@ public class UserServlet extends HttpServlet {
         int phone = phoneStr.equals("") ? -1 : Integer.parseInt(phoneStr);
         String dobStr = request.getParameter("dob");
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date dob;
+        Date dob = new Date(); //Dummy initialising, protects DB
         try {
             dob = df.parse(dobStr);
         } catch (ParseException ex) {
