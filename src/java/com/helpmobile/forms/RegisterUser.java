@@ -7,22 +7,29 @@ package com.helpmobile.forms;
 
 import com.helpmobile.dba.AccessFacade;
 import com.helpmobile.dba.User;
+import com.helpmobile.managed.UserManager;
 import java.util.Date;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author terra
  */
-@Named
 @RequestScoped
+@Named
 public class RegisterUser {
 
-    @Inject
+    @EJB
     private AccessFacade facade;
-
+    
+    @Inject
+    private UserManager manager;
+    
     private final User user = new User();
 
     /**
@@ -30,7 +37,13 @@ public class RegisterUser {
      */
     public String register() {
         try {
+            String password = user.getPassword();
+            String hashed = UserManager.hash256(password);
+            
+            user.setPassword(hashed);
             facade.createUser(user);
+            manager.login(user.getId(), password);
+            
             return "done";
         } catch (Exception e) {
             return "failed";

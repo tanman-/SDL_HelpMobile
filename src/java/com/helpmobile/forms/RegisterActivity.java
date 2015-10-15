@@ -7,6 +7,8 @@ package com.helpmobile.forms;
 
 import com.helpmobile.dba.AccessFacade;
 import com.helpmobile.dba.Activity;
+import com.helpmobile.managed.UserManager;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,18 +17,19 @@ import javax.inject.Named;
  *
  * @author Tanman
  */
-@Named
 @RequestScoped
+@Named
 public class RegisterActivity {
 
-    @Inject
+    @EJB
     private AccessFacade facade;
-
+    
     private final Activity activity = new Activity();
 
     public String register() {
         try {
             facade.createActivity(activity);
+            
             return "done";
         } catch (Exception e) {
             return "failed";
