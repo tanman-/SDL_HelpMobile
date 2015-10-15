@@ -45,7 +45,10 @@ public class User implements Serializable {
     
     @OneToMany(mappedBy = "user")
     private List<Reminder> reminders;
-    
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
+    @OneToMany(mappedBy = "user")
+    private List<WaitingList> waitingList;
 
     public User(){
         
@@ -159,5 +162,33 @@ public class User implements Serializable {
      */
     public void setReminders(List<Reminder> reminders) {
         this.reminders = reminders;
+    }
+
+    /**
+     * @return the bookings
+     */
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    /**
+     * @param bookings the bookings to set
+     */
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
+    /**
+     * @return the waitingList
+     */
+    public List<WaitingList> getWaitingList() {
+        return waitingList;
+    }
+
+    /**
+     * @param waitingList the waitingList to set
+     */
+    public void setWaitingList(List<WaitingList> waitingList) {
+        this.waitingList = waitingList;
     }
 }
