@@ -38,7 +38,7 @@ public class UserManager implements Serializable{
         try{
             request.logout();
             request.login(id, pass);
-            return "done";
+            return "login";
         }
         catch(Exception e){
             Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, e);
