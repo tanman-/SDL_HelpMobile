@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/help/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,15 +19,15 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
     
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>help_mobile</realm-name>
         <form-login-config>
-            <form-login-page>/index.xhtml</form-login-page>
-            <form-error-page>/index.xhtml</form-error-page>
+            <form-login-page>/help/index.xhtml</form-login-page>
+            <form-error-page>/help/index.xhtml</form-error-page>
         </form-login-config>
     </login-config>
     
@@ -35,8 +35,7 @@
         <display-name>Logged in pages</display-name>
         <web-resource-collection>
             <web-resource-name>secure</web-resource-name>
-            <url-pattern>/panel/*</url-pattern>
-            <url-pattern>/help/*</url-pattern>
+            <url-pattern>/help/panel/index.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>Users</role-name>

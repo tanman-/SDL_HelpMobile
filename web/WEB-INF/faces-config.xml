@@ -17,6 +17,10 @@
             <from-outcome>fail</from-outcome>
             <to-view-id>/error/login.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/panel/index.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/registerUser.xhtml</from-view-id>
