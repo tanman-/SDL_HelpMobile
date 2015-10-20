@@ -46,6 +46,26 @@ public class UserManager implements Serializable{
         }
     }
     
+    public String logout(){
+        try{
+            request.logout();
+            return "logout";
+        }
+        catch(Exception e){
+            return "fail";
+        }
+    }
+    
+    public boolean isLoged(){
+        boolean globalLoged = request.isUserInRole("Users");
+        if(globalLoged&&user==null){
+            user=facade.getUser(request.getRemoteUser());
+        }
+        //System.out.println("Loged: "+globalLoged);
+        return globalLoged;
+        //return getUser()!=null;
+    }
+    
     public static String hash256(String data) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(data.getBytes());
