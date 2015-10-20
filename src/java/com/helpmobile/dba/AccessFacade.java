@@ -26,4 +26,8 @@ public class AccessFacade {
     public void createActivity(Activity newActivity) {
         entityManager.persist(newActivity);
     }
+    
+    public User getUser(String id){
+        return entityManager.find(User.class,id);
+    }
 }

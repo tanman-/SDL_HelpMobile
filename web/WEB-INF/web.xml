@@ -36,6 +36,7 @@
         <web-resource-collection>
             <web-resource-name>secure</web-resource-name>
             <url-pattern>/panel/*</url-pattern>
+            <url-pattern>/help/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>Users</role-name>

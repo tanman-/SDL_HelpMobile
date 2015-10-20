@@ -11,6 +11,11 @@
     <h:body>
         <h1>HELPS</h1>
         <div>
+            <c:if test="#{userManager.isLoged()}">
+                <h:form>
+                    <h:commandButton value="Log-out" action="#{userManager.logout}"/>
+                </h:form>
+            </c:if>
             <h:form>
                 <p>Student ID:<h:inputText value="#{loginForm.username}"/></p>
                 <p>Password:<h:inputSecret value="#{loginForm.password}"/></p>
