@@ -32,9 +32,6 @@ public class RegisterUser {
     
     private final User user = new User();
 
-    /**
-     * @return the firstName
-     */
     public String register() {
         try {
             String password = user.getPassword();
