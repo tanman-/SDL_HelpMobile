@@ -10,7 +10,17 @@ package com.helpmobile.forms;
  * @author Tanman
  */
 public enum Gender {
-    MALE,
-    FEMALE,
-    OTHER
+    MALE("Male"),
+    FEMALE("Female"),
+    OTHER("Other");
+
+    private final String label;
+    
+    private Gender(String label) {
+        this.label = label;
+    }
+    
+    public String getLabel() {
+        return label;
+    }    
 }
