@@ -18,8 +18,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-//importing this for enums only. is this a proper separation of concerns?
-import com.helpmobile.forms.*;
+
+import com.helpmobile.forms.Faculty;
+import com.helpmobile.forms.Gender;
+import com.helpmobile.forms.DegreeLevel;
+import com.helpmobile.forms.YearLevel;
+import com.helpmobile.forms.Residency;
+import com.helpmobile.forms.Language;
+import com.helpmobile.forms.Country;
 /**
  *
  * @author terra
