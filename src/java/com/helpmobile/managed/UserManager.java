@@ -33,7 +33,7 @@ public class UserManager implements Serializable{
     
     private User user;
     
-    public String login(String id,String pass){
+    public String login(String id, String pass){
 
         try{
             request.logout();
@@ -56,13 +56,13 @@ public class UserManager implements Serializable{
         }
     }
     
-    public boolean isLoged(){
-        boolean globalLoged = request.isUserInRole("Users");
-        if(globalLoged&&user==null){
+    public boolean isLogged(){
+        boolean globalLogged = request.isUserInRole("Users");
+        if(globalLogged&&user==null){
             user=facade.getUser(request.getRemoteUser());
         }
-        //System.out.println("Loged: "+globalLoged);
-        return globalLoged;
+        //System.out.println("Loged: "+globalLogged);
+        return globalLogged;
         //return getUser()!=null;
     }
     
