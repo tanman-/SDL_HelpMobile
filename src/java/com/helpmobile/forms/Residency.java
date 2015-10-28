@@ -10,6 +10,16 @@ package com.helpmobile.forms;
  * @author Tanman
  */
 public enum Residency {
-    LOCAL,
-    INTERNATIONAL
+    LOCAL("Local"),
+    INTERNATIONAL("International");
+    
+    private final String label;
+    
+    private Residency(String label) {
+        this.label = label;
+    }
+    
+    public String getLabel() {
+        return label;
+    }
 }
