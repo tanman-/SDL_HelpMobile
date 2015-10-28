@@ -11,7 +11,7 @@
     <h:body>
         <h1>HELPS</h1>
         <div>
-            <c:if test="#{userManager.isLoged()}">
+            <c:if test="#{userManager.isLogged()}">
                 <h:form>
                     <h:commandButton value="Log-out" action="#{userManager.logout}"/>
                 </h:form>
