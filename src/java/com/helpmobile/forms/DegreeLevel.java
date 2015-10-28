@@ -10,6 +10,16 @@ package com.helpmobile.forms;
  * @author Tanman
  */
 public enum DegreeLevel {
-    UNDERGRADUATE,
-    POSTGRADUATE
+    UNDERGRADUATE("Undergraduate"),
+    POSTGRADUATE("Postgraduate");
+    
+    private final String label;
+    
+    private DegreeLevel(String label) {
+        this.label = label;
+    }
+    
+    public String getLabel() {
+        return label;
+    }
 }
