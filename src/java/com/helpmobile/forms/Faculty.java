@@ -10,9 +10,9 @@ package com.helpmobile.forms;
  * @author Tanman
  */
 public enum Faculty {
-    FASS,
     BUSINESS,
     DAB,
+    FASS,
     FEIT,
     GSH,
     HEALTH,
