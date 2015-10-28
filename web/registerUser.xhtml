@@ -24,13 +24,24 @@
             <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
             <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
             <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>Faculty:<h:inputText value="#{registerUser.user.faculty}"/></p>
+            <p>Course:<h:inputText value="#{registerUser.user.courseNumber}"/></p>
             <p>Email: <h:inputText value="#{registerUser.user.email}"/></p>
-            
+            <p>Home Phone:<h:inputText value="#{registerUser.user.homePhone}"/></p>
+            <p>Mobile Phone:<h:inputText value="#{registerUser.user.mobilePhone}"/></p>
             <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText></p>
+            <p>Preferred Name:<h:inputText value="#{registerUser.user.preferredName}"/></p>
+            <p>Preferred Phone:<h:inputText value="#{registerUser.user.preferredPhone}"/></p>
+            <p>Gender:<h:inputText value="#{registerUser.user.gender}"/></p>
+            <p>Degree:<h:inputText value="#{registerUser.user.degreeLevel}"/></p>
+            <p>Year:<h:inputText value="#{registerUser.user.yearLevel}"/></p>
+            <p>Residency:<h:inputText value="#{registerUser.user.residency}"/></p>
+            <p>First Language:<h:inputText value="#{registerUser.user.firstLanguage}"/></p>
+            <p>Country of Origin:<h:inputText value="#{registerUser.user.countryOrigin}"/></p>
+            <p>Educational Background:<h:inputText value="#{registerUser.user.educationalBackground}"/></p>
             <h:commandButton value="Register" action="#{registerUser.register}"/>
         </h:form>
     </h:body>
 </html>
-
