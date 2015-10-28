@@ -43,4 +43,8 @@ public class Data {
     public Language[] getLanguages() {
         return Language.values();
     }
+    
+    public ActivityType[] getActivitys() {
+        return ActivityType.values();
+    }
 }
