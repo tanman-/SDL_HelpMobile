@@ -16,7 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-
+//importing this for enums only. is this a proper separation of concerns?
+import com.helpmobile.forms.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 /**
  *
  * @author terra
@@ -28,20 +31,33 @@ public class User implements Serializable {
     
     @Id
     @Column(length=16)
-    private String id; 
+    private String id;
     private String password; 
     private String firstName;   
     private String lastName;
-    
+    @Enumerated(EnumType.STRING)
+    private Faculty faculty;
+    private String courseNumber;
     private String email;
-    private int phone;
+    private int homePhone;
+    private int mobilePhone;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dob;
-    private int gender;
-    private String firstLanguage;
-    private String countryOrigin;
-    private String yearLevel;
-    private String degree;
+    
+    // mutable by end user
+    private String preferredName;
+    private int preferredPhone;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+    @Enumerated(EnumType.STRING)
+    private DegreeLevel degreeLevel;
+    @Enumerated(EnumType.STRING)
+    private YearLevel yearLevel;
+    @Enumerated(EnumType.STRING)
+    private Residency residency;
+    private String firstLanguage; //Will be changed to enum
+    private String countryOrigin; //Will be changed to enum
+    private String educationalBackground;
     
     @OneToMany(mappedBy = "user")
     private List<Reminder> reminders;
@@ -50,8 +66,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<WaitingList> waitingList;
 
-    public User(){
-        
+    public User(){   
     }
 
     public String getId() {
@@ -86,6 +101,22 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+
+    public void setCourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -94,12 +125,20 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getPhone() {
-        return phone;
+    public int getHomePhone() {
+        return homePhone;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setHomePhone(int homePhone) {
+        this.homePhone = homePhone;
+    }
+
+    public int getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(int mobilePhone) {
+        this.mobilePhone = mobilePhone;
     }
 
     public Date getDob() {
@@ -110,12 +149,52 @@ public class User implements Serializable {
         this.dob = dob;
     }
 
-    public int getGender() {
+    public String getPreferredName() {
+        return preferredName;
+    }
+
+    public void setPreferredName(String preferredName) {
+        this.preferredName = preferredName;
+    }
+
+    public int getPreferredPhone() {
+        return preferredPhone;
+    }
+
+    public void setPreferredPhone(int preferredPhone) {
+        this.preferredPhone = preferredPhone;
+    }
+
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public DegreeLevel getDegreeLevel() {
+        return degreeLevel;
+    }
+
+    public void setDegreeLevel(DegreeLevel degreeLevel) {
+        this.degreeLevel = degreeLevel;
+    }
+
+    public YearLevel getYearLevel() {
+        return yearLevel;
+    }
+
+    public void setYearLevel(YearLevel yearLevel) {
+        this.yearLevel = yearLevel;
+    }
+
+    public Residency getResidency() {
+        return residency;
+    }
+
+    public void setResidency(Residency residency) {
+        this.residency = residency;
     }
 
     public String getFirstLanguage() {
@@ -134,61 +213,37 @@ public class User implements Serializable {
         this.countryOrigin = countryOrigin;
     }
 
-    public String getYearLevel() {
-        return yearLevel;
+    public String getEducationalBackground() {
+        return educationalBackground;
     }
 
-    public void setYearLevel(String yearLevel) {
-        this.yearLevel = yearLevel;
+    public void setEducationalBackground(String educationalBackground) {
+        this.educationalBackground = educationalBackground;
     }
 
-    public String getDegree() {
-        return degree;
-    }
-
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }    
-
-    /**
-     * @return the reminders
-     */
     public List<Reminder> getReminders() {
         return reminders;
     }
 
-    /**
-     * @param reminders the reminders to set
-     */
     public void setReminders(List<Reminder> reminders) {
         this.reminders = reminders;
     }
 
-    /**
-     * @return the bookings
-     */
     public List<Booking> getBookings() {
         return bookings;
     }
 
-    /**
-     * @param bookings the bookings to set
-     */
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
-    /**
-     * @return the waitingList
-     */
     public List<WaitingList> getWaitingList() {
         return waitingList;
     }
 
-    /**
-     * @param waitingList the waitingList to set
-     */
     public void setWaitingList(List<WaitingList> waitingList) {
         this.waitingList = waitingList;
     }
+    
+    
 }
