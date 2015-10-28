@@ -16,10 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-//importing this for enums only. is this a proper separation of concerns?
-import com.helpmobile.forms.*;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+//importing this for enums only. is this a proper separation of concerns?
+import com.helpmobile.forms.*;
 /**
  *
  * @author terra
@@ -35,7 +35,7 @@ public class User implements Serializable {
     private String password; 
     private String firstName;   
     private String lastName;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Faculty faculty;
     private String courseNumber;
     private String email;
@@ -47,16 +47,17 @@ public class User implements Serializable {
     // mutable by end user
     private String preferredName;
     private int preferredPhone;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Gender gender;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private DegreeLevel degreeLevel;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private YearLevel yearLevel;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Residency residency;
-    private String firstLanguage; //Will be changed to enum
-    private String countryOrigin; //Will be changed to enum
+    private String firstLanguage; //Ideally, an enum
+    @Enumerated(EnumType.ORDINAL)
+    private Country country;
     private String educationalBackground;
     
     @OneToMany(mappedBy = "user")
@@ -205,14 +206,14 @@ public class User implements Serializable {
         this.firstLanguage = firstLanguage;
     }
 
-    public String getCountryOrigin() {
-        return countryOrigin;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryOrigin(String countryOrigin) {
-        this.countryOrigin = countryOrigin;
+    public void setCountry(Country country) {
+        this.country = country;
     }
-
+    
     public String getEducationalBackground() {
         return educationalBackground;
     }
@@ -244,6 +245,4 @@ public class User implements Serializable {
     public void setWaitingList(List<WaitingList> waitingList) {
         this.waitingList = waitingList;
     }
-    
-    
 }
