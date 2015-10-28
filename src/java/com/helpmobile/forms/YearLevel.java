@@ -10,9 +10,19 @@ package com.helpmobile.forms;
  * @author Tanman
  */
 public enum YearLevel {
-    FIRSTYEAR,
-    SECONDYEAR,
-    THIRDYEAR,
-    FOURTHYEAR,
-    FIFTHYEAR
+    FIRSTYEAR("First year"),
+    SECONDYEAR("Second year"),
+    THIRDYEAR("Third year"),
+    FOURTHYEAR("Fourth year"),
+    FIFTHYEAR("Fifth year");
+    
+    private final String label;
+    
+    private YearLevel(String label) {
+        this.label = label;
+    }
+    
+    public String getLabel() {
+        return label;
+    }
 }
