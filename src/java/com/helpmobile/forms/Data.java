@@ -39,4 +39,8 @@ public class Data {
     public Country[] getCountrys() {
         return Country.values();
     }
+    
+    public Language[] getLanguages() {
+        return Language.values();
+    }
 }
