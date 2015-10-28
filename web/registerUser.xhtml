@@ -18,14 +18,17 @@
     </h:head>
     <h:body>
         <h1>Register User</h1>
+        <p><i>Note: Normal use will not involve registration of user</i></p>
         <h:form>
             <p>UTS ID:<h:inputText value="#{registerUser.user.id}"/></p>
+            <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
             <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
             <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>Email: <h:inputText value="#{registerUser.user.email}"/></p>
+            
             <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText></p>
-            <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
             <h:commandButton value="Register" action="#{registerUser.register}"/>
         </h:form>
     </h:body>
