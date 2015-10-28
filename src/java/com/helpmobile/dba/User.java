@@ -55,9 +55,10 @@ public class User implements Serializable {
     private YearLevel yearLevel;
     @Enumerated(EnumType.ORDINAL)
     private Residency residency;
-    private String firstLanguage; //Ideally, an enum
     @Enumerated(EnumType.ORDINAL)
-    private Country country;
+    private Language firstLanguage;
+    @Enumerated(EnumType.ORDINAL)
+    private Country countryOrigin;
     private String educationalBackground;
     
     @OneToMany(mappedBy = "user")
@@ -198,20 +199,20 @@ public class User implements Serializable {
         this.residency = residency;
     }
 
-    public String getFirstLanguage() {
+    public Language getFirstLanguage() {
         return firstLanguage;
     }
 
-    public void setFirstLanguage(String firstLanguage) {
+    public void setFirstLanguage(Language firstLanguage) {
         this.firstLanguage = firstLanguage;
     }
 
-    public Country getCountry() {
-        return country;
+    public Country getCountryOrigin() {
+        return countryOrigin;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountryOrigin(Country countryOrigin) {
+        this.countryOrigin = countryOrigin;
     }
     
     public String getEducationalBackground() {
