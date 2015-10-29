@@ -1,0 +1,86 @@
+<!doctype html>
+<!--[if IE 8]><html class="ie8 lt-ie10"><![endif]-->
+<!--[if IE 9]><html class="ie9 lt-ie10"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.13.0/mocha.min.css">
+    <link rel="stylesheet" href="web/resources/css/test.css">
+    <link rel="stylesheet" href="web/resources/css/index.css">
+    <title>Slideout tests</title>
+  </head>
+  <body>
+
+    <nav id="menu" class="menu">
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Home</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">My Information</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Programs</span>
+        </header>
+      </a>
+
+      <section class="menu-section">
+        <h3 class="menu-section-title">Main Menu</h3>
+        <ul class="menu-section-list">
+          <li><a href="#" target="_blank">Sub Menu 1</a></li>
+          <li><a href="#" target="_blank">Sub Menu 2</a></li>
+          <li><a href="#" target="_blank">Sub Menu 3</a></li>
+          <li><a href="#" target="_blank">Sub Menu 4</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <main id="panel" class="panel">
+      <header class="panel-header">
+        <button class="btn-hamburger js-slideout-toggle"></button>
+        <h1 class="title">Welcome</h1>
+      </header>
+
+      <section class="box">
+        <h2 class="box-title">Test</h2>
+        <div id="mocha" class="box-content"></div>
+      </section>
+
+      <footer class="panel-footer">
+        <p><span class="heart">Diplove</span></p>
+      </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.13.0/mocha.min.js"></script>
+    <script>
+      mocha.setup('bdd');
+      var exports = null;
+      function assert(expr, msg) {
+        if (!expr) throw new Error(msg || 'failed');
+      }
+    </script>
+    <script src="web/resources/js/slideout.js"></script>
+    <script src="web/resources/js/test.js"></script>
+    <script>
+      window.onload = function() {
+        document.querySelector('.js-slideout-toggle').addEventListener('click', function() {
+          slideout.toggle();
+        });
+
+        document.querySelector('.menu').addEventListener('click', function(eve) {
+          if (eve.target.nodeName === 'A') { slideout.close(); }
+        });
+      };
+    </script>
+  </body>
+</html>
