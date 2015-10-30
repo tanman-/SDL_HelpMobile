@@ -15,12 +15,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import com.helpmobile.forms.ActivityType;
 
 /**
  *
  * @author Tanman
  */
-
+// Note there are more fields in the REST specification
 @Entity
 @Table
 public class Activity implements Serializable {
@@ -29,7 +30,7 @@ public class Activity implements Serializable {
     private boolean available;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date activityDate;
-    private String activityType;
+    private ActivityType type;
     private int duration;
     private String location;
     private int capacity;
@@ -65,12 +66,20 @@ public class Activity implements Serializable {
         this.activityDate = activityDate;
     }
 
-    public String getActivityType() {
-        return activityType;
+    public ActivityType getType() {
+        return type;
     }
 
-    public void setActivityType(String activityType) {
-        this.activityType = activityType;
+    public void setType(ActivityType type) {
+        this.type = type;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public int getDuration() {

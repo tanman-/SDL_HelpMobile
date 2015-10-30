@@ -18,16 +18,65 @@
     </h:head>
     <h:body>
         <h1>Register User</h1>
+        <p><i>Note: Normal use will not involve registration of user</i></p>
         <h:form>
             <p>UTS ID:<h:inputText value="#{registerUser.user.id}"/></p>
+            <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
             <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
             <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>Faculty:
+                <h:selectOneMenu value="#{registerUser.user.faculty}">
+                    <f:selectItems value="#{data.facultys}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Course:<h:inputText value="#{registerUser.user.courseNumber}"/></p>
+            <p>Email: <h:inputText value="#{registerUser.user.email}"/></p>
+            <p>Home Phone:<h:inputText value="#{registerUser.user.homePhone}"/></p>
+            <p>Mobile Phone:<h:inputText value="#{registerUser.user.mobilePhone}"/></p>
             <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText></p>
-            <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
+            <p>Preferred Name:<h:inputText value="#{registerUser.user.preferredName}"/></p>
+            <p>Preferred Phone:<h:inputText value="#{registerUser.user.preferredPhone}"/></p>
+            <p>Gender:
+                <h:selectOneMenu value="#{registerUser.user.gender}">
+                    <f:selectItems value="#{data.genders}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Degree:
+                <h:selectOneMenu value="#{registerUser.user.degreeLevel}">
+                    <f:selectItems value="#{data.degreeLevels}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Year:
+                <h:selectOneMenu value="#{registerUser.user.yearLevel}">
+                    <f:selectItems value="#{data.yearLevels}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Residency:
+                <h:selectOneMenu value="#{registerUser.user.residency}">
+                    <f:selectItems value="#{data.residencys}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>First Language:
+                <h:selectOneMenu value="#{registerUser.user.firstLanguage}">
+                    <f:selectItems value="#{data.languages}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Country of Origin:
+                <h:selectOneMenu value="#{registerUser.user.countryOrigin}">
+                    <f:selectItems value="#{data.countrys}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
+            <p>Educational Background:<h:inputText value="#{registerUser.user.educationalBackground}"/></p>
             <h:commandButton value="Register" action="#{registerUser.register}"/>
         </h:form>
     </h:body>
 </html>
-

@@ -24,7 +24,12 @@
             <p>Date:<h:inputText class="datepicker" value="#{registerActivity.activity.activityDate}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText></p>
-            <p>Activity type:<h:inputText value="#{registerActivity.activity.activityType}"/></p>
+            <p>Type:
+                <h:selectOneMenu value="#{registerActivity.activity.type}">
+                    <f:selectItems value="#{data.activityTypes}" var="t"
+                                   itemValue="#{t}" itemLabel="#{t.label}" />
+                </h:selectOneMenu>
+            </p>
             <p>Duration (int): <h:inputText value="#{registerActivity.activity.duration}"/></p>
             <p>Location: <h:inputText value="#{registerActivity.activity.location}"/></p>
             <p>Capacity (int):<h:inputText value="#{registerActivity.activity.capacity}"/></p>

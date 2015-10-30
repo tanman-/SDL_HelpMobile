@@ -16,7 +16,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
+import com.helpmobile.forms.Faculty;
+import com.helpmobile.forms.Gender;
+import com.helpmobile.forms.DegreeLevel;
+import com.helpmobile.forms.YearLevel;
+import com.helpmobile.forms.Residency;
+import com.helpmobile.forms.Language;
+import com.helpmobile.forms.Country;
 /**
  *
  * @author terra
@@ -28,20 +37,35 @@ public class User implements Serializable {
     
     @Id
     @Column(length=16)
-    private String id; 
+    private String id;
     private String password; 
     private String firstName;   
     private String lastName;
-    
+    @Enumerated(EnumType.ORDINAL)
+    private Faculty faculty;
+    private String courseNumber;
     private String email;
-    private int phone;
+    private int homePhone;
+    private int mobilePhone;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dob;
-    private int gender;
-    private String firstLanguage;
-    private String countryOrigin;
-    private String yearLevel;
-    private String degree;
+    
+    // mutable by end user
+    private String preferredName;
+    private int preferredPhone;
+    @Enumerated(EnumType.ORDINAL)
+    private Gender gender;
+    @Enumerated(EnumType.ORDINAL)
+    private DegreeLevel degreeLevel;
+    @Enumerated(EnumType.ORDINAL)
+    private YearLevel yearLevel;
+    @Enumerated(EnumType.ORDINAL)
+    private Residency residency;
+    @Enumerated(EnumType.ORDINAL)
+    private Language firstLanguage;
+    @Enumerated(EnumType.ORDINAL)
+    private Country countryOrigin;
+    private String educationalBackground;
     
     @OneToMany(mappedBy = "user")
     private List<Reminder> reminders;
@@ -50,8 +74,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<WaitingList> waitingList;
 
-    public User(){
-        
+    public User(){   
     }
 
     public String getId() {
@@ -86,6 +109,22 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+
+    public void setCourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -94,12 +133,20 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getPhone() {
-        return phone;
+    public int getHomePhone() {
+        return homePhone;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setHomePhone(int homePhone) {
+        this.homePhone = homePhone;
+    }
+
+    public int getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(int mobilePhone) {
+        this.mobilePhone = mobilePhone;
     }
 
     public Date getDob() {
@@ -110,84 +157,98 @@ public class User implements Serializable {
         this.dob = dob;
     }
 
-    public int getGender() {
+    public String getPreferredName() {
+        return preferredName;
+    }
+
+    public void setPreferredName(String preferredName) {
+        this.preferredName = preferredName;
+    }
+
+    public int getPreferredPhone() {
+        return preferredPhone;
+    }
+
+    public void setPreferredPhone(int preferredPhone) {
+        this.preferredPhone = preferredPhone;
+    }
+
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    public String getFirstLanguage() {
-        return firstLanguage;
+    public DegreeLevel getDegreeLevel() {
+        return degreeLevel;
     }
 
-    public void setFirstLanguage(String firstLanguage) {
-        this.firstLanguage = firstLanguage;
+    public void setDegreeLevel(DegreeLevel degreeLevel) {
+        this.degreeLevel = degreeLevel;
     }
 
-    public String getCountryOrigin() {
-        return countryOrigin;
-    }
-
-    public void setCountryOrigin(String countryOrigin) {
-        this.countryOrigin = countryOrigin;
-    }
-
-    public String getYearLevel() {
+    public YearLevel getYearLevel() {
         return yearLevel;
     }
 
-    public void setYearLevel(String yearLevel) {
+    public void setYearLevel(YearLevel yearLevel) {
         this.yearLevel = yearLevel;
     }
 
-    public String getDegree() {
-        return degree;
+    public Residency getResidency() {
+        return residency;
     }
 
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }    
+    public void setResidency(Residency residency) {
+        this.residency = residency;
+    }
 
-    /**
-     * @return the reminders
-     */
+    public Language getFirstLanguage() {
+        return firstLanguage;
+    }
+
+    public void setFirstLanguage(Language firstLanguage) {
+        this.firstLanguage = firstLanguage;
+    }
+
+    public Country getCountryOrigin() {
+        return countryOrigin;
+    }
+
+    public void setCountryOrigin(Country countryOrigin) {
+        this.countryOrigin = countryOrigin;
+    }
+    
+    public String getEducationalBackground() {
+        return educationalBackground;
+    }
+
+    public void setEducationalBackground(String educationalBackground) {
+        this.educationalBackground = educationalBackground;
+    }
+
     public List<Reminder> getReminders() {
         return reminders;
     }
 
-    /**
-     * @param reminders the reminders to set
-     */
     public void setReminders(List<Reminder> reminders) {
         this.reminders = reminders;
     }
 
-    /**
-     * @return the bookings
-     */
     public List<Booking> getBookings() {
         return bookings;
     }
 
-    /**
-     * @param bookings the bookings to set
-     */
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
 
-    /**
-     * @return the waitingList
-     */
     public List<WaitingList> getWaitingList() {
         return waitingList;
     }
 
-    /**
-     * @param waitingList the waitingList to set
-     */
     public void setWaitingList(List<WaitingList> waitingList) {
         this.waitingList = waitingList;
     }

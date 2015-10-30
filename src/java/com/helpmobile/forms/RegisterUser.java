@@ -8,7 +8,7 @@ package com.helpmobile.forms;
 import com.helpmobile.dba.AccessFacade;
 import com.helpmobile.dba.User;
 import com.helpmobile.managed.UserManager;
-import java.util.Date;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
@@ -32,9 +32,6 @@ public class RegisterUser {
     
     private final User user = new User();
 
-    /**
-     * @return the firstName
-     */
     public String register() {
         try {
             String password = user.getPassword();
@@ -52,5 +49,5 @@ public class RegisterUser {
 
     public User getUser() {
         return user;
-    }
+    } 
 }
