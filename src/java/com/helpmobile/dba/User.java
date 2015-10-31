@@ -45,14 +45,14 @@ public class User implements Serializable {
     private Faculty faculty;
     private String courseNumber;
     private String email;
-    private int homePhone;
-    private int mobilePhone;
+    private String homePhone;
+    private String mobilePhone;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dob;
     
     // mutable by end user
     private String preferredName;
-    private int preferredPhone;
+    private String preferredPhone;
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
     @Enumerated(EnumType.ORDINAL)
@@ -133,19 +133,19 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getHomePhone() {
+    public String getHomePhone() {
         return homePhone;
     }
 
-    public void setHomePhone(int homePhone) {
+    public void setHomePhone(String homePhone) {
         this.homePhone = homePhone;
     }
 
-    public int getMobilePhone() {
+    public String getMobilePhone() {
         return mobilePhone;
     }
 
-    public void setMobilePhone(int mobilePhone) {
+    public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
@@ -165,11 +165,11 @@ public class User implements Serializable {
         this.preferredName = preferredName;
     }
 
-    public int getPreferredPhone() {
+    public String getPreferredPhone() {
         return preferredPhone;
     }
 
-    public void setPreferredPhone(int preferredPhone) {
+    public void setPreferredPhone(String preferredPhone) {
         this.preferredPhone = preferredPhone;
     }
 
