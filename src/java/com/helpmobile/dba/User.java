@@ -31,15 +31,15 @@ import com.helpmobile.forms.Country;
  * @author terra
  */
 @Entity
-@Table(name="applicant") //applicant?
-@NamedQueries(@NamedQuery(name="User.getAll", query="SELECT e FROM User e"))
+@Table(name = "applicant")
+@NamedQueries(@NamedQuery(name = "User.getAll", query = "SELECT e FROM User e"))
 public class User implements Serializable {
-    
+
     @Id
-    @Column(length=16)
+    @Column(length = 16)
     private String id;
-    private String password; 
-    private String firstName;   
+    private String password;
+    private String firstName;
     private String lastName;
     @Enumerated(EnumType.ORDINAL)
     private Faculty faculty;
