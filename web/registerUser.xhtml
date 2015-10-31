@@ -26,52 +26,52 @@
                 <h:outputLabel for="password">Password</h:outputLabel>
                 <h:inputSecret id="password" value="#{registerUser.user.password}"/>
                 <h:outputLabel for="firstName">First name</h:outputLabel>
-                <h:inputText value="#{registerUser.user.firstName}"/>
+                <h:inputText id="firstName" value="#{registerUser.user.firstName}"/>
                 <h:outputLabel for="lastName">Last name</h:outputLabel>
-                <h:inputText value="#{registerUser.user.lastName}"/>
+                <h:inputText id="lastName" value="#{registerUser.user.lastName}"/>
                 <h:outputLabel for="faculty">Faculty</h:outputLabel>
-                <h:selectOneMenu value="#{registerUser.user.faculty}">
+                <h:selectOneMenu id="faculty" value="#{registerUser.user.faculty}">
                     <f:selectItems value="#{data.facultys}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel for="courseNumber">Course</h:outputLabel>
-                <h:inputText value="#{registerUser.user.courseNumber}"/>
+                <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}"/>
                 <h:outputLabel for="email">Email</h:outputLabel>
-                <h:inputText value="#{registerUser.user.email}"/>
+                <h:inputText id="email" value="#{registerUser.user.email}"/>
                 <h:outputLabel for="homePhone">Home phone</h:outputLabel>
-                <h:inputText value="#{registerUser.user.homePhone}"/>
+                <h:inputText id="homePhone" value="#{registerUser.user.homePhone}"/>
                 <h:outputLabel for="mobilePhone">Mobile phone</h:outputLabel>
-                <h:inputText value="#{registerUser.user.mobilePhone}"/>
+                <h:inputText id="mobilePhone" value="#{registerUser.user.mobilePhone}"/>
                 <h:outputLabel for="dob">Date of birth</h:outputLabel>
-                <h:inputText class="datepicker" value="#{registerUser.user.dob}">
+                <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText>
                 <h:outputLabel for="preferredName">Preferred name</h:outputLabel>
-                <h:inputText value="#{registerUser.user.preferredName}"/>
+                <h:inputText id="preferredName" value="#{registerUser.user.preferredName}"/>
                 <h:outputLabel for="preferredPhone">Preferred phone</h:outputLabel>
-                <h:inputText value="#{registerUser.user.preferredPhone}"/>
+                <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}"/>
                 <h:outputLabel for="gender">Gender</h:outputLabel>
-                <h:selectOneMenu value="#{registerUser.user.gender}">
+                <h:selectOneMenu id="gender" value="#{registerUser.user.gender}">
                     <f:selectItems value="#{data.genders}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel for="degree">Degree</h:outputLabel>
-                <h:selectOneMenu value="#{registerUser.user.degreeLevel}">
+                <h:selectOneMenu id="degree" value="#{registerUser.user.degreeLevel}">
                     <f:selectItems value="#{data.degreeLevels}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel for="year">Year</h:outputLabel>
-                <h:selectOneMenu value="#{registerUser.user.yearLevel}">
+                <h:selectOneMenu id="year" value="#{registerUser.user.yearLevel}">
                     <f:selectItems value="#{data.yearLevels}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel for="residency">Residency</h:outputLabel>
-                <h:selectOneMenu value="#{registerUser.user.residency}">
+                <h:selectOneMenu id="residency" value="#{registerUser.user.residency}">
                     <f:selectItems value="#{data.residencys}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel for="firstLanguage">First language</h:outputLabel>
-                <h:selectOneMenu value="#{registerUser.user.firstLanguage}">
+                <h:selectOneMenu id="firstLanguage" value="#{registerUser.user.firstLanguage}">
                     <f:selectItems value="#{data.languages}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
@@ -81,7 +81,7 @@
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel for="educationalBackground">Educational background</h:outputLabel>
-                <h:inputText value="#{registerUser.user.educationalBackground}"/>
+                <h:inputText id="educationalBackground" value="#{registerUser.user.educationalBackground}"/>
                 <h:commandButton value="Register" action="#{registerUser.register}"/>
             </h:panelGrid>
         </h:form>
