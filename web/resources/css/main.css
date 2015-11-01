@@ -8,3 +8,53 @@ and open the template in the editor.
     Author     : terra
 */
 
+body{
+    padding: 0px;
+    margin: 0px;
+        font-family: sans-serif;
+}
+
+.hidden{
+    display: none;
+}
+
+.top_bar{
+    padding-left: 3pt;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: box;
+    background-color: #a90000;
+
+}
+
+.content_body{
+    padding-left: 5pt;
+}
+
+.form_table{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.content_body{
+    padding-top: 5pt
+}
+
+.form_row{
+    display: table-row;
+}
+
+.form_input{
+    display: table-cell
+}
+
+.form_input>input{
+    width: 100pt;
+}
+
+.form_label{
+    display: table-cell;
+    width: 120pt;
+    text-align: right;
+}
