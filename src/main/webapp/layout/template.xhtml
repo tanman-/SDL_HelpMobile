@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:layout>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north">
+                    Hello testing
+                </p:layoutUnit>
+                <p:layoutUnit position="south">
+                    footer
+                </p:layoutUnit>
+                <p:layoutUnit header="Information" position="east" closable="true" resizable="true" size="150">
+                    n/a
+                </p:layoutUnit>
+                <p:layoutUnit header="Menu" position="west" collapsible="true" resizable="true" size="150">
+                    Menu
+                </p:layoutUnit>
+                <p:layoutUnit position="center">
+                    <ui:insert name="content"/>
+                </p:layoutUnit>
+            </p:layout>
+        </p:layout>
+    </h:body>
+</html>
+
