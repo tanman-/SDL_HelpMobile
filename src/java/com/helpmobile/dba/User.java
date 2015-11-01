@@ -26,10 +26,14 @@ import com.helpmobile.forms.YearLevel;
 import com.helpmobile.forms.Residency;
 import com.helpmobile.forms.Language;
 import com.helpmobile.forms.Country;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 /**
  *
  * @author terra
  */
+@ManagedBean(name="user")
+@SessionScoped
 @Entity
 @Table(name = "applicant")
 @NamedQueries(@NamedQuery(name = "User.getAll", query = "SELECT e FROM User e"))
