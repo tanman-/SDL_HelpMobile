@@ -23,7 +23,7 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-	background:#f26261;
+	background:#000;
 	font-family: 'Open Sans', sans-serif;
 }
 .wrap{
@@ -201,12 +201,13 @@ input#roundedTwo {
 .remember {
   float: none;
   margin: 5px 0 0 0;
+  text-decoration: underline;
 }
 .remember p {
-    text-decoration: underline;
     color: #91403c;
     font-size: 13px;
     font-weight: 600;
+    margin-top: 1em;
     position: relative;
 }
 ul.bottom-sc-icons {
@@ -218,54 +219,7 @@ ul.bottom-sc-icons li {
 	display: block;
 	  margin: 39px 0px 0;
 }
-a.facebook {
-background: #34579b;
-  color: #fff;
-  padding: 15px 15px;
-  font-size: 14px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  font-weight: 400;
-}
-a.twitter {
-background: #269df9;
-  color: #fff;
-   padding: 13px 28px 15px 19px;
-  font-size: 14px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  font-weight: 400;
-}
-a.facebook img {
-	vertical-align: middle;
-	margin-right: 20px;
-}
-a.twitter img {
-	vertical-align: middle;
-	margin-right: 16px;
-}
-a.facebook:hover {
-  background: #1B3E81;
-  	transition: 1s all;
-	-webkit-transition: 1s all;
-	-moz-transition: 1s all;
-	-o-transition: 1s all;
-	border-radius:0;
-}
-a.twitter:hover {
-	background: #1E5681;
-	transition: 1s all;
-	-webkit-transition: 1s all;
-	-moz-transition: 1s all;
-	-o-transition: 1s all;
-	border-radius:0;
-}
+
 .social-icons-1 {
 	margin-top: 1em;
 	padding: 0 28px 0 28px;
@@ -285,18 +239,18 @@ a.twitter:hover {
 /*--start-responsive-design--*/
 @media (max-width:1440px){
 	input[type="text"] {
-	 	 background: #1f262c url(../images/adm.png)no-repeat 263px 15px;
+	 	 background: #FFFFFF url(../images/adm.png)no-repeat 263px 15px;
 	  }
 	 input[type="password"] {
-	  	background: #1f262c url(../images/pass.png)no-repeat 263px 15px;
+	  	background: #FFFFFF url(../images/pass.png)no-repeat 263px 15px;
 	  }
 }
 @media (max-width:1366px){
 	input[type="text"] {
-		  background: #1f262c url(../images/adm.png)no-repeat 253px 15px;
+		  background: #FFFFFF url(../images/adm.png)no-repeat 253px 15px;
 	}
 	input[type="password"] {
-		  background: #1f262c url(../images/pass.png)no-repeat 253px 15px;
+		  background: #FFFFFF url(../images/pass.png)no-repeat 253px 15px;
 	}
 	.check-box {
 		  left: 14%;
@@ -307,10 +261,10 @@ a.twitter:hover {
 }
 @media (max-width:1280px){
 	input[type="text"] {
-		  background: #1f262c url(../images/adm.png)no-repeat 238px 15px;
+		  background: #FFFFFF url(../images/adm.png)no-repeat 238px 15px;
 	}
 	input[type="password"] {
-		  background: #1f262c url(../images/pass.png)no-repeat 238px 15px;
+		  background: #FFFFFF url(../images/pass.png)no-repeat 238px 15px;
 	}
 	.login-form {
 		height: 645px;
@@ -327,16 +281,16 @@ a.twitter:hover {
 		  padding: 15px 14px;
 	}
 	input[type="text"] {
-	  background: #1f262c url(../images/adm.png)no-repeat 312px 15px;
+	  background: #FFFFFF url(../images/adm.png)no-repeat 312px 15px;
 	}
 	input[type="password"] {
-	  background: #1f262c url(../images/pass.png)no-repeat 309px 15px;
+	  background: #FFFFFF url(../images/pass.png)no-repeat 309px 15px;
 	}
 	.check-box {
 	  left: 24%;
 	}
 	.remember {
-	  margin: 5px 0 0 75px;
+	  margin: 5px 0 10px 0px;
 	}
 }
 @media (max-width:768px){
@@ -361,37 +315,26 @@ a.twitter:hover {
 	  left: 22%;
 	}
 	input[type="text"] {
-	  background: #1f262c url(../images/adm.png)no-repeat 286px 15px;
+	  background: #FFFFFF url(../images/adm.png)no-repeat 286px 15px;
 	}
 	input[type="password"] {
-	  background: #1f262c url(../images/pass.png)no-repeat 287px 15px;
+	  background: #FFFFFF url(../images/pass.png)no-repeat 287px 15px;
 	}
 }
 @media (max-width:640px){
 	.login-form {
 	  	  width: 69%;
 	}
-	.check-box {
-	    left: 23%;
-	}
 	.remember {
 	   margin: 5px 0 0 0;
 	}
 	.remember p {
-	  font-size: 13px;
-	}
-	a.twitter {
-	  padding: 13px 26px 15px 20px;
-	  font-size: 13px;
+	  font-size: 15px;
 	}
 }
 @media (max-width:480px){
 	.login-form {
 	  width: 82%;
-	}
-	a.twitter {
-	  padding: 13px 29px 15px 21px;
-	  font-size: 13px;
 	}
 	h1 {
 	  font-size: 2.5em;
@@ -416,25 +359,27 @@ a.twitter:hover {
 	  padding-top: .5em;
 	}
 	.avtar img {
-	  width: 100%;
+	  width: 82%;
 	  margin: 0em 0 .2em;
 	}
 	.login-form {
-	  width: 80%;
-	  height: 407px;
+	  width: 85%;
+	  height: 510px;
 	  margin: 2% auto;
 	}
 	input[type="text"] {
-	  background: #1f262c url(../images/adm.png)no-repeat 201px 8px;
+	  background: #FFFFFF url(../images/adm.png)no-repeat 201px 8px;
 	  width: 73%;
 	  padding: 14px 50px 14px 14px;
 	  margin-bottom: .5em;
+          margin-top: 2em;
 	  font-size: 16px;
 	  }
 	input[type="password"] {
-		background: #1f262c url(../images/pass.png)no-repeat 201px 8px;
+		background: #ffffff url(../images/pass.png)no-repeat 201px 8px;
 		width: 73%;
 		padding: 14px 50px 14px 14px;
+                margin-bottom: 1em;
 		font-size: 16px;
 	}
 	input[type="submit"] {
