@@ -36,7 +36,9 @@
                 <h:outputLabel for="courseNumber">Course</h:outputLabel>
                 <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}"/>
                 <h:outputLabel for="email">Email</h:outputLabel>
-                <h:inputText id="email" value="#{registerUser.user.email}"/>
+                <h:inputText id="email" value="#{registerUser.user.email}">
+                    <f:validator validatorId="com.helpmobile.EmailValidator"/>
+                </h:inputText><h:message for="email" style="color:red"/><h:outputLabel />
                 <h:outputLabel for="homePhone">Home phone</h:outputLabel>
                 <h:inputText id="homePhone" value="#{registerUser.user.homePhone}"/>
                 <h:outputLabel for="mobilePhone">Mobile phone</h:outputLabel>
