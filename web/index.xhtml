@@ -7,24 +7,45 @@
     <h:head>
         <title>HELPS</title>
         <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <h:outputStylesheet library="css" name="main.css"/>
     </h:head>
     <h:body>
-        <h1>HELPS</h1>
         <div>
+            <div class="side_menu hidden">
+
+            </div>
+            <div class="top_bar">
+
+                <div class="menu_button"></div>
+                <div class="title">HELP Home Page</div>
+                <div></div>
+            </div>
             <c:if test="#{userManager.isLogged()}">
                 <h:form>
                     <h:commandButton value="Log-out" action="#{userManager.logout}"/>
                 </h:form>
             </c:if>
-            <h:form>
-                <p>Student ID:<h:inputText value="#{loginForm.username}"/></p>
-                <p>Password:<h:inputSecret value="#{loginForm.password}"/></p>
-                <h:commandButton value="Log-in" action="#{loginForm.login}"/>
-            </h:form>
+            <div class="content_body">
+                <div class="guide_msg">Please Log-In</div>
+                <h:form>
+                    <div class="form_table">
+                        <div class="form_row">
+                            <div class="form_label">Student ID</div><div class="form_input"><h:inputText value="#{loginForm.username}"/></div>
+                        </div>
+                        <div class="form_row">
+                            <div class="form_label">Password</div><div class="form_input"><h:inputSecret value="#{loginForm.password}"/></div>
+                        </div>
+                    </div>
+                    <div class="form_row">
+                        <h:commandButton value="Log-in" action="#{loginForm.login}"/>
+                    </div>
+                </h:form>
+            </div>
         </div>
-        
+
         <p><h:link outcome="registerUser">Register User</h:link></p>
         <p><h:link outcome="registerActivity">Register Activity</h:link></p>
+        <div></div>
     </h:body>
 </html>
 
