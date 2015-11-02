@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helpmobile.forms;
+package com.helpmobile.dba.enums;
+
+import com.helpmobile.dba.enums.LabeledEnum;
 
 /**
  *
  * @author Tanman
  */
-public enum Language {
+public enum Language implements LabeledEnum{
 
     ABKHAZIAN("Abkhazian"),
     AFAR("Afar"),
@@ -161,6 +163,7 @@ public enum Language {
         this.label = label;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }

@@ -3,22 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helpmobile.forms;
+package com.helpmobile.dba.enums;
 
 /**
  *
  * @author Tanman
  */
-public enum Residency {
-    LOCAL("Local"),
-    INTERNATIONAL("International");
+public enum Faculty implements LabeledEnum{
+    BUSINESS("Business"),
+    DAB("DAB"),
+    FASS("FASS"),
+    FEIT("FEIT"),
+    GSH("GSH"),
+    HEALTH("Health"),
+    LAW("Law"),
+    SCIENCE("Science");
     
     private final String label;
     
-    private Residency(String label) {
+    private Faculty(String label) {
         this.label = label;
     }
     
+    @Override
     public String getLabel() {
         return label;
     }

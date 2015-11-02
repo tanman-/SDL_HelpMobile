@@ -3,28 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helpmobile.forms;
+package com.helpmobile.dba.enums;
 
 /**
  *
  * @author Tanman
  */
-public enum Faculty {
-    BUSINESS("Business"),
-    DAB("DAB"),
-    FASS("FASS"),
-    FEIT("FEIT"),
-    GSH("GSH"),
-    HEALTH("Health"),
-    LAW("Law"),
-    SCIENCE("Science");
+public enum YearLevel implements LabeledEnum{
+    FIRSTYEAR("First year"),
+    SECONDYEAR("Second year"),
+    THIRDYEAR("Third year"),
+    FOURTHYEAR("Fourth year"),
+    FIFTHYEAR("Fifth year");
     
     private final String label;
     
-    private Faculty(String label) {
+    private YearLevel(String label) {
         this.label = label;
     }
     
+    @Override
     public String getLabel() {
         return label;
     }
