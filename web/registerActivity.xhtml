@@ -7,7 +7,7 @@
     <h:head>
         <title>Register Activity</title>
         <h:outputScript library="js" name="jquery.js"/>
-        <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
+        <!--<h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>-->
         <h:outputScript library="js" name="jquery-ui.js"/>
         <h:outputStylesheet library="css" name="jquery-ui.css"/>
         <script>
@@ -18,24 +18,33 @@
     </h:head>
     <h:body>
         <h1>Register Activity</h1>
-        <h:form>
-            <p>Activity ID:<h:inputText value="#{registerActivity.activity.id}"/></p>
-            <p>Available (bool):<h:inputText value="#{registerActivity.activity.available}"/></p>
-            <p>Date:<h:inputText class="datepicker" value="#{registerActivity.activity.activityDate}">
+        <h:form id="registerActivityForm">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="id">Activity ID (int, should be auto)</h:outputLabel>
+                <h:inputText id="id" value="#{registerActivity.activity.id}"/>
+                <h:outputLabel for="available">Avaliable (bool)</h:outputLabel>
+                <h:inputText id="available" value="#{registerActivity.activity.available}"/>
+                <h:outputLabel for="activityDate">Date</h:outputLabel>
+                <h:inputText id="activityDate" class="datepicker" value="#{registerActivity.activity.activityDate}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
-                </h:inputText></p>
-            <p>Type:
-                <h:selectOneMenu value="#{registerActivity.activity.type}">
+                </h:inputText>
+                <h:outputLabel for="type">Type</h:outputLabel>
+                <h:selectOneMenu id="type" value="#{registerActivity.activity.type}">
                     <f:selectItems value="#{data.activityTypes}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
-            </p>
-            <p>Duration (int): <h:inputText value="#{registerActivity.activity.duration}"/></p>
-            <p>Location: <h:inputText value="#{registerActivity.activity.location}"/></p>
-            <p>Capacity (int):<h:inputText value="#{registerActivity.activity.capacity}"/></p>
-            <p>Bookable (bool):<h:inputText value="#{registerActivity.activity.bookable}"/></p>
-            <p>Lecturer name: <h:inputText value="#{registerActivity.activity.lecturerName}"/></p>
-            <h:commandButton value="Register" action="#{registerActivity.register}"/>
+                <h:outputLabel for="duration">Duration</h:outputLabel>
+                <h:inputText id="duration" value="#{registerActivity.activity.duration}"/>
+                <h:outputLabel for="location">Location</h:outputLabel>
+                <h:inputText id="location" value="#{registerActivity.activity.location}"/>
+                <h:outputLabel for="capacity">Capacity</h:outputLabel>
+                <h:inputText id="capacity" value="#{registerActivity.activity.capacity}"/>
+                <h:outputLabel for="bookable">Bookable (bool)</h:outputLabel>
+                <h:inputText id="bookable" value="#{registerActivity.activity.bookable}"/>
+                <h:outputLabel for="lecturerName">Lecturer</h:outputLabel>
+                <h:inputText id="lecturerName" value="#{registerActivity.activity.lecturerName}"/>
+                <h:commandButton value="Register" action="#{registerActivity.register}"/>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>
