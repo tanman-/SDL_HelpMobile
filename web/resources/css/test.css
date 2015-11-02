@@ -130,46 +130,28 @@ a {
     width: 50px;
 }
 
+.welcomeMsg{
+    text-align: left;
+    margin: 15px 2px 2px 2px;
+}
+
 /**
  * Boxes
  */
 .box {
   border-radius: 4px;
   text-align: left;
-  margin: 50px 10px;
+  margin: 10px 10px;
   position: relative;
+  height: 100px;
+  width: 110px;
 }
 
-.box:before,
-.box:after {
-  content: ' ';
-  display: inline-block;
-  width: 1px;
-  height: 50px;
-  position: absolute;
-  left: 50%;
-}
-
-.box:before {
-  top: -50px;
-}
-
-.box:after {
-  bottom: -50px;
-}
-
-.box-title {
-  margin: 0;
-  padding:10px 20px;
-  border-bottom: 1px solid #4b5;
-  color: #4b5;
-  font-size: 1.2em;
-  font-weight: 400;
-}
-
-.box-content {
-  padding:20px;
-  background-color: #f8f8f8;
+.booking{
+    border-radius: 4px;
+    margin: 10px 10px;
+    height: 100px;
+    width: 90px;
 }
 
 /**
@@ -195,26 +177,36 @@ a {
   .title {
     font-size: 2.2em;
   }
+  
+.box {
+  height: 250px;
+  width: 260px;
+}
+
+.welcomeMsg{
+    margin: 25px 25px 25px 25px;
+    font-size: 2em;
+}
 }
 
 /**
  * Large Screens
  */
 @media all and (min-width: 54em) {
-  .box {
-    width: 70%;
+.box {
+    width: 100%;
     max-width: 1200px;
     margin: 50px auto;
-  }
+}
+  
+.box {
+  padding: 10px 35px 35px 10px;
+  height: 300px;
+  width: 310px;
 }
 
-/**
- * Footer
- */
-.panel-footer {
-  margin: 10px auto 2px 2px;
+.welcomeMsg{
+    margin: 25px 15px 5px 25px;
+    font-size: 2em;
 }
-
-.panel-footer p {
-  padding-bottom: 20px;
 }

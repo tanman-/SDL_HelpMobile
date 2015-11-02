@@ -63,19 +63,20 @@
     <main id="panel" class="panel">
       <header class="head">
         <button class="btn-hamburger js-slideout-toggle"></button>
-        <button class="btn-back"></button>  
-        <h1 class="title">Welcome</h1>
+        <button class="btn-back" onclick="goBack()"></button> 
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <h1 class="title">Home</h1>
       </header>
-
-      <section class="box">
-          <div id="mocha" class="box-content">
-              <img src="../resources/images/MakeBooking.png" alt="Make Your Booking"/>
-          </div>
-      </section>
-
-      <footer class="panel-footer">
-        <p><span>Diplove</span></p>
-      </footer>
+        <p class="welcomeMsg">Welcome, Diplove</p>
+        <a href="#"><img class="box" src="../resources/images/MakeBooking.png" alt="Make Your Booking"/></a>
+        <a href="http://www.google.com"><img class="box" src="../resources/images/MyBookings.png" alt="Make Your Booking"/></a>
+        <a href="http://www.google.com"><img class="box" src="../resources/images/InfoButton.png" alt="Make Your Booking"/></a>
+        <a href="http://www.google.com"><img class="box" src="../resources/images/FAQ.png" alt="Make Your Booking"/></a>
+        <a href="http://www.google.com"><img class="box" src="../resources/images/Logout.png" alt="Make Your Booking"/></a>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.13.0/mocha.min.js"></script>
