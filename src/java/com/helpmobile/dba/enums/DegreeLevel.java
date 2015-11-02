@@ -25,7 +25,7 @@ public enum DegreeLevel implements LabeledEnum {
         this.shortLabel=shortLabel;
     }
 
-    @JsonValue
+
     @Override
     public String getLabel() {
         return label;
@@ -36,6 +36,8 @@ public enum DegreeLevel implements LabeledEnum {
         return (DegreeLevel) EnumFinder.getEnum(label, DegreeLevel.values());
     }
     
+    @JsonValue
+    @Override
     public String getShort(){
         return shortLabel;
     }
