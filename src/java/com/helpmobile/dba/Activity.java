@@ -5,8 +5,9 @@
  */
 package com.helpmobile.dba;
 
+import com.helpmobile.forms.ActivityArea;
+import com.helpmobile.forms.ActivityTarget;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +15,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 import com.helpmobile.forms.ActivityType;
+import java.sql.Timestamp;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Lob;
 
 /**
  *
@@ -28,14 +33,22 @@ public class Activity implements Serializable {
     @Id
     private Long id;
     private boolean available;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date activityDate;
+    private Timestamp activityDate;
+    @Enumerated(EnumType.ORDINAL)
     private ActivityType type;
     private int duration;
     private String location;
     private int capacity;
     private boolean bookable;
     private String lecturerName;
+    @Enumerated(EnumType.ORDINAL)
+    private ActivityArea area;
+    private String topic;
+    @Lob
+    @Column
+    private String description;
+    @Enumerated(EnumType.ORDINAL)
+    private ActivityTarget target;
     @OneToOne
     @JoinColumn(name = "waitingListId")
     private WaitingList waitingList;
@@ -58,11 +71,11 @@ public class Activity implements Serializable {
         this.available = available;
     }
 
-    public Date getActivityDate() {
+    public Timestamp getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(Date activityDate) {
+    public void setActivityDate(Timestamp activityDate) {
         this.activityDate = activityDate;
     }
 
@@ -72,14 +85,6 @@ public class Activity implements Serializable {
 
     public void setType(ActivityType type) {
         this.type = type;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
     }
 
     public int getDuration() {
@@ -122,6 +127,38 @@ public class Activity implements Serializable {
         this.lecturerName = lecturerName;
     }
 
+    public ActivityArea getArea() {
+        return area;
+    }
+
+    public void setArea(ActivityArea area) {
+        this.area = area;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ActivityTarget getTarget() {
+        return target;
+    }
+
+    public void setTarget(ActivityTarget target) {
+        this.target = target;
+    }
+
     public WaitingList getWaitingList() {
         return waitingList;
     }
@@ -129,5 +166,15 @@ public class Activity implements Serializable {
     public void setWaitingList(WaitingList waitingList) {
         this.waitingList = waitingList;
     }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+    
+    
     
 }
