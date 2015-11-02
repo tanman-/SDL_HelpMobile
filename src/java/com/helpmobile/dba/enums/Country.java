@@ -5,11 +5,15 @@
  */
 package com.helpmobile.dba.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  *
  * @author Tanman
  */
-public enum Country  implements LabeledEnum{
+public enum Country implements LabeledEnum {
+
     AFGHANISTAN("Afghanistan"),
     ALBANIA("Albania"),
     ALGERIA("Algeria"),
@@ -257,8 +261,20 @@ public enum Country  implements LabeledEnum{
         this.label = label;
     }
 
+    @JsonValue
     @Override
     public String getLabel() {
         return label;
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
+    
+    @Override
+    public String getShort(){
+        return label;
+    }
+
 }

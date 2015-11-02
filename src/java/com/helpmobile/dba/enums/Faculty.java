@@ -5,6 +5,8 @@
  */
 package com.helpmobile.dba.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  *
  * @author Tanman
@@ -25,8 +27,19 @@ public enum Faculty implements LabeledEnum{
         this.label = label;
     }
     
+    @JsonValue
     @Override
     public String getLabel() {
+        return label;
+    }
+    
+    @Override
+    public String toString() {
+        return label;
+    }
+    
+    @Override
+    public String getShort(){
         return label;
     }
 }
