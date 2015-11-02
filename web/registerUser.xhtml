@@ -1,70 +1,97 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Register User</title>
-        <h:outputScript library="js" name="jquery.js"/>
-        <!--<h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>-->
-        <h:outputScript library="js" name="jquery-ui.js"/>
-        <h:outputStylesheet library="css" name="jquery-ui.css"/>
-        <script>
-            $(document).ready(function(){
-               $(".datepicker").datepicker(); 
-            });
-        </script>
-    </h:head>
-    <h:body>
-        <h1>Register User</h1>
-        <p><i>Note: Normal use will not involve registration of user</i></p>
-        <h:form id="registerUserForm">
-            <h:panelGrid columns="3">
-                <h:outputLabel for="id">UTS ID</h:outputLabel>
-                <h:inputText id="id" value="#{registerUser.user.id}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="id" style="color:red"/>
-                
-                <h:outputLabel for="password">Password</h:outputLabel>
-                <h:inputSecret id="password" value="#{registerUser.user.password}" required="true"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="name">Name</h:outputLabel>
-                <h:inputText id="name" value="#{registerUser.user.name}" required="true"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="faculty">Faculty</h:outputLabel>
-                <h:selectOneMenu id="faculty" value="#{registerUser.user.faculty}" required="true">
-                    <f:selectItems value="#{data.facultys}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="courseNumber">Course</h:outputLabel>
-                <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}" required="true"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="email">Email</h:outputLabel>
-                <h:inputText id="email" value="#{registerUser.user.email}" required="true">
-                    <f:validator validatorId="com.helpmobile.EmailValidator"/>
-                </h:inputText>
-                <h:message for="email" style="color:red"/>
-                
-                <h:outputLabel for="homePhone">Home phone</h:outputLabel>
-                <h:inputText id="homePhone" value="#{registerUser.user.homePhone}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="homePhone" style="color:red"/>
-                
-                <h:outputLabel for="mobilePhone">Mobile phone</h:outputLabel>
-                <h:inputText id="mobilePhone" value="#{registerUser.user.mobilePhone}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="mobilePhone" style="color:red"/>
-                
-                <h:outputLabel for="dob">Date of birth</h:outputLabel>
-                <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}" required="true">
+    
+  <h:head>
+    <meta charset="utf-8" />
+    <title>Registration</title>
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="./web/resources/css/mocha.min.css" />
+    <link rel="stylesheet" href="./web/resources/css/test.css" />
+    <link rel="stylesheet" href="./web/resources/css/index.css" />
+    
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
+    <h:outputScript library="js" name="jquery-ui.js"/>
+    <h:outputStylesheet library="css" name="jquery-ui.css"/>
+    
+    <script>
+        //==<![CDATA[
+        $(document).ready(function(){
+            $(".datepicker").datepicker(); 
+        });
+        //]]>
+    </script>  
+  </h:head>
+    
+  <h:body>
+
+    <nav id="menu" class="menu">
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Home</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">My Information</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Programs</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Workshop Registration</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">My Bookings</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Reminders</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">F.A.Q</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Logout</span>
+        </header>
+      </a>
+    </nav>
+
+    <main id="panel" class="panel">
+        <header class="head">
+            <button class="btn-hamburger toggle-button"></button>
+            <button class="btn-back" onclick="goBack()"></button> 
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        <h1 class="title">Register</h1>
+        </header>
+        
+        <h:form>
+            <p>UTS ID:<h:inputText value="#{registerUser.user.id}"/></p>
+            <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
+            <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText>
                 <h:outputLabel/>
@@ -128,5 +155,24 @@
                 <h:commandButton value="Register" action="#{registerUser.register}"/>
             </h:panelGrid>
         </h:form>
-    </h:body>
+    </main>
+
+    <script src="./web/resources/js/slideout.min.js"></script>
+    <script>
+    <!--
+      var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'tolerance': 70
+      });
+
+      // Toggle button
+      document.querySelector('.toggle-button').addEventListener('click', function() {
+        slideout.toggle();
+      });
+    // -->
+    </script>
+
+  </h:body>
 </html>
