@@ -14,11 +14,14 @@ import java.util.List;
  */
 public class WorkshopList {
     
-    @JsonProperty("Result")
+    @JsonProperty("Results")
     private List<Workshop> workshops;
 
     @JsonProperty("IsSuccess")
     private boolean available;
+    
+    @JsonProperty("DisplayMessage")
+    private String error;
     /**
      * @return the workshops
      */
@@ -45,6 +48,20 @@ public class WorkshopList {
      */
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    /**
+     * @return the error
+     */
+    public String getError() {
+        return error;
+    }
+
+    /**
+     * @param error the error to set
+     */
+    public void setError(String error) {
+        this.error = error;
     }
     
 }

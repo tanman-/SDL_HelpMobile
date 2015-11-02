@@ -30,6 +30,7 @@ import com.helpmobile.dba.enums.Language;
 import com.helpmobile.dba.enums.Country;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.Transient;
 /**
  *
  * @author terra
@@ -49,6 +50,7 @@ public class User implements Serializable {
     private String name;
     @Enumerated(EnumType.ORDINAL)
     private Faculty faculty;
+    
     private String courseNumber;
     private String email;
     private String homePhone;

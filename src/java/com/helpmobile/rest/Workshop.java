@@ -6,16 +6,19 @@
 package com.helpmobile.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Date;
 
 /**
  *
  * @author terra
  */
 public class Workshop {
-    @JsonProperty("WorkshopId")
+    @JsonProperty("id")
     private int id;
+    private String name;
     private String topic;
     private String description;
+    private Date archived;
 
     /**
      * @return the id
@@ -57,6 +60,34 @@ public class Workshop {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the archived
+     */
+    public Date getArchived() {
+        return archived;
+    }
+
+    /**
+     * @param archived the archived to set
+     */
+    public void setArchived(Date archived) {
+        this.archived = archived;
     }
     
 }
