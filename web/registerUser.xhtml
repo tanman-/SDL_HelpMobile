@@ -21,64 +21,60 @@
         <h:form id="registerUserForm">
             <h:panelGrid columns="3">
                 <h:outputLabel for="id">UTS ID</h:outputLabel>
-                <h:inputText id="id" value="#{registerUser.user.id}">
+                <h:inputText id="id" value="#{registerUser.user.id}" required="true">
                     <f:validator validatorId="com.helpmobile.NumericValidator"/>
                 </h:inputText>
                 <h:message for="id" style="color:red"/>
                 
                 <h:outputLabel for="password">Password</h:outputLabel>
-                <h:inputSecret id="password" value="#{registerUser.user.password}"/>
+                <h:inputSecret id="password" value="#{registerUser.user.password}" required="true"/>
                 <h:outputLabel/>
                 
-                <h:outputLabel for="firstName">First name</h:outputLabel>
-                <h:inputText id="firstName" value="#{registerUser.user.firstName}"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="lastName">Last name</h:outputLabel>
-                <h:inputText id="lastName" value="#{registerUser.user.lastName}"/>
+                <h:outputLabel for="name">Name</h:outputLabel>
+                <h:inputText id="name" value="#{registerUser.user.name}" required="true"/>
                 <h:outputLabel/>
                 
                 <h:outputLabel for="faculty">Faculty</h:outputLabel>
-                <h:selectOneMenu id="faculty" value="#{registerUser.user.faculty}">
+                <h:selectOneMenu id="faculty" value="#{registerUser.user.faculty}" required="true">
                     <f:selectItems value="#{data.facultys}" var="t"
                                    itemValue="#{t}" itemLabel="#{t.label}" />
                 </h:selectOneMenu>
                 <h:outputLabel/>
                 
                 <h:outputLabel for="courseNumber">Course</h:outputLabel>
-                <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}"/>
+                <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}" required="true"/>
                 <h:outputLabel/>
                 
                 <h:outputLabel for="email">Email</h:outputLabel>
-                <h:inputText id="email" value="#{registerUser.user.email}">
+                <h:inputText id="email" value="#{registerUser.user.email}" required="true">
                     <f:validator validatorId="com.helpmobile.EmailValidator"/>
                 </h:inputText>
                 <h:message for="email" style="color:red"/>
                 
                 <h:outputLabel for="homePhone">Home phone</h:outputLabel>
-                <h:inputText id="homePhone" value="#{registerUser.user.homePhone}">
+                <h:inputText id="homePhone" value="#{registerUser.user.homePhone}" required="true">
                     <f:validator validatorId="com.helpmobile.NumericValidator"/>
                 </h:inputText>
                 <h:message for="homePhone" style="color:red"/>
                 
                 <h:outputLabel for="mobilePhone">Mobile phone</h:outputLabel>
-                <h:inputText id="mobilePhone" value="#{registerUser.user.mobilePhone}">
+                <h:inputText id="mobilePhone" value="#{registerUser.user.mobilePhone}" required="true">
                     <f:validator validatorId="com.helpmobile.NumericValidator"/>
                 </h:inputText>
                 <h:message for="mobilePhone" style="color:red"/>
                 
                 <h:outputLabel for="dob">Date of birth</h:outputLabel>
-                <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}">
+                <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}" required="true">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText>
                 <h:outputLabel/>
                 
                 <h:outputLabel for="preferredName">Preferred name</h:outputLabel>
-                <h:inputText id="preferredName" value="#{registerUser.user.preferredName}"/>
+                <h:inputText id="preferredName" value="#{registerUser.user.preferredName}" required="false"/>
                 <h:outputLabel/>
                 
                 <h:outputLabel for="preferredPhone">Preferred phone</h:outputLabel>
-                <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}">
+                <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}" required="true">
                     <f:validator validatorId="com.helpmobile.NumericValidator"/>
                 </h:inputText>
                 <h:message for="preferredPhone" style="color:red"/>
