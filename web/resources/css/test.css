@@ -3,7 +3,7 @@ html,
 body {
   font: 100%/1.4em 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0 auto;
-  color: #222;
+  color: #222222;
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
 }
@@ -31,13 +31,13 @@ a {
 }
 
 .menu-header {
-  border-bottom: 1px solid #2a2d2f;
-  padding: 20px;
+  border-bottom: 4px solid #2a2d2f;
+  padding: 10px;
   background-size: 32px;
 }
 
 .menu-header-title {
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.5px;
   margin: 0;
 }
@@ -69,7 +69,7 @@ a {
 
 .panel {
   text-align: center;
-  padding-top: 5px;
+  padding-top: 0px;
   min-height: 100%;
 }
 
@@ -90,10 +90,11 @@ a {
 }
 
 .title {
-  font-size: 3em;
+  font-size: 2em;
   line-height: 1em;
-  margin: 0 0 15px;
-  color: #4B5;
+  margin: 0;
+  padding-top: 10px;
+  color: #FFF;
   font-weight: 100;
 }
 
@@ -101,7 +102,7 @@ a {
  * hamburger
  */
 .head {
-    background-color: red;
+    background-color: #CE3030;
     height: 50px;
     width: 100%;
     margin-top: 0;
@@ -111,9 +112,9 @@ a {
   border: none;
   position: absolute;
   top: 0px;
-  left: 2px;
+  left: 1px;
   outline:none;
-  background: url('../images/menu3.png') no-repeat center;
+  background: url('../images/menu.png') no-repeat center;
   width: 50px;
   height: 50px;
 }
@@ -122,7 +123,7 @@ a {
     border: none;
     position: absolute;
     top: 0px;
-    right: 2px;
+    right: 1px;
     outline:none;
     background: url('../images/back.png') no-repeat center;
     height: 50px;
@@ -179,13 +180,13 @@ a {
 @media all and (min-width:40em) {
 
   .btn-hamburger {
-    top: 20px;
-    left: 30px;
+    top: 0px;
+    left: 0px;
   }
   
   .btn-back {
-      top: 20px;
-      left: 500px;
+      top: 0px;
+      right: 0px;
   }
   
   .panel-header {
@@ -194,7 +195,7 @@ a {
   }
 
   .title {
-    font-size: 4.2em;
+    font-size: 3.2em;
   }
 }
 
@@ -213,16 +214,9 @@ a {
  * Footer
  */
 .panel-footer {
-  margin: 10px auto 20px;
+  margin: 10px auto 2px 2px;
 }
 
 .panel-footer p {
   padding-bottom: 20px;
-}
-
-.heart {
-  font-style: normal;
-  font-weight: 500;
-  color: #c0392b;
-  text-decoration: none;
 }

@@ -1,31 +1,54 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>HELPS</title>
-        <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=0" />
-        <link media="only screen and (max-device-width: 480px) and (min-device-width: 320px)" href="css/mobile.css" type="text/css" rel="stylesheet" /> 
-        <h:outputStylesheet library="css" name="mobile.css"/>
-    </h:head>
-    <h:body>
-        <h1>HELPS</h1>
-        <div>
-            <c:if test="#{userManager.isLoged()}">
-                <h:form>
-                    <h:commandButton value="Log-out" action="#{userManager.logout}"/>
-                </h:form>
-            </c:if>
-            <h:form>
-                <p>Student ID:<h:inputText value="#{loginForm.username}"/></p>
-                <p>Password:<h:inputSecret value="#{loginForm.password}"/></p>
-                <h:commandButton value="Log-in" action="#{loginForm.login}"/>
-            </h:form>
+  <h:head>
+    <title>
+      Login
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="application/x-javascript" xml:space="preserve">
+    //<![CDATA[ 
+    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+    //]]>
+    </script>
+    <link href="resources/css/loginStyle.css" rel="stylesheet" type="text/css" />
+    <!-- webfonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Fjord+One" rel="stylesheet" type="text/css" />
+    <!-- //webfonts -->
+  </h:head>
+  <h:body>
+    <!--  SIGN UP -->
+    <div class="login-form">
+      <div class="avtar">
+        <img src="resources/images/helpsLogo.png" alt="" />
+      </div>
+      <div class="form-top">
+        <h:form>
+            <h:inputText value="#{loginForm.username}" class="email" required=""/>
+            <h:inputSecret value="#{loginForm.password}" class="Password" required=""/>
+            <h:commandButton value="LOGIN" type="submit" action="#{loginForm.login}"/>
+        </h:form>
+        <div class="remember">
+          <p>
+            Forgot Password?
+          </p>
         </div>
-        
-        <p><h:link outcome="registerUser">Register User</h:link></p>
-        <p><h:link outcome="registerActivity">Register Activity</h:link></p>
-    </h:body>
+        <ul class="remember">
+          <li>
+            <p>
+              New Here? Register
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </h:body>
 </html>
