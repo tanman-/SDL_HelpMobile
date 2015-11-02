@@ -59,7 +59,7 @@ public class RestAccess {
         in.close();
         conn.disconnect();
         //print result
-        return response.toString();
+        return (String) response.toString();
     }
 
     public String doPostRequest(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
