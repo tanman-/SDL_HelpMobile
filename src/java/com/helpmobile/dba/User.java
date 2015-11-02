@@ -5,6 +5,8 @@
  */
 package com.helpmobile.dba;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +43,7 @@ public class User implements Serializable {
 
     @Id
     @Column(length = 16)
+    @JsonProperty("StudentId")
     private String id;
     private String password;
     private String name;
@@ -60,6 +63,7 @@ public class User implements Serializable {
     private Gender gender;
     @Enumerated(EnumType.ORDINAL)
     private DegreeLevel degreeLevel;
+    @JsonIgnore
     @Enumerated(EnumType.ORDINAL)
     private YearLevel yearLevel;
     @Enumerated(EnumType.ORDINAL)
@@ -70,10 +74,13 @@ public class User implements Serializable {
     private Country countryOrigin;
     private String educationalBackground;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Reminder> reminders;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<WaitingList> waitingList;
 
