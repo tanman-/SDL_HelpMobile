@@ -12,24 +12,24 @@ import java.util.List;
  *
  * @author terra
  */
-public class WorkshopList extends RestReply{
+public class WorkshopSetList extends RestReply{
     
     @JsonProperty("Results")
-    private List<Workshop> workshops;
-
+    private List<WorkshopSet> workshopSets;
     /**
      * @return the workshops
      */
-    public List<Workshop> getWorkshops() {
-        return workshops;
+    public List<WorkshopSet> getWorkshopSets() {
+        return workshopSets;
     }
 
     /**
      * @param workshops the workshops to set
      */
-    public void setWorkshops(List<Workshop> workshops) {
-        this.workshops = workshops;
+    public void setWorkshopSets(List<WorkshopSet> workshops) {
+        this.workshopSets = workshops;
     }
-    
+
+
     
 }

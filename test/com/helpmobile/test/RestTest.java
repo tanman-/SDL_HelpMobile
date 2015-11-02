@@ -14,6 +14,7 @@ import com.helpmobile.dba.enums.DegreeLevel;
 import com.helpmobile.dba.enums.Gender;
 import com.helpmobile.dba.enums.Language;
 import com.helpmobile.rest.RestAccess;
+import com.helpmobile.rest.WorkshopList;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -82,4 +83,12 @@ public class RestTest {
         System.out.println(data);
     }
     
+    @Test
+    public void getWorkshop() throws Exception{
+        ObjectMapper mapper = new ObjectMapper();
+        RestAccess restAccess = new RestAccess();
+        WorkshopList data = restAccess.getWorkshop(3);
+        String json = mapper.writeValueAsString(data);
+        System.out.println(json);
+    }
 }

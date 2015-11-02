@@ -15,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -32,16 +33,16 @@ public class RestAccess {
     private final String KEY = "sdpmobile_test";
     private final String ADDRESS = "http://hitgub.cloudapp.net/api/";
 
-    public String doJsonRequest(String request, String data,String method) throws MalformedURLException, IOException {
+    public String doJsonRequest(String request, String data, String method) throws MalformedURLException, IOException {
         URL path = new URL(ADDRESS + request);
         HttpURLConnection conn = (HttpURLConnection) path.openConnection();
         conn.setRequestMethod(method);
-        conn.setRequestProperty("Content-Type","application/json");
+        conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Content-Length ", Integer.toString(data.length()));
         conn.setRequestProperty("AppKey", KEY);
         conn.setUseCaches(false);
         conn.setDoInput(true);
-        if(data.length()!=0){
+        if (data.length() != 0) {
             conn.setDoOutput(true);
             OutputStream output = conn.getOutputStream();
             output.write(data.getBytes("UTF-8"));
@@ -60,35 +61,37 @@ public class RestAccess {
         //print result
         return response.toString();
     }
-    
-    public String doPostRequest(String request, Map<String,Object> data,String method) throws MalformedURLException, IOException {
-        URL path = new URL(ADDRESS + request);
-        HttpURLConnection conn = (HttpURLConnection) path.openConnection();
-        conn.setRequestMethod(method);
-        conn.setRequestProperty("Content-Type","application/json");
 
-        conn.setRequestProperty("AppKey", KEY);
+    public String doPostRequest(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
+
+
+
 
 
         StringBuilder postData = new StringBuilder();
-        for (Map.Entry<String,Object> param : data.entrySet()) {
-            if (postData.length() != 0) postData.append('&');
+        for (Map.Entry<String, Object> param : data.entrySet()) {
+            if (postData.length() != 0) {
+                postData.append('&');
+            }
             postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
             postData.append('=');
             postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
         }
 
-
-        OutputStream output = conn.getOutputStream();
-        byte[] result = postData.toString().getBytes("UTF-8");
-        conn.setRequestProperty("Content-Length ", Integer.toString(result.length));
+                URL path = new URL(ADDRESS + request+postData.toString());
+        HttpURLConnection conn = (HttpURLConnection) path.openConnection();
+        conn.setRequestMethod(method);
+        conn.setRequestProperty("Content-Type", "application/json");
         
+ //      byte[] result = 
+//        conn.setRequestProperty("Content-Length", Integer.toString(result.length));
+        conn.setRequestProperty("AppKey", KEY);
         conn.setUseCaches(false);
-        conn.setDoOutput(true);
         conn.setDoInput(true);
-        output.write(result);
-        output.flush();
-        
+   //     conn.setDoOutput(true);
+  //      OutputStream output = conn.getOutputStream();
+   //     output.write(result);
+    //    output.flush();
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(conn.getInputStream()));
@@ -103,25 +106,37 @@ public class RestAccess {
         //print result
         return response.toString();
     }
-    
-    public User getStudent(){
+
+    public User getStudent() {
         return null;
     }
-    
-    public boolean registerStudent(User user) throws Exception{
+
+    public boolean registerStudent(User user) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(user);
-        String response = doJsonRequest("student/register",json,METHOD_POST);
+        String response = doJsonRequest("student/register", json, METHOD_POST);
         RegisterReply reply = mapper.readValue(response, RegisterReply.class);
         return reply.isSuccess();
     }
-    
-    public WorkshopList getWorkshops(boolean active) throws Exception{
+
+    public WorkshopSetList getWorkshops(boolean active) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         String data = doJsonRequest("workshop/workshopSets/", "", METHOD_GET);
-        WorkshopList list = mapper.readValue(data, WorkshopList.class);
-        
+        WorkshopSetList list = mapper.readValue(data, WorkshopSetList.class);
+
         return list;
+    }
+
+    public WorkshopList getWorkshop(int id) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = new LinkedHashMap<>();
+ //       map.put("active", true);
+        map.put("workshopSetId", id);
+        String data = doPostRequest("workshop/search?", map, METHOD_GET);
+        
+        System.out.println(data);
+        return mapper.readValue(data, WorkshopList.class);
+
     }
 
 }

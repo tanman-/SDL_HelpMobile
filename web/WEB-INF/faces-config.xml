@@ -48,5 +48,9 @@
             <from-outcome>logout</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>book</from-outcome>
+            <to-view-id>/panel/join.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
