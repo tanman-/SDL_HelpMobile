@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helpmobile.forms;
+package com.helpmobile.dba.enums;
 
 /**
  *
  * @author Tanman
  */
-public enum Country {
+public enum Country  implements LabeledEnum{
     AFGHANISTAN("Afghanistan"),
     ALBANIA("Albania"),
     ALGERIA("Algeria"),
@@ -257,6 +257,7 @@ public enum Country {
         this.label = label;
     }
 
+    @Override
     public String getLabel() {
         return label;
     }

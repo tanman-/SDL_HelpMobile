@@ -5,6 +5,13 @@
  */
 package com.helpmobile.forms;
 
+import com.helpmobile.dba.enums.YearLevel;
+import com.helpmobile.dba.enums.Residency;
+import com.helpmobile.dba.enums.Language;
+import com.helpmobile.dba.enums.Gender;
+import com.helpmobile.dba.enums.Faculty;
+import com.helpmobile.dba.enums.DegreeLevel;
+import com.helpmobile.dba.enums.Country;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 

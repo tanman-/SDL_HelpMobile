@@ -19,13 +19,13 @@ import javax.persistence.Temporal;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import com.helpmobile.forms.Faculty;
-import com.helpmobile.forms.Gender;
-import com.helpmobile.forms.DegreeLevel;
-import com.helpmobile.forms.YearLevel;
-import com.helpmobile.forms.Residency;
-import com.helpmobile.forms.Language;
-import com.helpmobile.forms.Country;
+import com.helpmobile.dba.enums.Faculty;
+import com.helpmobile.dba.enums.Gender;
+import com.helpmobile.dba.enums.DegreeLevel;
+import com.helpmobile.dba.enums.YearLevel;
+import com.helpmobile.dba.enums.Residency;
+import com.helpmobile.dba.enums.Language;
+import com.helpmobile.dba.enums.Country;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 /**

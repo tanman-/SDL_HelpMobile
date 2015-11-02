@@ -3,25 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helpmobile.forms;
+package com.helpmobile.dba.enums;
 
 /**
  *
  * @author Tanman
  */
-public enum YearLevel {
-    FIRSTYEAR("First year"),
-    SECONDYEAR("Second year"),
-    THIRDYEAR("Third year"),
-    FOURTHYEAR("Fourth year"),
-    FIFTHYEAR("Fifth year");
+public enum DegreeLevel implements LabeledEnum{
+    UNDERGRADUATE("Undergraduate"),
+    POSTGRADUATE("Postgraduate");
     
     private final String label;
     
-    private YearLevel(String label) {
+    private DegreeLevel(String label) {
         this.label = label;
     }
     
+    @Override
     public String getLabel() {
         return label;
     }

@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.helpmobile.forms;
+package com.helpmobile.dba.enums;
 
 /**
  *
  * @author Tanman
  */
-public enum DegreeLevel {
-    UNDERGRADUATE("Undergraduate"),
-    POSTGRADUATE("Postgraduate");
+public enum Residency implements LabeledEnum{
+    LOCAL("Local"),
+    INTERNATIONAL("International");
     
     private final String label;
     
-    private DegreeLevel(String label) {
+    private Residency(String label) {
         this.label = label;
     }
     
+    @Override
     public String getLabel() {
         return label;
     }
