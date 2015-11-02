@@ -39,6 +39,7 @@ public class Workshop {
     private String description;
     private String targetGroup;
     private String campus;
+    
     private Date startDate;
     private Date endDate;
     private int maximum;

@@ -16,6 +16,7 @@ import com.helpmobile.dba.enums.Language;
 import com.helpmobile.rest.RestAccess;
 import com.helpmobile.rest.WorkshopList;
 import java.io.IOException;
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -68,6 +69,7 @@ public class RestTest {
         testUser.setDegreeLevel(DegreeLevel.POSTGRADUATE);
         testUser.setGender(Gender.MALE);
         testUser.setFirstLanguage(Language.ALBANIAN);
+        testUser.setDob(new Date());
         String json = mapper.writeValueAsString(testUser);
         RestAccess restAccess = new RestAccess();
         System.out.println(json);
@@ -87,7 +89,7 @@ public class RestTest {
     public void getWorkshop() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
-        WorkshopList data = restAccess.getWorkshop(3);
+        WorkshopList data = restAccess.getWorkshop(4);
         String json = mapper.writeValueAsString(data);
         System.out.println(json);
     }

@@ -78,7 +78,7 @@ public class RestAccess {
             postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
         }
 
-                URL path = new URL(ADDRESS + request+postData.toString());
+                URL path = new URL(ADDRESS + request+"?active=true");
         HttpURLConnection conn = (HttpURLConnection) path.openConnection();
         conn.setRequestMethod(method);
         conn.setRequestProperty("Content-Type", "application/json");
@@ -130,9 +130,9 @@ public class RestAccess {
     public WorkshopList getWorkshop(int id) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new LinkedHashMap<>();
- //       map.put("active", true);
+        map.put("active", true);
         map.put("workshopSetId", id);
-        String data = doPostRequest("workshop/search?", map, METHOD_GET);
+        String data = doPostRequest("workshop/search/?", map, METHOD_GET);
         
         System.out.println(data);
         return mapper.readValue(data, WorkshopList.class);
