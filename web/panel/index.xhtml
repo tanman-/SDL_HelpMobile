@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
   <h:head>
     <meta charset="utf-8" />
     <title>Slideout Demo</title>
@@ -15,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.13.0/mocha.min.css" />
     <link rel="stylesheet" href="../resources/css/test.css" />
     <link rel="stylesheet" href="../resources/css/index.css" />
-    
   </h:head>
+    
   <h:body>
 
     <nav id="menu" class="menu">
@@ -55,8 +56,14 @@
           <span class="menu-header-title">F.A.Q</span>
         </header>
       </a>
+        
       <a href="#" target="_blank">
         <header class="menu-header">
+        <c:if test="#{userManager.isLogged()}">
+            <h:form>
+                <h:commandButton value="Log-out" action="#{userManager.logout}"/>
+             </h:form> 
+        </c:if>
           <span class="menu-header-title">Logout</span>
         </header>
       </a>
