@@ -21,7 +21,6 @@
     <welcome-file-list>
         <welcome-file>help/index.xhtml</welcome-file>
     </welcome-file-list>
-    
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>help_mobile</realm-name>
@@ -30,7 +29,6 @@
             <form-error-page>/help/index.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-    
     <security-constraint>
         <display-name>Logged in pages</display-name>
         <web-resource-collection>
@@ -42,9 +40,13 @@
             <role-name>Users</role-name>
         </auth-constraint>
     </security-constraint>
-    
     <security-role>
         <description>Logged in Users</description>
         <role-name>Users</role-name>
     </security-role>
+    <ejb-local-ref>
+        <ejb-ref-name>restAccess</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <ejb-link>#RestAccess</ejb-link>
+    </ejb-local-ref>
 </web-app>
