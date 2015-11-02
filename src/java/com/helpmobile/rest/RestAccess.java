@@ -45,7 +45,7 @@ public class RestAccess {
         in.close();
 
         //print result
-        return response.toString();
+        return (String) response.toString();
     }
 
 }
