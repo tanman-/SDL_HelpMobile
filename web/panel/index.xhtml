@@ -57,16 +57,13 @@
         </header>
       </a>
         
-      <a href="#" target="_blank">
         <header class="menu-header">
-        <c:if test="#{userManager.isLogged()}">
+            <c:if test="#{userManager.loged}">
             <h:form>
-                <h:commandButton value="Log-out" action="#{userManager.logout}"/>
+                <span class="menu-header-title"><h:commandLink value="Logout" action="#{userManager.logout}"/></span>
              </h:form> 
-        </c:if>
-          <span class="menu-header-title">Logout</span>
+            </c:if>
         </header>
-      </a>
     </nav>
 
     <main id="panel" class="panel">
