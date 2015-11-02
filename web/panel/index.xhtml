@@ -13,9 +13,9 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.13.0/mocha.min.css" />
-    <link rel="stylesheet" href="../resources/css/test.css" />
-    <link rel="stylesheet" href="../resources/css/index.css" />
+    <h:outputStylesheet library="css" name="mocha.min.css" />
+    <h:outputStylesheet library="css" name="test.css" />
+    <h:outputStylesheet library="css" name="index.css" />
   </h:head>
     
   <h:body>
@@ -86,7 +86,7 @@
         <a href="http://www.google.com"><img class="box" src="../resources/images/Logout.png" alt="Make Your Booking"/></a>
     </main>
 
-    <script src="../resources/js/slideout.min.js"></script>
+      <h:outputScript library="js" name="slideout.min.js" />
     <script>
     <!--
       var slideout = new Slideout({
