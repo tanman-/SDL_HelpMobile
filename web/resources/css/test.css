@@ -10,7 +10,7 @@ body {
 
 body,
 .panel {
-  background-color: #fff;
+  background-color: #f0f0f0;
 }
 
 .menu {
@@ -90,25 +90,43 @@ a {
 }
 
 .title {
-  font-size: 3.2em;
+  font-size: 3em;
   line-height: 1em;
   margin: 0 0 15px;
   color: #4B5;
-  font-weight: 400;
+  font-weight: 100;
 }
 
 /**
  * hamburger
  */
+.head {
+    background-color: red;
+    height: 50px;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+}
 .btn-hamburger {
   border: none;
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 0px;
+  left: 2px;
   outline:none;
-  background: url('../images/menu2.png') no-repeat center;
+  background: url('../images/menu3.png') no-repeat center;
   width: 50px;
   height: 50px;
+}
+
+.btn-back {
+    border: none;
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    outline:none;
+    background: url('../images/back.png') no-repeat center;
+    height: 50px;
+    width: 50px;
 }
 
 /**
@@ -164,7 +182,12 @@ a {
     top: 20px;
     left: 30px;
   }
-
+  
+  .btn-back {
+      top: 20px;
+      left: 500px;
+  }
+  
   .panel-header {
     margin-top: 40px;
     width: 455px;
