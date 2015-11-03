@@ -78,38 +78,32 @@ public class RestTest {
         
     }
     
-    @Test
-    public void testWorkshop() throws Exception{
-        RestAccess restAccess = new RestAccess();
-        String data = restAccess.doJsonRequest("workshop/workshopSets/", "", "GET");
-        System.out.println(data);
-    }
     
     @Test
-    public void getWorkshop() throws Exception{
+    public void testAWorkshop() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
-        WorkshopList data = restAccess.getWorkshop(4);
+        WorkshopList data = restAccess.getWorkshop(3);
         String json = mapper.writeValueAsString(data);
         System.out.println(json);
     }
     
     @Test
-    public void getActiveWorkshopSets() throws IOException{
+    public void testActiveWorkshopSets() throws IOException{
         RestAccess restAccess = new RestAccess();
         String response = restAccess.doJsonRequest("workshop/workshopSets/true", "","GET");
         System.out.println("ACTIVE\n"+response+"\n");
     }
     
     @Test
-    public void getInactiveWorkshopSets() throws IOException{
+    public void testInactiveWorkshopSets() throws IOException{
         RestAccess restAccess = new RestAccess();
         String response = restAccess.doJsonRequest("workshop/workshopSets/false", "","GET");
         System.out.println("INACTIVE\n"+response+"\n");
     }
     
     @Test
-    public void getAllWorkshopSets() throws IOException{
+    public void testAllWorkshopSets() throws IOException{
         RestAccess restAccess = new RestAccess();
         String response1 = restAccess.doJsonRequest("workshop/workshopSets/", "","GET");
         String response2 = restAccess.doJsonRequest("workshop/workshopSets/-5", "","GET");
