@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
   <h:head>
@@ -12,9 +13,9 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="./web/resources/css/mocha.min.css" />
-    <link rel="stylesheet" href="./web/resources/css/test.css" />
-    <link rel="stylesheet" href="./web/resources/css/index.css" />
+    <h:outputStylesheet library="css" name="index.css"/>
+    <h:outputStylesheet library="css" name="test.css"/>
+    <h:outputStylesheet library="css" name="mocha.min.css"/>
     
     <h:outputScript library="js" name="jquery.js"/>
     <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
@@ -89,75 +90,16 @@
         
         <h:form>
             <p>UTS ID:<h:inputText value="#{registerUser.user.id}"/></p>
-            <p>First Name:<h:inputText value="#{registerUser.user.firstName}"/></p>
-            <p>Last Name:<h:inputText value="#{registerUser.user.lastName}"/></p>
+            <p>First Name:<h:inputText value="#{registerUser.user.name}"/></p>
+            <p>Last Name:<h:inputText value="#{registerUser.user.surname}"/></p>
             <p>Date of Birth:<h:inputText class="datepicker" value="#{registerUser.user.dob}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
-                </h:inputText>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="preferredName">Preferred name</h:outputLabel>
-                <h:inputText id="preferredName" value="#{registerUser.user.preferredName}" required="false"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="preferredPhone">Preferred phone</h:outputLabel>
-                <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="preferredPhone" style="color:red"/>
-                
-                <h:outputLabel for="gender">Gender</h:outputLabel>
-                <h:selectOneMenu id="gender" value="#{registerUser.user.gender}">
-                    <f:selectItems value="#{data.genders}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="degree">Degree</h:outputLabel>
-                <h:selectOneMenu id="degree" value="#{registerUser.user.degreeLevel}">
-                    <f:selectItems value="#{data.degreeLevels}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="year">Year</h:outputLabel>
-                <h:selectOneMenu id="year" value="#{registerUser.user.yearLevel}">
-                    <f:selectItems value="#{data.yearLevels}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="residency">Residency</h:outputLabel>
-                <h:selectOneMenu id="residency" value="#{registerUser.user.residency}">
-                    <f:selectItems value="#{data.residencys}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="firstLanguage">First language</h:outputLabel>
-                <h:selectOneMenu id="firstLanguage" value="#{registerUser.user.firstLanguage}">
-                    <f:selectItems value="#{data.languages}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="countryOrigin">Country of origin</h:outputLabel>
-                <h:selectOneMenu id="countryOrigin" value="#{registerUser.user.countryOrigin}">
-                    <f:selectItems value="#{data.countrys}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="educationalBackground">Educational background</h:outputLabel>
-                <h:inputText id="educationalBackground" value="#{registerUser.user.educationalBackground}"/>
-                <h:outputLabel/>
-                
-                <h:commandButton value="Register" action="#{registerUser.register}"/>
-            </h:panelGrid>
+                </h:inputText></p>
+            <p>Password:<h:inputSecret value="#{registerUser.user.password}"/></p>
+            <h:commandButton value="Register" action="#{registerUser.register}"/>
         </h:form>
     </main>
-
-    <script src="./web/resources/js/slideout.min.js"></script>
+      <h:outputScript library="js" name="slideout.min.js"/>
     <script>
     <!--
       var slideout = new Slideout({
