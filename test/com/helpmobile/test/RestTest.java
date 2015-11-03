@@ -93,4 +93,26 @@ public class RestTest {
         String json = mapper.writeValueAsString(data);
         System.out.println(json);
     }
+    
+    @Test
+    public void getActiveWorkshopSets() throws IOException{
+        RestAccess restAccess = new RestAccess();
+        String response = restAccess.doJsonRequest("workshop/workshopSets/true", "","GET");
+        System.out.println("ACTIVE\n"+response+"\n");
+    }
+    
+    @Test
+    public void getInactiveWorkshopSets() throws IOException{
+        RestAccess restAccess = new RestAccess();
+        String response = restAccess.doJsonRequest("workshop/workshopSets/false", "","GET");
+        System.out.println("INACTIVE\n"+response+"\n");
+    }
+    
+    @Test
+    public void getAllWorkshopSets() throws IOException{
+        RestAccess restAccess = new RestAccess();
+        String response1 = restAccess.doJsonRequest("workshop/workshopSets/", "","GET");
+        String response2 = restAccess.doJsonRequest("workshop/workshopSets/-5", "","GET");
+        assertEquals("should equal", response1, response2);
+    }
 }
