@@ -17,7 +17,7 @@
     addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
     //]]>
     </script>
-    <link href="./web/resources/css/loginStyle.css" rel="stylesheet" type="text/css" />
+    <h:outputStylesheet library="css" name="loginStyle.css"/>
     <!-- webfonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Fjord+One" rel="stylesheet" type="text/css" />
@@ -43,7 +43,7 @@
         <ul class="remember">
           <li>
             <p>
-                New Here? <a href="registerUser.xhtml">Register</a>
+                New Here? <h:link outcome="register">Register</h:link>
             </p>
           </li>
         </ul>

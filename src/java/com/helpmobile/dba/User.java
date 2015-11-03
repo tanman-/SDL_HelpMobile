@@ -48,6 +48,8 @@ public class User implements Serializable {
     private String id;
     private String password;
     private String name;
+    private String surname;
+    
     @Enumerated(EnumType.ORDINAL)
     private Faculty faculty;
     
@@ -255,5 +257,19 @@ public class User implements Serializable {
 
     public void setWaitingList(List<WaitingList> waitingList) {
         this.waitingList = waitingList;
+    }
+
+    /**
+     * @return the surname
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * @param surname the surname to set
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

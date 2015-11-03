@@ -11,7 +11,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/web/*</url-pattern>
+        <url-pattern>/help/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
