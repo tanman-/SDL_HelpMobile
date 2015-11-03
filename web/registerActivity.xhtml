@@ -1,31 +1,98 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Register Activity</title>
-        <h:outputScript library="js" name="jquery.js"/>
-        <!--<h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>-->
-        <h:outputScript library="js" name="jquery-ui.js"/>
-        <h:outputStylesheet library="css" name="jquery-ui.css"/>
-        <script>
-            $(document).ready(function(){
-               $(".datepicker").datepicker(); 
-            });
-        </script>
-    </h:head>
-    <h:body>
-        <h1>Register Activity</h1>
-        <h:form id="registerActivityForm">
-            <h:panelGrid columns="2">
-                <h:outputLabel for="id">Activity ID (int, should be auto)</h:outputLabel>
-                <h:inputText id="id" value="#{registerActivity.activity.id}"/>
-                <h:outputLabel for="available">Avaliable (bool)</h:outputLabel>
-                <h:inputText id="available" value="#{registerActivity.activity.available}"/>
-                <h:outputLabel for="activityDate">Date</h:outputLabel>
-                <h:inputText id="activityDate" class="datepicker" value="#{registerActivity.activity.activityDate}">
+    
+  <h:head>
+    <meta charset="utf-8" />
+    <title>Register Activity</title>
+    <meta http-equiv="cleartype" content="on" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <h:outputStylesheet library="css" name="index.css"/>
+    <h:outputStylesheet library="css" name="test.css"/>
+    <h:outputStylesheet library="css" name="mocha.min.css"/>
+
+    
+    <h:outputScript library="js" name="jquery.js"/>
+    <h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>
+    <h:outputScript library="js" name="jquery-ui.js"/>
+    <h:outputStylesheet library="css" name="jquery-ui.css"/>
+    
+    <script>
+        //<![CDATA[
+        $(document).ready(function(){
+            $(".datepicker").datepicker(); 
+        });
+        //]]>
+    </script>  
+  </h:head>
+    
+  <h:body>
+
+    <nav id="menu" class="menu">
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Home</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">My Information</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Programs</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Workshop Registration</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">My Bookings</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Reminders</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">F.A.Q</span>
+        </header>
+      </a>
+      <a href="#" target="_blank">
+        <header class="menu-header">
+          <span class="menu-header-title">Logout</span>
+        </header>
+      </a>
+    </nav>
+
+    <main id="panel" class="panel">
+        <header class="head">
+            <button class="btn-hamburger toggle-button"></button>
+            <button class="btn-back" onclick="goBack()"></button> 
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        <h1 class="title">Register Activity</h1>
+        </header>
+        
+        <h:form>
+            <p>Activity ID:<h:inputText value="#{registerActivity.activity.id}"/></p>
+            <p>Available (bool):<h:inputText value="#{registerActivity.activity.available}"/></p>
+            <p>Date:<h:inputText class="datepicker" value="#{registerActivity.activity.activityDate}">
                     <f:convertDateTime pattern="dd/mm/yyyy"/>
                 </h:inputText>
                 <h:outputLabel for="type">Type</h:outputLabel>
@@ -46,6 +113,23 @@
                 <h:commandButton value="Register" action="#{registerActivity.register}"/>
             </h:panelGrid>
         </h:form>
-    </h:body>
-</html>
+    </main>
 
+    <script src="../resources/js/slideout.min.js"></script>
+    <script>
+    <!--
+      var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'tolerance': 70
+      });
+
+      // Toggle button
+      document.querySelector('.toggle-button').addEventListener('click', function() {
+        slideout.toggle();
+      });
+    // -->
+    </script>
+  </h:body>
+</html>

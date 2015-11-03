@@ -5,25 +5,41 @@
  */
 package com.helpmobile.dba.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  *
  * @author Tanman
  */
-public enum YearLevel implements LabeledEnum{
-    FIRSTYEAR("First year"),
-    SECONDYEAR("Second year"),
-    THIRDYEAR("Third year"),
-    FOURTHYEAR("Fourth year"),
-    FIFTHYEAR("Fifth year");
-    
+public enum YearLevel implements LabeledEnum {
+
+    FIRSTYEAR("First year", "1st"),
+    SECONDYEAR("Second year", "2nd"),
+    THIRDYEAR("Third year", "3rd"),
+    FOURTHYEAR("Fourth year", "4th"),
+    FIFTHYEAR("Fifth year", "5th");
+
     private final String label;
-    
-    private YearLevel(String label) {
+    private final String shortLabel;
+
+    private YearLevel(String label, String shortLabel) {
         this.label = label;
+        this.shortLabel = shortLabel;
     }
-    
+
     @Override
     public String getLabel() {
         return label;
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
+
+    @JsonValue
+    @Override
+    public String getShort() {
+        return shortLabel;
     }
 }

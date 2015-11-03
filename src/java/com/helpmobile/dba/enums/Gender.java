@@ -5,23 +5,43 @@
  */
 package com.helpmobile.dba.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  *
  * @author Tanman
  */
-public enum Gender implements LabeledEnum{
-    MALE("Male"),
-    FEMALE("Female"),
-    OTHER("Other");
+public enum Gender implements LabeledEnum {
+
+    MALE("Male","M"),
+    FEMALE("Female","F"),
+    OTHER("Other","O");
 
     private final String label;
-    
-    private Gender(String label) {
+    private final String shortLabel;
+
+    private Gender(String label,String shortLabel) {
         this.label = label;
+        this.shortLabel = shortLabel;
+    }
+    
+    @JsonValue
+    @Override
+    public String getShort(){
+        return shortLabel;
     }
     
     @Override
     public String getLabel() {
         return label;
-    }    
+    }
+    
+    public static Gender getEnum(){
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

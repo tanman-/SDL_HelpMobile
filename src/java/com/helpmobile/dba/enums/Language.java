@@ -5,13 +5,14 @@
  */
 package com.helpmobile.dba.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.helpmobile.dba.enums.LabeledEnum;
 
 /**
  *
  * @author Tanman
  */
-public enum Language implements LabeledEnum{
+public enum Language implements LabeledEnum {
 
     ABKHAZIAN("Abkhazian"),
     AFAR("Afar"),
@@ -163,8 +164,18 @@ public enum Language implements LabeledEnum{
         this.label = label;
     }
 
+    @JsonValue
     @Override
     public String getLabel() {
+        return label;
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
+    
+    public String getShort(){
         return label;
     }
 }

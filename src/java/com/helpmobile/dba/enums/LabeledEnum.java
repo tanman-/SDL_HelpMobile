@@ -14,5 +14,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public interface LabeledEnum {
 
     String getLabel();
+    String getShort();
 
 }

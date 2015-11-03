@@ -5,6 +5,8 @@
  */
 package com.helpmobile.dba;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +30,7 @@ import com.helpmobile.dba.enums.Language;
 import com.helpmobile.dba.enums.Country;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.Transient;
 /**
  *
  * @author terra
@@ -41,11 +44,15 @@ public class User implements Serializable {
 
     @Id
     @Column(length = 16)
+    @JsonProperty("StudentId")
     private String id;
     private String password;
     private String name;
+    private String surname;
+    
     @Enumerated(EnumType.ORDINAL)
     private Faculty faculty;
+    
     private String courseNumber;
     private String email;
     private String homePhone;
@@ -60,6 +67,7 @@ public class User implements Serializable {
     private Gender gender;
     @Enumerated(EnumType.ORDINAL)
     private DegreeLevel degreeLevel;
+    @JsonIgnore
     @Enumerated(EnumType.ORDINAL)
     private YearLevel yearLevel;
     @Enumerated(EnumType.ORDINAL)
@@ -70,10 +78,13 @@ public class User implements Serializable {
     private Country countryOrigin;
     private String educationalBackground;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Reminder> reminders;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<WaitingList> waitingList;
 
@@ -246,5 +257,19 @@ public class User implements Serializable {
 
     public void setWaitingList(List<WaitingList> waitingList) {
         this.waitingList = waitingList;
+    }
+
+    /**
+     * @return the surname
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * @param surname the surname to set
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }
