@@ -192,7 +192,8 @@ public class RestAccess {
         */
         
         String json = mapper.writeValueAsString(workshopBooking);
-        String response = doJsonRequest("workshop/booking/create?", json, METHOD_POST);
+        System.out.println(json);
+        String response = doJsonRequest("workshop/booking/create", json, METHOD_POST);
         RegisterReply reply = mapper.readValue(response, RegisterReply.class);
         return reply.isSuccess();
     }
