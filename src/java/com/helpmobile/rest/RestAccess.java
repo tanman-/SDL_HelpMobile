@@ -64,10 +64,6 @@ public class RestAccess {
 
     public String doPostRequest(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
 
-
-
-
-
         StringBuilder postData = new StringBuilder();
         for (Map.Entry<String, Object> param : data.entrySet()) {
             if (postData.length() != 0) {
@@ -77,21 +73,27 @@ public class RestAccess {
             postData.append('=');
             postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
         }
-
-                URL path = new URL(ADDRESS + request+"?active=true");
+        URL path;
+        if (method.equalsIgnoreCase(METHOD_GET)) {
+            path = new URL(ADDRESS + request + postData.toString());
+        } else {
+            path = new URL(ADDRESS + request);
+        }
         HttpURLConnection conn = (HttpURLConnection) path.openConnection();
         conn.setRequestMethod(method);
         conn.setRequestProperty("Content-Type", "application/json");
         
- //      byte[] result = 
-//        conn.setRequestProperty("Content-Length", Integer.toString(result.length));
         conn.setRequestProperty("AppKey", KEY);
         conn.setUseCaches(false);
         conn.setDoInput(true);
-   //     conn.setDoOutput(true);
-  //      OutputStream output = conn.getOutputStream();
-   //     output.write(result);
-    //    output.flush();
+        if (method.equalsIgnoreCase(METHOD_POST)) {
+            byte[] result = postData.toString().getBytes("UTF-8");
+            conn.setRequestProperty("Content-Length", Integer.toString(result.length));
+            conn.setDoOutput(true);
+            OutputStream output = conn.getOutputStream();
+            output.write(result);
+            output.flush();
+        }
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(conn.getInputStream()));
@@ -133,7 +135,7 @@ public class RestAccess {
         map.put("active", true);
         map.put("workshopSetId", id);
         String data = doPostRequest("workshop/search/?", map, METHOD_GET);
-        
+
         System.out.println(data);
         return mapper.readValue(data, WorkshopList.class);
 
