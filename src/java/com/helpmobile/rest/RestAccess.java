@@ -123,7 +123,9 @@ public class RestAccess {
 
     public WorkshopSetList getWorkshops(boolean active) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        String data = doJsonRequest("workshop/workshopSets/", "", METHOD_GET);
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("active", true);
+        String data = doPostRequest("workshop/workshopSets/", map, METHOD_GET);
         WorkshopSetList list = mapper.readValue(data, WorkshopSetList.class);
 
         return list;

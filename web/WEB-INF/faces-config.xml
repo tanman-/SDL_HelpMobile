@@ -45,10 +45,6 @@
     <navigation-rule>
         <from-view-id>/panel/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>book</from-outcome>
-            <to-view-id>/panel/join.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>browse</from-outcome>
             <to-view-id>/panel/browse.xhtml</to-view-id>
         </navigation-case>
@@ -57,7 +53,14 @@
         <from-view-id>/panel/browse.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>select</from-outcome>
-            <to-view-id>/panel/join.xhtml</to-view-id>
+            <to-view-id>/panel/programs.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/panel/programs.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>book</from-outcome>
+            <to-view-id>/panel/book.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
