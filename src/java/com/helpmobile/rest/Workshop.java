@@ -108,7 +108,7 @@ public class Workshop {
     }
 
     /**
-     * @param targetingGroup the targetingGroup to set
+     * @param targetingGroup the targetGroup to set
      */
     public void setTargetingGroup(String targetingGroup) {
         this.targetingGroup = targetingGroup;
