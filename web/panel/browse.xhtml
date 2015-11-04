@@ -86,6 +86,7 @@
                 Step 1: Select Program <div class="restWords">To start the booking process please click on the skill-set that you want to improve</div>
                 <li class="restWords" jsfc="ui:repeat" var="work" value="#{restAccess.getWorkshops(true).workshopSets}">
                     <h:link outcome="select">
+                        <f:param value="#{work.id}" name="id"/>
                         <h:outputText value="#{work.name}"/> 
                     </h:link>
                 </li>
