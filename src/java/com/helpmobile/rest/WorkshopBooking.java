@@ -6,6 +6,7 @@
 package com.helpmobile.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import static java.lang.Integer.parseInt;
 import java.util.Date;
 
 /**
@@ -16,6 +17,22 @@ public class WorkshopBooking {
 
     int workShopId;
     String studentId;
+    int userId;
+
+    public WorkshopBooking(int workShopId, String studentId) {
+        this.workShopId = workShopId;
+        this.studentId = studentId;
+        this.userId = parseInt(studentId);
+    }
+    
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getWorkShopId() {
         return workShopId;
