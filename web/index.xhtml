@@ -6,7 +6,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
   <h:head>
     <title>
       Login
@@ -27,12 +28,12 @@
     <!--  SIGN UP -->
     <div class="login-form">
       <div class="avtar">
-        <img src="./resources/images/helpsLogo.png" alt="" />
+          <h:graphicImage library="images" name="helpsLogo.png" />
       </div>
       <div class="form-top">
         <h:form>
-            <h:inputText value="#{loginForm.username}" class="email" required=""/>
-            <h:inputSecret value="#{loginForm.password}" class="Password" required=""/>
+            <h:inputText value="#{loginForm.username}" class="email" required="true" label="studentID" p:placeholder="Student ID" />
+            <h:inputSecret value="#{loginForm.password}" class="Password" required="true" label="password" p:placeholder="Password"/>
             <h:commandButton value="LOGIN" type="submit" action="#{loginForm.login}"/>
         </h:form>
         <div class="remember">

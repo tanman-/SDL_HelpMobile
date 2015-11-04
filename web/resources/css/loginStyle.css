@@ -239,18 +239,18 @@ ul.bottom-sc-icons li {
 /*--start-responsive-design--*/
 @media (max-width:1440px){
 	input[type="text"] {
-	 	 background: #FFFFFF url(adm.png?ln=images)no-repeat 263px 15px;
+	 	 background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	  }
 	 input[type="password"] {
-	  	background: #FFFFFF url(pass.png?ln=images)no-repeat 263px 15px;
+	  	background: #FFFFFF url(pass.png?ln=images)no-repeat right;
 	  }
 }
 @media (max-width:1366px){
 	input[type="text"] {
-		  background: #FFFFFF url(adm.png?ln=images)no-repeat 253px 15px;
+		  background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	}
 	input[type="password"] {
-		  background: #FFFFFF url(pass.png?ln=images)no-repeat 253px 15px;
+		  background: #FFFFFF url(pass.png?ln=images)no-repeat right;
 	}
 	.check-box {
 		  left: 14%;
@@ -261,10 +261,10 @@ ul.bottom-sc-icons li {
 }
 @media (max-width:1280px){
 	input[type="text"] {
-		  background: #FFFFFF url(adm.png?ln=images)no-repeat 238px 15px;
+		  background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	}
 	input[type="password"] {
-		  background: #FFFFFF url(pass.png?ln=images)no-repeat 238px 15px;
+		  background: #FFFFFF url(pass.png?ln=images)no-repeat right;
 	}
 	.login-form {
 		height: 645px;
@@ -281,10 +281,10 @@ ul.bottom-sc-icons li {
 		  padding: 15px 14px;
 	}
 	input[type="text"] {
-	  background: #FFFFFF url(adm.png?ln=images)no-repeat 312px 15px;
+	  background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	}
 	input[type="password"] {
-	  background: #FFFFFF url(pass.png?ln=images)no-repeat 309px 15px;
+	  background: #FFFFFF url(pass.png?ln=images)no-repeat right;
 	}
 	.check-box {
 	  left: 24%;
@@ -315,10 +315,10 @@ ul.bottom-sc-icons li {
 	  left: 22%;
 	}
 	input[type="text"] {
-	  background: #FFFFFF url(adm.png?ln=images)no-repeat 286px 15px;
+	  background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	}
 	input[type="password"] {
-	  background: #FFFFFF url(pass.png?ln=images)no-repeat 287px 15px;
+	  background: #FFFFFF url(pass.png?ln=images)no-repeat right;
 	}
 }
 @media (max-width:640px){
@@ -341,10 +341,10 @@ ul.bottom-sc-icons li {
 	    padding-top: 1em;
 	}
 	input[type="text"] {
-	  background: #FFFFFF url(adm.png?ln=images)no-repeat 246px 16px;
+	  background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	}
 	input[type="password"] {
-	  background: #FFFFFF url(pass.png?ln=images)no-repeat 246px 18px;
+	  background: #FFFFFF url(pass.png?ln=images)no-repeat right;
 	}
 	.remember {
 	  margin: 6px 0 0 0;
@@ -368,7 +368,7 @@ ul.bottom-sc-icons li {
 	  margin: 2% auto;
 	}
 	input[type="text"] {
-	  background: #FFFFFF url(adm.png?ln=images)no-repeat 201px 8px;
+	  background: #FFFFFF url(adm.png?ln=images)no-repeat right;
 	  width: 73%;
 	  padding: 14px 50px 14px 14px;
 	  margin-bottom: .5em;
@@ -376,7 +376,7 @@ ul.bottom-sc-icons li {
 	  font-size: 16px;
 	  }
 	input[type="password"] {
-		background: #ffffff url(pass.png?ln=images)no-repeat 201px 8px;
+		background: #ffffff url(pass.png?ln=images)no-repeat right;
 		width: 73%;
 		padding: 14px 50px 14px 14px;
                 margin-bottom: 1em;
@@ -389,16 +389,7 @@ ul.bottom-sc-icons li {
  	 ul.bottom-sc-icons li {
 	  margin: 26px 0px 0;
 	}
-	a.twitter {
-	padding: 10px 25px 10px 14px;
-	}
-	a.facebook {
-	  padding: 10px 10px;
-	}
-	.check-box {
-	  left: 8%;
-	  top: 23px;
-	}
+        
 	.remember {
 	  margin: 6px 0 0 0;
 	}

@@ -7,7 +7,7 @@
 
     <h:head>
         <meta charset="utf-8" />
-        <title>Home Page</title>
+        <title>Reminders</title>
         <meta http-equiv="cleartype" content="on" />
         <meta name="MobileOptimized" content="320" />
         <meta name="HandheldFriendly" content="True" />
@@ -21,7 +21,7 @@
 
     <h:body>
         <nav id="menu" class="menu">
-            <h:link disabled="true">
+            <h:link outcome="index.xhtml">
                 <header class="menu-header">
                     <span class="menu-header-title">Home</span>
                 </header>
@@ -46,7 +46,7 @@
                     <span class="menu-header-title">My Bookings</span>
                 </div>
             </h:link>
-            <h:link outcome="reminders.xhtml">
+            <h:link disabled="true">
                 <div class="menu-header">
                     <span class="menu-header-title">Reminders</span>
                 </div>
@@ -75,22 +75,13 @@
                         window.history.back();
                     }
                 </script>
-                <h1 class="title">Home</h1>
+                <h1 class="title">Reminders</h1>
             </header>
 
             <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
             
-            <h:link outcome="browse">
-                <img class="box" src="../resources/images/MakeBooking.png" alt="Make Your Booking"/>
-            </h:link>
-            <a href="#"><img class="box" src="../resources/images/MyBookings.png" alt="Make Your Booking"/></a>
-            <h:link outcome="me"><img class="box" src="../resources/images/InfoButton.png" alt="Make Your Booking"/></h:link>
-            <a href="#"><img class="box" src="../resources/images/FAQ.png" alt="Make Your Booking"/></a>
-            <h:form>
-                <h:commandLink action="#{userManager.logout}">
-                    <img class="box" src="../resources/images/Logout.png" alt="Make Your Booking"/>
-                </h:commandLink>
-            </h:form>
+            <p>REMINDERS WILL SHOW UP HERE</p>
+            
         </main>
 
         <h:outputScript library="js" name="slideout.min.js" />
