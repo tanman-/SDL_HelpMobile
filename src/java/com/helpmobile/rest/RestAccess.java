@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import static java.lang.Integer.parseInt;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -138,10 +139,14 @@ public class RestAccess {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("workshopId", workshopId);
         map.put("studentId", studentId);
+        map.put("userId", parseInt(studentId));
+        
 
         String json = mapper.writeValueAsString(map);
-        String response = doJsonRequest("student/register", json, METHOD_POST);
+        System.out.println(json);
+        String response = doJsonRequest("workshop/booking/create", json, METHOD_POST);
         RegisterReply reply = mapper.readValue(response, RegisterReply.class);
+        System.out.println(response);
         return reply.isSuccess();
     }
 
