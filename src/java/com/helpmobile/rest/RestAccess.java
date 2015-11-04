@@ -82,7 +82,7 @@ public class RestAccess {
         HttpURLConnection conn = (HttpURLConnection) path.openConnection();
         conn.setRequestMethod(method);
         conn.setRequestProperty("Content-Type", "application/json");
-        
+
         conn.setRequestProperty("AppKey", KEY);
         conn.setUseCaches(false);
         conn.setDoInput(true);

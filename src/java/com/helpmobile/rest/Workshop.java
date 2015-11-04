@@ -101,7 +101,7 @@ public class Workshop {
     }
 
     /**
-     * @return the targetGroup
+     * @return the targetingGroup
      */
     public String getTargetingGroup() {
         return targetingGroup;
