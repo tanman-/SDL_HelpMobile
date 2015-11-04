@@ -85,7 +85,7 @@
             <ol class="information">
                 Step 1: Select Program <div class="restWords">To start the booking process please click on the skill-set that you want to improve</div>
                 <li class="restWords" jsfc="ui:repeat" var="work" value="#{restAccess.getWorkshops(true).workshopSets}">
-                    <h:link outcome="select">
+                    <h:link outcome="join">
                         <h:outputText value="#{work.name}"/> 
                     </h:link>
                 </li>
@@ -95,12 +95,12 @@
         <h:outputScript library="js" name="slideout.min.js" />
         <script>
             <!--
-          var slideout = new Slideout({
-                'panel': document.getElementById('panel'),
-                'menu': document.getElementById('menu'),
-                'padding': 256,
-                'tolerance': 70
-            });
+                var slideout = new Slideout({
+                    'panel': document.getElementById('panel'),
+                    'menu': document.getElementById('menu'),
+                    'padding': 256,
+                    'tolerance': 30
+                });
 
             // Toggle button
             document.querySelector('.toggle-button').addEventListener('click', function () {
