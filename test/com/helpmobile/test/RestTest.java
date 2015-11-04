@@ -110,11 +110,4 @@ public class RestTest {
         assertEquals("should equal", response1, response2);
     }
     
-    @Test
-    public void testCreateWorkshopBooking() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        RestAccess restAccess = new RestAccess();
-        boolean isBooked = restAccess.createWorkshopBooking(3,"1");
-        assert(isBooked);
-    }
 }
