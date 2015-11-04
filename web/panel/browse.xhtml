@@ -79,7 +79,7 @@
                 <h1 class="title">Workshops</h1>
             </header>
 
-            <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
+            <p class="welcomeMsg">Welcome, <h:outputText value="#{userManager.user.name}"/></p>
             <table style="border: #003366 thick solid;padding: 1pt;width: 100%;table-layout: fixed;">
                 <ui:repeat var="work" value="#{restAccess.getWorkshops(true).workshopSets}">
                     <tr style="border-bottom: #0088bb 1px solid"><td style="width: 12pt;border: #000 1px solid;padding: 2pt;"><h:outputText value="#{work.id}"/></td>
