@@ -3,35 +3,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <h:outputStylesheet name="common-style.css" library="css" />
+        <title><ui:insert name="pageTitle"></ui:insert></title>
+        <meta charset="utf-8" />
+        <meta http-equiv="cleartype" content="on" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <h:outputStylesheet library="css" name="mocha.min.css" />
+        <h:outputStylesheet library="css" name="test.css" />
+        <h:outputStylesheet library="css" name="index.css" />
+        <h:outputStylesheet library="css" name="booking1.css" />
+        
     </h:head>
 
     <h:body>
-
         <div id="page">
-
             <div id="header">
                 <ui:insert name="header" >
-                    <ui:include src="/template/common/commonHeader.xhtml" />
+                        <ui:include src="/panel/template/common/commonHeader.xhtml" />
                 </ui:insert>
             </div>
 
             <div id="content">
                 <ui:insert name="content" >
-                    <ui:include src="/template/common/commonContent.xhtml" />
+                    <ui:include src="/panel/template/common/commonContent.xhtml" />
+                    <ui:insert name="pageContent"></ui:insert>
                 </ui:insert>
             </div>
 
             <div id="footer">
                 <ui:insert name="footer" >
-                    <ui:include src="/template/common/commonFooter.xhtml" />
+                    <ui:include src="/panel/template/common/commonFooter.xhtml" />
                 </ui:insert>
             </div>
-
         </div>
-
     </h:body>
 </html>
