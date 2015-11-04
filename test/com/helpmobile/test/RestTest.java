@@ -22,7 +22,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -73,8 +72,8 @@ public class RestTest {
         String json = mapper.writeValueAsString(testUser);
         RestAccess restAccess = new RestAccess();
         System.out.println(json);
-        String response = restAccess.doJsonRequest("student/register", json, "POST");
-        System.out.println(response);
+        //String response = restAccess.doJsonRequest("student/register", json, "POST");
+        //System.out.println(response);
         
     }
     
@@ -89,7 +88,7 @@ public class RestTest {
     public void getWorkshop() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
-        WorkshopList data = restAccess.getWorkshop(4);
+        WorkshopList data = restAccess.getWorkshop(3);
         String json = mapper.writeValueAsString(data);
         System.out.println(json);
     }
