@@ -5,7 +5,7 @@ package com.helpmobile.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.helpmobile.dba.User;
@@ -14,11 +14,13 @@ import com.helpmobile.dba.enums.DegreeLevel;
 import com.helpmobile.dba.enums.Gender;
 import com.helpmobile.dba.enums.Language;
 import com.helpmobile.rest.RestAccess;
+import com.helpmobile.rest.WorkshopBookingList;
 import com.helpmobile.rest.WorkshopList;
 import java.io.IOException;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,38 +30,38 @@ import org.junit.Test;
  * @author terra
  */
 public class RestTest {
-    
+
     public RestTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     @Test
-    public void connect() throws IOException{
+    public void connect() throws IOException {
         RestAccess restAccess = new RestAccess();
-        String response = restAccess.doJsonRequest("misc/campus", "","GET");
+        String response = restAccess.doJsonRequest("misc/campus", "", "GET");
         System.out.println(response);
     }
-    
+
     @Test
-    public void testRegister() throws Exception{
+    public void testRegister() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
-        
+
         User testUser = new User();
         testUser.setName("Bob");
         testUser.setId("12345");
@@ -76,20 +78,36 @@ public class RestTest {
         //System.out.println(response);
         
     }
-    
+
     @Test
-    public void testWorkshop() throws Exception{
-        RestAccess restAccess = new RestAccess();
-        String data = restAccess.doJsonRequest("workshop/workshopSets/", "", "GET");
-        System.out.println(data);
-    }
-    
-    @Test
-    public void getWorkshop() throws Exception{
+    public void testAWorkshop() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
         WorkshopList data = restAccess.getWorkshop(3);
         String json = mapper.writeValueAsString(data);
         System.out.println(json);
     }
+
+    @Test
+    public void testActiveWorkshopSets() throws IOException {
+        RestAccess restAccess = new RestAccess();
+        String response = restAccess.doJsonRequest("workshop/workshopSets/true", "", "GET");
+        System.out.println("ACTIVE\n" + response + "\n");
+    }
+
+    @Test
+    public void testInactiveWorkshopSets() throws IOException {
+        RestAccess restAccess = new RestAccess();
+        String response = restAccess.doJsonRequest("workshop/workshopSets/false", "", "GET");
+        System.out.println("INACTIVE\n" + response + "\n");
+    }
+
+    @Test
+    public void testAllWorkshopSets() throws IOException {
+        RestAccess restAccess = new RestAccess();
+        String response1 = restAccess.doJsonRequest("workshop/workshopSets/", "", "GET");
+        String response2 = restAccess.doJsonRequest("workshop/workshopSets/-5", "", "GET");
+        assertEquals("should equal", response1, response2);
+    }
+    
 }

@@ -6,8 +6,11 @@
       >
     <h:body>
     	
-    	<ui:composition template="template/common/commonLayout.xhtml">
-
+    	<ui:composition template="/panel/template/common/commonLayout.xhtml">
+            <ui:define name="pageTitle">Custom Title here</ui:define>
+            <ui:define name="pageContent">
+                ABC
+            </ui:define>
     	</ui:composition>
     	
     </h:body>
