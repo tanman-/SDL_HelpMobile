@@ -102,6 +102,46 @@ public class RestAccess {
         //print result
         return response.toString();
     }
+    
+    public String doPostRequest2(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
+        StringBuilder postData = new StringBuilder();
+        for (Map.Entry<String, Object> param : data.entrySet()) {
+            if (postData.length() != 0) {
+                postData.append('&');
+            }
+            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+            postData.append('=');
+            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+        }
+
+        URL path = new URL(ADDRESS + request + postData);
+        HttpURLConnection conn = (HttpURLConnection) path.openConnection();
+        conn.setRequestMethod(method);
+        conn.setRequestProperty("Content-Type", "application/json");
+
+//      byte[] result = 
+//      conn.setRequestProperty("Content-Length", Integer.toString(result.length));
+        conn.setRequestProperty("AppKey", KEY);
+        conn.setUseCaches(false);
+        conn.setDoInput(true);
+//      conn.setDoOutput(true);
+//      OutputStream output = conn.getOutputStream();
+//      output.write(result);
+//      output.flush();
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        conn.disconnect();
+        //print result
+        return response.toString();
+    }
 
     public User getStudent() {
         return null;
@@ -141,12 +181,17 @@ public class RestAccess {
         map.put("studentId", studentId);
         map.put("userId", parseInt(studentId));
         
-
+/*
         String json = mapper.writeValueAsString(map);
         System.out.println(json);
         String response = doJsonRequest("workshop/booking/create", json, METHOD_POST);
         RegisterReply reply = mapper.readValue(response, RegisterReply.class);
         System.out.println(response);
+        return reply.isSuccess();
+*/
+        //String json = mapper.writeValueAsString(map);
+        String response = doPostRequest2("workshop/booking/create?", map, METHOD_POST);
+        RegisterReply reply = mapper.readValue(response, RegisterReply.class);
         return reply.isSuccess();
     }
 
