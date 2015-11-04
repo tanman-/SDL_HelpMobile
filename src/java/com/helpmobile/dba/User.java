@@ -42,6 +42,11 @@ import javax.persistence.Transient;
 @NamedQueries(@NamedQuery(name = "User.getAll", query = "SELECT e FROM User e"))
 public class User implements Serializable {
 
+    
+    @Transient
+    @JsonProperty("userId")
+    private String userId;
+    
     @Id
     @Column(length = 16)
     @JsonProperty("StudentId")
@@ -271,5 +276,19 @@ public class User implements Serializable {
      */
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    /**
+     * @return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

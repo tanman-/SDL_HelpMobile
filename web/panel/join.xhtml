@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
 
         <ui:composition template="/panel/template/common/commonLayout.xhtml">
@@ -21,13 +22,20 @@
 
                 <div class='information'>Sessions For:</div>
                 <div class='information'>
-                    <font class="restWords">get the selected workshop name from previous page</font>  
+                    <font class="restWords"><h:outputText value="#{browseWorkshops.workshop.topic}"/></font>  
                 </div>
 
                 <p align="center">
-                    <textarea disabled='true'>Exam Preparation 11/09/2015 - 11/09/2015 Friday, 12:00 - 13:30 Number of Sessions: 1 Places Available: 3</textarea>
+                    <textarea disabled='true'>#{browseWorkshops.workshop.topic} 
+<h:outputText value="#{browseWorkshops.workshop.startDate}" >
+              <f:convertDateTime pattern="dd/MM/YYYY" />
+</h:outputText> - 
+<h:outputText value="#{browseWorkshops.workshop.endDate}" >
+              <f:convertDateTime pattern="dd/MM/YYYY" />
+</h:outputText>, Number of Sessions: 1 Places Available: #{browseWorkshops.workshop.maximum-browseWorkshops.workshop.bookingCount}</textarea>
                 </p>
                 <h:link outcome="wShopRegistration3">
+                    <f:param name="id" value="#{param['id']}"/>
                     <img src="../resources/images/Next.png" alt="Make Your Booking"/>
                 </h:link>
             </ui:define>

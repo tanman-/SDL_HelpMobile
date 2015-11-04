@@ -44,9 +44,12 @@
                                         <h:outputText value="#{work.bookingCount}"/>/<h:outputText value="#{work.maximum}"/>4
                                     </ui:fragment>
                                 </td>
-                                <td><h:link outcome="book">
+                                <td><h:link rendered="#{not work.bookedOut}" outcome="book">
                                         <f:param name="id" value="#{work.id}" />
                                         Book
+                                    </h:link>
+                                    <h:link rendered="#{work.bookedOut}" outcome="joinWait">
+                                        Submit For Waiting List
                                     </h:link>
                                 </td>
                             </tr>
