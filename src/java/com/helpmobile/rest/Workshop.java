@@ -37,10 +37,11 @@ public class Workshop {
     
     private String topic;
     private String description;
-    private String targetGroup;
+    private String targetingGroup;
     private String campus;
-    
+    @JsonProperty("StartDate")
     private Date startDate;
+    @JsonProperty("EndDate")
     private Date endDate;
     private int maximum;
     @JsonProperty("WorkShopSetID")
@@ -51,7 +52,9 @@ public class Workshop {
     private int reminderNumber;
     @JsonProperty("reminder_sent")
     private int reminderSent;
+    @JsonProperty("DaysOfWeek")
     private String daysOfWeek;
+    @JsonProperty("BookingCount")
     private int bookingCount;
     private Date archived;
 
@@ -100,15 +103,15 @@ public class Workshop {
     /**
      * @return the targetGroup
      */
-    public String getTargetGroup() {
-        return targetGroup;
+    public String getTargetingGroup() {
+        return targetingGroup;
     }
 
     /**
-     * @param targetGroup the targetGroup to set
+     * @param targetingGroup the targetGroup to set
      */
-    public void setTargetGroup(String targetGroup) {
-        this.targetGroup = targetGroup;
+    public void setTargetingGroup(String targetingGroup) {
+        this.targetingGroup = targetingGroup;
     }
 
     /**
