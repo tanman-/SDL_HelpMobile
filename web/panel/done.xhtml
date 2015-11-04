@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
-   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
@@ -9,7 +9,7 @@
 
     <h:head>
         <meta charset="utf-8" />
-        <title>Home Page</title>
+        <title>Workshop Booking</title>
         <meta http-equiv="cleartype" content="on" />
         <meta name="MobileOptimized" content="320" />
         <meta name="HandheldFriendly" content="True" />
@@ -18,12 +18,13 @@
         <h:outputStylesheet library="css" name="mocha.min.css" />
         <h:outputStylesheet library="css" name="test.css" />
         <h:outputStylesheet library="css" name="index.css" />
+        <h:outputStylesheet library="css" name="booking1.css" />
 
     </h:head>
 
     <h:body>
         <nav id="menu" class="menu">
-            <h:link disabled="true">
+            <h:link outcome="index.xhtml">
                 <header class="menu-header">
                     <span class="menu-header-title">Home</span>
                 </header>
@@ -38,7 +39,7 @@
                     <span class="menu-header-title">Programs</span>
                 </div>
             </h:link>
-            <h:link outcome="wShopRegistration1.xhtml">
+            <h:link disabled="true">
                 <div class="menu-header">
                     <span class="menu-header-title">Workshop Registration</span>
                 </div>
@@ -77,44 +78,29 @@
                         window.history.back();
                     }
                 </script>
-                <h1 class="title">Home</h1>
+                <h1 class="title">Booking</h1>
             </header>
-
-            <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
             
-            <h:link outcome="wShopRegistration1">
-                <img class="box" src="../resources/images/MakeBooking.png" alt="Make Your Booking"/>
+            <p> Congratulations ! You have successfully booked for your selected workshop.</p>
+            <h:link outcome="index">
+                <img src="../resources/images/home.png" alt="Make Your Booking"/>
             </h:link>
-            <h:link outcome="myBookings">
-                <img class="box" src="../resources/images/MyBookings.png" alt="Your Bookings"/>
-            </h:link>
-            <h:link outcome="me">
-                <img class="box" src="../resources/images/InfoButton.png" alt="Your Details"/>
-            </h:link>
-            <h:link outcome="faq">
-                <img class="box" src="../resources/images/FAQ.png" alt="Make Your Booking"/>
-            </h:link>
-            <h:form>
-                <h:commandLink action="#{userManager.logout}">
-                    <img class="box" src="../resources/images/Logout.png" alt="Make Your Booking"/>
-                </h:commandLink>
-            </h:form>
         </main>
 
         <h:outputScript library="js" name="slideout.min.js" />
         <script>
             //<![CDATA[
-                var slideout = new Slideout({
+            var slideout = new Slideout({
                 'panel': document.getElementById('panel'),
                 'menu': document.getElementById('menu'),
                 'padding': 256,
                 'tolerance': 30
-                });
+            });
 
-                // Toggle button
-                document.querySelector('.toggle-button').addEventListener('click', function () {
+            // Toggle button
+            document.querySelector('.toggle-button').addEventListener('click', function () {
                 slideout.toggle();
-                });
+            });
             //]]>
         </script>
 
