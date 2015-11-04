@@ -51,7 +51,7 @@ public class CreateWorkshopBookingTest {
     }
     
     @Test
-    public void testCreateWorkshopBooking() throws IOException {
+    public void test1() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
         boolean isBooked = restAccess.createWorkshopBooking(1409,"10795119");
