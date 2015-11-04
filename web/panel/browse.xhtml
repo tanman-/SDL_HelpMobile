@@ -1,114 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
-    <h:head>
-        <meta charset="utf-8" />
-        <title>Workshop Registration</title>
-        <meta http-equiv="cleartype" content="on" />
-        <meta name="MobileOptimized" content="320" />
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <h:outputStylesheet library="css" name="mocha.min.css" />
-        <h:outputStylesheet library="css" name="test.css" />
-        <h:outputStylesheet library="css" name="index.css" />
-        <h:outputStylesheet library="css" name="booking1.css" />
-
-    </h:head>
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-        <nav id="menu" class="menu">
-            <h:link outcome="index.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">Home</span>
-                </div>
-            </h:link>
-            <h:link outcome="me.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">My Information</span>
-                </div>
-            </h:link>
-            <h:link outcome="programs.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">Programs</span>
-                </div>
-            </h:link>
-            <h:link disabled="true">
-                <header class="menu-header">
-                    <span class="menu-header-title">Workshop Registration</span>
-                </header>
-            </h:link>
-            <h:link outcome="myBookings.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">My Bookings</span>
-                </div>
-            </h:link>
-            <h:link outcome="reminders.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">Reminders</span>
-                </div>
-            </h:link>
-            <h:link outcome="faq.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">F.A.Q</span>
-                </div>
-            </h:link>
 
-            <header class="menu-header">
-                <c:if test="#{userManager.logged}">
-                    <h:form>
-                        <span class="menu-header-title"><h:commandLink value="Logout" action="#{userManager.logout}"/></span>
-                    </h:form> 
-                </c:if>
-            </header>
-        </nav>
-
-        <main id="panel" class="panel">
-            <header class="head">
-                <button class="btn-hamburger toggle-button"></button>
-                <button class="btn-back" onclick="goBack()"></button> 
-                <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
-                <h1 class="title">Workshops</h1>
-            </header>
-
-            <ol class="information">
-                Step 1: Select Program <div class="restWords">To start the booking process please click on the skill-set that you want to improve</div>
-                <li class="restWords" jsfc="ui:repeat" var="work" value="#{restAccess.getWorkshops(true).workshopSets}">
-                    <h:link outcome="select">
-                        <f:param value="#{work.id}" name="id"/>
-                        <h:outputText value="#{work.name}"/> 
-                    </h:link>
-                </li>
-            </ol>
-        </main>
-
-        <h:outputScript library="js" name="slideout.min.js" />
-        <script>
-            <!--
-          var slideout = new Slideout({
-                'panel': document.getElementById('panel'),
-                'menu': document.getElementById('menu'),
-                'padding': 256,
-                'tolerance': 70
-            });
-
-            // Toggle button
-            document.querySelector('.toggle-button').addEventListener('click', function () {
-                slideout.toggle();
-            });
-            // -->
-        </script>
+        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+            <ui:define name="pageTitle">Workshops</ui:define>
+            <ui:define name="pageContent">
+                <ol class="information">
+                    Step 1: Select Program <div class="restWords">To start the booking process please click on the skill-set that you want to improve</div>
+                    <li class="restWords" jsfc="ui:repeat" var="work" value="#{restAccess.getWorkshops(true).workshopSets}">
+                        <h:link outcome="select">
+                            <f:param name="id" value="#{work.id}"/>
+                            <h:outputText value="#{work.name}"/> 
+                        </h:link>
+                    </li>
+                </ol>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>

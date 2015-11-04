@@ -22,51 +22,11 @@
     </h:head>
 
     <h:body>
-        <nav id="menu" class="menu">
-            <h:link outcome="index.xhtml">
-                <header class="menu-header">
-                    <span class="menu-header-title">Home</span>
-                </header>
-            </h:link>
-            <h:link outcome="me.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">My Information</span>
-                </div>
-            </h:link>
-            <h:link disabled="true">
-                <div class="menu-header">
-                    <span class="menu-header-title">Programs</span>
-                </div>
-            </h:link>
-            <h:link outcome="wShopRegistration1.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">Workshop Registration</span>
-                </div>
-            </h:link>
-            <h:link outcome="myBookings.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">My Bookings</span>
-                </div>
-            </h:link>
-            <h:link outcome="reminders.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">Reminders</span>
-                </div>
-            </h:link>
-            <h:link outcome="faq.xhtml">
-                <div class="menu-header">
-                    <span class="menu-header-title">F.A.Q</span>
-                </div>
-            </h:link>
 
-            <header class="menu-header">
-                <c:if test="#{userManager.logged}">
-                    <h:form>
-                        <span class="menu-header-title"><h:commandLink value="Logout" action="#{userManager.logout}"/></span>
-                    </h:form> 
-                </c:if>
-            </header>
-        </nav>
+        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+            <ui:define name="pageTitle">Programs</ui:define>
+            <ui:define name="pageContent">
+                <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
 
         <main id="panel" class="panel">
             <header class="head">
@@ -113,7 +73,9 @@
             });
             //]]>
         </script>
+                <p>List of Programs</p>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>
-
