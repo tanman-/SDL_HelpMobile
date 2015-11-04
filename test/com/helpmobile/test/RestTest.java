@@ -5,6 +5,7 @@ package com.helpmobile.test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.helpmobile.dba.User;
@@ -13,6 +14,7 @@ import com.helpmobile.dba.enums.DegreeLevel;
 import com.helpmobile.dba.enums.Gender;
 import com.helpmobile.dba.enums.Language;
 import com.helpmobile.rest.RestAccess;
+import com.helpmobile.rest.WorkshopBookingList;
 import com.helpmobile.rest.WorkshopList;
 import java.io.IOException;
 import java.util.Date;
@@ -107,7 +109,12 @@ public class RestTest {
         String response2 = restAccess.doJsonRequest("workshop/workshopSets/-5", "", "GET");
         assertEquals("should equal", response1, response2);
     }
-
-    public void test() {
+    
+    @Test
+    public void testCreateWorkshopBooking() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        RestAccess restAccess = new RestAccess();
+        boolean isBooked = restAccess.createWorkshopBooking(3,"1");
+        assert(isBooked);
     }
 }
