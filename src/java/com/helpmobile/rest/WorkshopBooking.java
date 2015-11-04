@@ -15,12 +15,12 @@ import java.util.Date;
  */
 public class WorkshopBooking {
 
-    int workShopId;
+    int workshopId;
     String studentId;
     int userId;
 
-    public WorkshopBooking(int workShopId, String studentId) {
-        this.workShopId = workShopId;
+    public WorkshopBooking(int workshopId, String studentId) {
+        this.workshopId = workshopId;
         this.studentId = studentId;
         this.userId = parseInt(studentId);
     }
@@ -34,12 +34,12 @@ public class WorkshopBooking {
         this.userId = userId;
     }
 
-    public int getWorkShopId() {
-        return workShopId;
+    public int getWorkshopId() {
+        return workshopId;
     }
 
-    public void setWorkShopId(int workShopId) {
-        this.workShopId = workShopId;
+    public void setWorkshopId(int workshopId) {
+        this.workshopId = workshopId;
     }
 
     public String getStudentId() {
