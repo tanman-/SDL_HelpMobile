@@ -30,6 +30,7 @@ a {
 
 .menu a {
   color: #ffffff;
+  text-decoration: none;
 }
 
 .menu a:hover {

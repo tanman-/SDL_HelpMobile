@@ -1,0 +1,88 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+
+a{
+    color: red;
+    text-decoration: underline;
+}
+
+img{
+    position: relative;
+    height: 50px;
+    width: 150px;
+    padding-top: 20px;
+}
+
+.information{ 
+    font-weight: bold;
+    font-size: 1.20em;;
+    color: #222222;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.firstWord{
+    font-weight: bold;
+}
+
+.restWords{
+    font-weight: normal;
+    color: #222222;
+    font-size: 0.80em;
+    text-align: justify;
+    margin-left: 15px;
+    padding-top: 8px;
+    padding-right: 10px;
+
+}
+
+textArea{
+    text-align: left;
+    font-size: 1.5em;
+    line-height: 32px;
+    color: #222222;
+    padding: 10px 10px 10px 10px;
+    margin-top: 15px;
+    background-color: white;
+    height: 170px;  
+    width: 300px;
+    resize: none;
+    border: 2px solid #CE3030;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+/**
+ * Medium Screens
+ */
+@media all and (min-width:40em) {
+    .information{
+        margin: 25px 25px 25px 25px;
+        font-size: 2.5em;
+    }
+
+    .information{ 
+        font-weight: bold;
+        font-size: 1.5em;;
+        color: #222222;
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    .restWords{
+        font-size: 0.8em;
+        padding-top: 18px;
+    }
+}
+
+/**
+ * Large Screens
+ */
+@media all and (min-width: 54em) {
+    .welcomeMsg{
+        margin: 25px 15px 5px 25px;
+        font-size: 3em;
+    }
+}
