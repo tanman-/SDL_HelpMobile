@@ -133,14 +133,16 @@ public class RestAccess {
         return mapper.readValue(data, WorkshopList.class);
     }
 
-    public WorkshopBookingList createWorkshopBooking(int workshopId, String studentId) throws IOException {
+    public boolean createWorkshopBooking(int workshopId, String studentId) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("workshopId", workshopId);
         map.put("studentId", studentId);
-        String data = doPostRequest("workshop/booking/create/?", map, METHOD_POST);
-        
-        return mapper.readValue(data, WorkshopBookingList.class);
+
+        String json = mapper.writeValueAsString(map);
+        String response = doJsonRequest("student/register", json, METHOD_POST);
+        RegisterReply reply = mapper.readValue(response, RegisterReply.class);
+        return reply.isSuccess();
     }
 
 }
