@@ -8,16 +8,10 @@ package com.helpmobile.test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.helpmobile.dba.User;
-import com.helpmobile.dba.enums.Country;
-import com.helpmobile.dba.enums.DegreeLevel;
-import com.helpmobile.dba.enums.Gender;
-import com.helpmobile.dba.enums.Language;
+
+import com.helpmobile.rest.WorkshopBooking;
 import com.helpmobile.rest.RestAccess;
-import com.helpmobile.rest.WorkshopBookingList;
-import com.helpmobile.rest.WorkshopList;
 import java.io.IOException;
-import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -54,7 +48,7 @@ public class CreateWorkshopBookingTest {
     public void test1() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
-        boolean isBooked = restAccess.createWorkshopBooking(1409,"10795119");
+        boolean isBooked = restAccess.createWorkshopBooking(new WorkshopBooking(1409,"10795119"));
         assert(isBooked);
     }
 }
