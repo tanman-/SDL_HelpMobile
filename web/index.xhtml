@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
-   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-  <h:head>
-    <title>
-      Login
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script type="application/x-javascript">
-    //<![CDATA[ 
-    addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-    //]]>
-    </script>
-    <h:outputStylesheet library="css" name="loginStyle.css"/>
-    <!-- webfonts -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Fjord+One" rel="stylesheet" type="text/css" />
-    <!-- //webfonts -->
-  </h:head>
-  <h:body>
-    <!--  SIGN UP -->
-    <div class="login-form">
-      <div class="avtar">
-          <h:graphicImage library="images" name="helpsLogo.png" />
-      </div>
-      <div class="form-top">
-        <h:form>
-            <h:inputText value="#{loginForm.username}" class="email" required="true" label="studentID" p:placeholder="Student ID" />
-            <h:inputSecret value="#{loginForm.password}" class="Password" required="true" label="password" p:placeholder="Password"/>
-            <h:commandButton value="LOGIN" type="submit" action="#{loginForm.login}"/>
-        </h:form>
-        <div class="remember">
-          <p>
-              <a href="#">Forgot Password?</a>
-          </p>
+    <h:head>
+        <title>
+            Login
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="application/x-javascript">
+            //<![CDATA[ 
+            addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+            //]]>
+        </script>
+        <h:outputStylesheet library="css" name="loginStyle.css"/>
+        <!-- webfonts -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Fjord+One" rel="stylesheet" type="text/css" />
+        <!-- //webfonts -->
+    </h:head>
+    <h:body>
+        <!--  SIGN UP -->
+        <div class="login-form">
+            <div class="avtar">
+                <h:graphicImage library="images" name="helpsLogo.png" />
+            </div>
+            <div class="form-top">
+                <h:form>
+                    <h:inputText value="#{loginForm.username}" class="email" required="true" label="studentID" p:placeholder="Student ID" />
+                    <h:inputSecret value="#{loginForm.password}" class="Password" required="true" label="password" p:placeholder="Password"/>
+                    <h:commandButton value="LOGIN" type="submit" action="#{loginForm.login}"/>
+                </h:form>
+                <div class="remember">
+                    <p>
+                        <a href="#">Forgot Password?</a>
+                    </p>
+                </div>
+                <ul class="remember">
+                    <li>
+                        <p>
+                            New Here? <h:link outcome="register">Register</h:link>
+                        </p>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="remember">
-          <li>
-            <p>
-                New Here? <h:link outcome="register">Register</h:link>
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </h:body>
+    </h:body>
 </html>
