@@ -6,6 +6,7 @@
 package com.helpmobile.managed;
 
 import com.helpmobile.rest.RestAccess;
+import com.helpmobile.rest.WorkshopBooking;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
@@ -27,6 +28,8 @@ public class WorkshopManager implements Serializable {
     private RestAccess rest;
     @Inject
     private UserManager userManager;
+    @Inject
+    private HelpCache cache;
 
     public String bookWorkshop() throws IOException {
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -38,6 +41,12 @@ public class WorkshopManager implements Serializable {
         boolean result = rest.bookWorkshop(id, studentId);
 
         if (result) {
+            WorkshopBooking newBooking = new WorkshopBooking();
+            newBooking.setWorkshop(cache.getWorkshops().get(Integer.decode(id)));
+            newBooking.setStudent(userManager.getUser());
+            newBooking.setBookingId(cache.getNextBookingId());
+            cache.getBookings().add(newBooking);
+            
             return "booked";
         }
         return "fail";

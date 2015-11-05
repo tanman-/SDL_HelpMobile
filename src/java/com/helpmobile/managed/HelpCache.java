@@ -103,6 +103,7 @@ public class HelpCache {
                 Iterator<WorkshopBooking> bookingIterator = bookings.iterator();
                 while (bookingIterator.hasNext()) {
                     WorkshopBooking book = bookingIterator.next();
+                    bookingsCounter = Math.max(book.getBookingId(), bookingsCounter);
                     if(book.getStudent()==null){
                         bookingIterator.remove();
                     }
@@ -195,5 +196,9 @@ public class HelpCache {
      */
     public Map<Integer, WorkshopSet> getWorkshopSets() {
         return workshopSets;
+    }
+
+    public int getNextBookingId() {
+        return ++bookingsCounter;
     }
 }
