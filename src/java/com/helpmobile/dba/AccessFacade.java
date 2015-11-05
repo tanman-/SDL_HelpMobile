@@ -5,6 +5,7 @@
  */
 package com.helpmobile.dba;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,5 +30,13 @@ public class AccessFacade {
     
     public User getUser(String id){
         return entityManager.find(User.class,id);
+    }
+    
+    public List<User> getAllUsers(){
+        entityManager.getTransaction().begin();
+        List<User> result = entityManager.createQuery("SELECT p FROM applicant p").getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
     }
 }

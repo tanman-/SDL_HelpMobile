@@ -17,6 +17,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -110,8 +112,8 @@ public class RestAccess {
         //print result
         return response.toString();
     }
-    
-       public String doGetRequest(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
+
+    public String doGetRequest(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
 
         StringBuilder postData = new StringBuilder();
         for (Map.Entry<String, Object> param : data.entrySet()) {
@@ -137,7 +139,7 @@ public class RestAccess {
         conn.setDoOutput(true);
         OutputStream output = conn.getOutputStream();
         output.flush();
-        
+
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(conn.getInputStream()));
         String inputLine;
@@ -161,12 +163,12 @@ public class RestAccess {
         System.out.println(response);
         return reply.isSuccess();
     }
-    
-    public User retriveId(String student) throws IOException{
+
+    public User retriveId(String student) throws IOException {
         ObjectMapper mapper = new RestObjectMapper();
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("studentId", student);
-        String data = doPostRequest("student/"+student, map, METHOD_GET);
+        String data = doPostRequest("student/" + student, map, METHOD_GET);
         return mapper.readValue(data, UserReply.class).getResult();
     }
 
@@ -174,6 +176,7 @@ public class RestAccess {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("active", true);
+        map.put("archived", "null");
         String data = doPostRequest("workshop/workshopSets/", map, METHOD_GET);
         WorkshopSetList list = mapper.readValue(data, WorkshopSetList.class);
 
@@ -185,22 +188,65 @@ public class RestAccess {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("active", true);
         map.put("workshopSetId", id);
+        map.put("pageSize", 9999);
         String data = doPostRequest("workshop/search/", map, METHOD_GET);
 
         System.out.println(data);
         return mapper.readValue(data, WorkshopList.class);
     }
 
-    public boolean bookWorkshop(int workId,int studentId) throws IOException{
+    public List<Workshop> getAllWorkshops() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        Map<String,Object> map = new LinkedHashMap<>();
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("active", true);
+        map.put("pageSize", 9999);
+        String data = doPostRequest("workshop/search/", map, METHOD_GET);
+
+        //System.out.println(data);
+        return mapper.readValue(data, WorkshopList.class).getWorkshops();
+    }
+
+    public boolean bookWorkshop(String workId, String studentId) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = new LinkedHashMap<>();
         map.put("workshopId", workId);
         map.put("studentId", studentId);
-        map.put("userId",studentId);
-        String result = doGetRequest("workshop/booking/create",map,METHOD_POST);
-        System.out.println(result);
+        map.put("userId", studentId);
+        String result = doGetRequest("workshop/booking/create", map, METHOD_POST);
+        //System.out.println(result);
         RestReply reply = mapper.readValue(result, RestReply.class);
         return reply.isAvailable();
     }
-    
+
+    public List<WorkshopBooking> searchBooking() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        List<WorkshopBooking> globalList = new LinkedList<>();
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("active", true);
+        map.put("pageSize", 9999);
+        WorkshopBookingList reply;
+        int page = 1;
+        do {
+            map.put("page", page);
+            page++;
+            String result = doPostRequest("workshop/booking/search", map, METHOD_GET);
+            //System.out.println(result);
+            reply = mapper.readValue(result, WorkshopBookingList.class);
+            if (reply.getWorkshopBookings() != null) {
+                System.out.println("Synching bookings...");
+                globalList.addAll(reply.getWorkshopBookings());
+            }
+        } while (reply.isAvailable());
+        return globalList;
+    }
+
+    public List<Campus> getCampuses() throws IOException {
+        ObjectMapper mapper = new RestObjectMapper();
+        Map<String, Object> map = new LinkedHashMap<>();
+        String result = doPostRequest("misc/campus/", map, METHOD_GET);
+        //System.out.println(result);
+        CampusList reply = mapper.readValue(result, CampusList.class);
+        return reply.getCampuses();
+    }
+
 }

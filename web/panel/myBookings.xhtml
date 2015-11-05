@@ -6,12 +6,19 @@
       >
     <h:body>
 
-        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+        <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
             <ui:define name="pageTitle">My Bookings</ui:define>
             <ui:define name="pageContent">
                 <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
 
                 <p> Your Bookings will be listed here</p>
+                <ui:repeat var="booking" value="#{bookingManager.bookings}">
+                    <div>
+                        <p>#{booking.topic}</p>
+                    </div>
+                    
+                    
+                </ui:repeat>
             </ui:define>
         </ui:composition>
 

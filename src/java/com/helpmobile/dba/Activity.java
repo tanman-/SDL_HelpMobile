@@ -52,8 +52,6 @@ public class Activity implements Serializable {
     @OneToOne
     @JoinColumn(name = "waitingListId")
     private WaitingList waitingList;
-    @ManyToMany
-    private List<Booking> bookings;
 
     public Long getId() {
         return id;
@@ -165,14 +163,6 @@ public class Activity implements Serializable {
 
     public void setWaitingList(WaitingList waitingList) {
         this.waitingList = waitingList;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
     }
     
     

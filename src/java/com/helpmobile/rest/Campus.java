@@ -5,25 +5,22 @@
  */
 package com.helpmobile.rest;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
  * @author terra
  */
-public class WorkshopSet {
-    @JsonProperty("id")
+public class Campus {
+    /*
+              "id": 4,
+          "campus": "Skype",
+          "archived": "2012-06-13T13:34:45.323"
+    */
     private int id;
+    @JsonProperty("campus")
     private String name;
-    private String topic;
-    private String description;
-    
-    @JsonIgnore
-    private List<Workshop> workshops;
-    
     private Date archived;
 
     /**
@@ -38,34 +35,6 @@ public class WorkshopSet {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * @return the topic
-     */
-    public String getTopic() {
-        return topic;
-    }
-
-    /**
-     * @param topic the topic to set
-     */
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     /**
@@ -95,19 +64,4 @@ public class WorkshopSet {
     public void setArchived(Date archived) {
         this.archived = archived;
     }
-
-    /**
-     * @return the workshops
-     */
-    public List<Workshop> getWorkshops() {
-        return workshops;
-    }
-
-    /**
-     * @param workshops the workshops to set
-     */
-    public void setWorkshops(List<Workshop> workshops) {
-        this.workshops = workshops;
-    }
-    
 }

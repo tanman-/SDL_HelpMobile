@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
 
-        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+        <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
             <ui:define name="pageTitle">1wShopRegistration3</ui:define>
             <ui:define name="pageContent">
                 <ul class="information">
@@ -28,10 +28,10 @@
                     </div>
                     <div class='restWords'>
                         <font class='firstWord'>Time:</font> <h:outputText value="#{browseWorkshops.workshop.startDate}" >
-                            <f:convertDateTime pattern="HH:mm" /> - <h:outputText value="#{browseWorkshops.workshop.endDate}" >
+                            <f:convertDateTime pattern="HH:mm" /></h:outputText> - <h:outputText value="#{browseWorkshops.workshop.endDate}" >
                                 <f:convertDateTime pattern="HH:mm" />
                             </h:outputText>
-                        </h:outputText>
+                        
                     </div>
                     <div class='restWords'>
                         <font class='firstWord'>Target Group:</font> #{browseWorkshops.workshop.targetingGroup}
@@ -43,9 +43,12 @@
                         <font class='firstWord'>Places Available:</font> #{browseWorkshops.workshop.maximum-browseWorkshops.workshop.bookingCount}
                     </div>
                 </ul>
-                <h:link outcome="done">
-                    <img src="../resources/images/Book.png" alt="Make Your Booking"/>
-                </h:link>
+                <h:form>
+                    <h:commandLink action="#{workshopManager.bookWorkshop()}">
+                        <f:param value="#{param['id']}" name="id"/> 
+                        <h:graphicImage name="Next.png" library="images" alt="Make Your Booking"/>
+                    </h:commandLink>
+                </h:form>
             </ui:define>
         </ui:composition>
 

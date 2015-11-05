@@ -6,12 +6,12 @@
       >
     <h:body>
 
-        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+        <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
             <ui:define name="pageTitle">Home Page</ui:define>
             <ui:define name="pageContent">
                 <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
 
-                <h:link outcome="wShopRegistration1">
+                <h:link outcome="workshopInstruct.xhtml">
                     <img class="box" src="../resources/images/MakeBooking.png" alt="Make Your Booking"/>
                 </h:link>
                 <h:link outcome="myBookings">

@@ -5,10 +5,6 @@
  */
 package com.helpmobile.test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.helpmobile.rest.RestAccess;
-import com.helpmobile.rest.RestReply;
-import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author terra
  */
-public class BookTest {
+public class BookingSearch {
     
-    public BookTest() {
+    public BookingSearch() {
     }
     
     @BeforeClass
@@ -47,11 +43,7 @@ public class BookTest {
     // @Test
     // public void hello() {}
     @Test
-    public void book() throws IOException{
-                ObjectMapper mapper = new ObjectMapper();
-        RestAccess restAccess = new RestAccess();
-        boolean reply = restAccess.bookWorkshop("111", "12345");
+    public void test(){
         
-        System.out.println(reply);
     }
 }
