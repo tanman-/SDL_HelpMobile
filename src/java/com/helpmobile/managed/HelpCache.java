@@ -88,7 +88,16 @@ public class HelpCache {
                     }
 
                 }
-
+            }
+            
+            {
+                Iterator<WorkshopBooking> bookingIterator = bookings.iterator();
+                while (bookingIterator.hasNext()) {
+                    WorkshopBooking book = bookingIterator.next();
+                    if(book.getStudent()==null){
+                        bookingIterator.remove();
+                    }
+                }
             }
 
             {
