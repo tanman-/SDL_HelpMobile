@@ -5,7 +5,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <body>
         <ui:composition>
-
             <main id="panel" class="panel">
                 <header class="head">
                     <button class="btn-hamburger toggle-button"></button>
@@ -17,6 +16,7 @@
                     </script>
                     <h1 class="title"><ui:insert name="pageTitle"></ui:insert></h1>
                 </header>
+                <ui:insert name="pageContent"></ui:insert>
             </main>
 
             <h:outputScript library="js" name="slideout.min.js" />
@@ -32,7 +32,6 @@
                     slideout.toggle();
                 });
             </script>
-
         </ui:composition>
     </body>
 </html>

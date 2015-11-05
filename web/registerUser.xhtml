@@ -6,127 +6,193 @@
     <h:head>
         <title>Register User</title>
         <h:outputScript library="js" name="jquery.js"/>
-        <!--<h:outputScript library="js" name="jquery.mobile-1.4.5.js"/>-->
+        <h:outputStylesheet library="css" name="form-basic.css"/>
         <h:outputScript library="js" name="jquery-ui.js"/>
         <h:outputStylesheet library="css" name="jquery-ui.css"/>
+        <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
         <script>
-            $(document).ready(function(){
-               $(".datepicker").datepicker(); 
+            $(document).ready(function () {
+                $(".datepicker").datepicker();
             });
         </script>
     </h:head>
     <h:body>
-        <h1>Register User</h1>
-        <p><i>Note: Normal use will not involve registration of user</i></p>
-        <h:form id="registerUserForm">
-            <h:panelGrid columns="3">
-                <h:outputLabel for="id">UTS ID</h:outputLabel>
-                <h:inputText id="id" value="#{registerUser.user.id}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="id" style="color:red"/>
-                
-                <h:outputLabel for="password">Password</h:outputLabel>
-                <h:inputSecret id="password" value="#{registerUser.user.password}" required="true"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="name">Name</h:outputLabel>
-                <h:inputText id="name" value="#{registerUser.user.name}" required="true"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="faculty">Faculty</h:outputLabel>
-                <h:selectOneMenu id="faculty" value="#{registerUser.user.faculty}" required="true">
-                    <f:selectItems value="#{data.facultys}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="courseNumber">Course</h:outputLabel>
-                <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}" required="true"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="email">Email</h:outputLabel>
-                <h:inputText id="email" value="#{registerUser.user.email}" required="true">
-                    <f:validator validatorId="com.helpmobile.EmailValidator"/>
-                </h:inputText>
-                <h:message for="email" style="color:red"/>
-                
-                <h:outputLabel for="homePhone">Home phone</h:outputLabel>
-                <h:inputText id="homePhone" value="#{registerUser.user.homePhone}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="homePhone" style="color:red"/>
-                
-                <h:outputLabel for="mobilePhone">Mobile phone</h:outputLabel>
-                <h:inputText id="mobilePhone" value="#{registerUser.user.mobilePhone}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="mobilePhone" style="color:red"/>
-                
-                <h:outputLabel for="dob">Date of birth</h:outputLabel>
-                <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}" required="true">
-                    <f:convertDateTime pattern="dd/mm/yyyy"/>
-                </h:inputText>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="preferredName">Preferred name</h:outputLabel>
-                <h:inputText id="preferredName" value="#{registerUser.user.preferredName}" required="false"/>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="preferredPhone">Preferred phone</h:outputLabel>
-                <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}" required="true">
-                    <f:validator validatorId="com.helpmobile.NumericValidator"/>
-                </h:inputText>
-                <h:message for="preferredPhone" style="color:red"/>
-                
-                <h:outputLabel for="gender">Gender</h:outputLabel>
-                <h:selectOneMenu id="gender" value="#{registerUser.user.gender}">
-                    <f:selectItems value="#{data.genders}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="degree">Degree</h:outputLabel>
-                <h:selectOneMenu id="degree" value="#{registerUser.user.degreeLevel}">
-                    <f:selectItems value="#{data.degreeLevels}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="year">Year</h:outputLabel>
-                <h:selectOneMenu id="year" value="#{registerUser.user.yearLevel}">
-                    <f:selectItems value="#{data.yearLevels}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="residency">Residency</h:outputLabel>
-                <h:selectOneMenu id="residency" value="#{registerUser.user.residency}">
-                    <f:selectItems value="#{data.residencys}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="firstLanguage">First language</h:outputLabel>
-                <h:selectOneMenu id="firstLanguage" value="#{registerUser.user.firstLanguage}">
-                    <f:selectItems value="#{data.languages}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="countryOrigin">Country of origin</h:outputLabel>
-                <h:selectOneMenu id="countryOrigin" value="#{registerUser.user.countryOrigin}">
-                    <f:selectItems value="#{data.countrys}" var="t"
-                                   itemValue="#{t}" itemLabel="#{t.label}" />
-                </h:selectOneMenu>
-                <h:outputLabel/>
-                
-                <h:outputLabel for="educationalBackground">Educational background</h:outputLabel>
-                <h:inputText id="educationalBackground" value="#{registerUser.user.educationalBackground}"/>
-                <h:outputLabel/>
-                
+        <div class="main-content">
+            <h:form id="registerUserForm" class="form-basic">
+                <div class="form-title-row">
+                    <h1>Register User</h1>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="id">
+                        <span>UTS ID</span>
+                    </h:outputLabel>
+                    <h:inputText id="id" value="#{registerUser.user.id}" required="true">
+                        <f:validator validatorId="com.helpmobile.NumericValidator"/>
+                    </h:inputText>
+                    <h:message for="id" style="color:red"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="password">
+                        <span>Password</span>
+                    </h:outputLabel>
+                    <h:inputSecret id="password" value="#{registerUser.user.password}" required="true"/>                 
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="name">
+                        <span>Name</span>
+                    </h:outputLabel>
+                    <h:inputText id="name" value="#{registerUser.user.name}" required="true"/>                   
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="faculty">
+                        <span>Faculty</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="faculty" value="#{registerUser.user.faculty}" required="true">
+                        <f:selectItems value="#{data.facultys}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu>
+                    <h:outputLabel/>                   
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="courseNumber">
+                        <span>Course</span>
+                    </h:outputLabel>
+                    <h:inputText id="courseNumber" value="#{registerUser.user.courseNumber}" required="true"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="email">
+                        <span>Email</span>
+                    </h:outputLabel>
+                    <h:inputText id="email" value="#{registerUser.user.email}" required="true">
+                        <f:validator validatorId="com.helpmobile.EmailValidator"/>
+                    </h:inputText>
+                    <h:message for="email" style="color:red"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="homePhone">
+                        <span>Home phone</span>
+                    </h:outputLabel>
+                    <h:inputText id="homePhone" value="#{registerUser.user.homePhone}" required="true">
+                        <f:validator validatorId="com.helpmobile.NumericValidator"/>
+                    </h:inputText>
+                    <h:message for="homePhone" style="color:red"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="mobilePhone">
+                        <span>Mobile phone</span>
+                    </h:outputLabel>
+                    <h:inputText id="mobilePhone" value="#{registerUser.user.mobilePhone}" required="true">
+                        <f:validator validatorId="com.helpmobile.NumericValidator"/>
+                    </h:inputText>
+                    <h:message for="mobilePhone" style="color:red"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="dob">
+                        <span>Date of birth</span>
+                    </h:outputLabel>
+                    <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}" required="true">
+                        <f:convertDateTime pattern="dd/mm/yyyy"/>
+                    </h:inputText>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="preferredName">
+                        <span>Preferred name</span>
+                    </h:outputLabel>
+                    <h:inputText id="preferredName" value="#{registerUser.user.preferredName}" required="false"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="preferredPhone">
+                        <span>Preferred phone</span>
+                    </h:outputLabel>
+                    <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}" required="true">
+                        <f:validator validatorId="com.helpmobile.NumericValidator"/>
+                    </h:inputText>
+                    <h:message for="preferredPhone" style="color:red"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="gender">
+                        <span>Gender</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="gender" value="#{registerUser.user.gender}">
+                        <f:selectItems value="#{data.genders}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu>       
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="degree">
+                        <span>Degree</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="degree" value="#{registerUser.user.degreeLevel}">
+                        <f:selectItems value="#{data.degreeLevels}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="year">
+                        <span>Year</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="year" value="#{registerUser.user.yearLevel}">
+                        <f:selectItems value="#{data.yearLevels}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="residency">
+                        <span>Residency</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="residency" value="#{registerUser.user.residency}">
+                        <f:selectItems value="#{data.residencys}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="firstLanguage">
+                        <span>First language</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="firstLanguage" value="#{registerUser.user.firstLanguage}">
+                        <f:selectItems value="#{data.languages}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu> 
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="countryOrigin">
+                        <span>Country of origin</span>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="countryOrigin" value="#{registerUser.user.countryOrigin}">
+                        <f:selectItems value="#{data.countrys}" var="t"
+                                       itemValue="#{t}" itemLabel="#{t.label}" />
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="educationalBackground">
+                        <span>Educational background</span>
+                    </h:outputLabel>
+                    <h:inputText id="educationalBackground" value="#{registerUser.user.educationalBackground}"/>  
+                </div>
+
+
                 <h:commandButton value="Register" action="#{registerUser.register}"/>
-            </h:panelGrid>
-        </h:form>
+            </h:form>
+        </div>
     </h:body>
 </html>

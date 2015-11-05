@@ -26,54 +26,29 @@
         <ui:composition template="/panel/template/common/commonLayout.xhtml">
             <ui:define name="pageTitle">Programs</ui:define>
             <ui:define name="pageContent">
-                <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
-
-        <main id="panel" class="panel">
-            <header class="head">
-                <button class="btn-hamburger toggle-button"></button>
-                <button class="btn-back" onclick="goBack()"></button> 
-                <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
-                <h1 class="title">Programs</h1>
-            </header>
-
-            <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
-            <table>
-                <ui:repeat var="work" value="#{browseWorkshops.workshops}">
-                    <tr style="border-bottom: #0088bb 1px solid"><td style="width: 12pt;border: #000 1px solid;padding: 2pt;">
-                            <h:outputText value="#{work.id}"/></td>
-                        <td style="text-align: left; padding-left: 3pt"><h:outputText value="#{work.topic}"/></td>
-                        <td><h:link outcome="book">
-                                <f:param name="id" value="#{work.id}" />
-                                Book
-                            </h:link>
-                        </td>
-                    </tr>
-                </ui:repeat>
-            </table>
-            <p>List of Programs</p>
-        </main>
-
-        <h:outputScript library="js" name="slideout.min.js" />
-        <script>
-            //<![CDATA[
-            var slideout = new Slideout({
-                'panel': document.getElementById('panel'),
-                'menu': document.getElementById('menu'),
-                'padding': 256,
-                'tolerance': 30
-            });
-
-            // Toggle button
-            document.querySelector('.toggle-button').addEventListener('click', function () {
-                slideout.toggle();
-            });
-            //]]>
-        </script>
-                <p>List of Programs</p>
+                <ul class="information">
+                    Step 2: Select Session
+                    <div class='restWords'>
+                        <font class="firstWord"> To avoid timetable clash</font>, Please check the date, time and location of each session carefully.  
+                    </div>
+                    <div class="restWords">
+                        For additional session information and to register, click on the <font class="firstWord">'Book'</font> link.
+                    </div>
+                </ul>
+                    <table>
+                        <ui:repeat var="work" value="#{browseWorkshops.workshops}">
+                            <tr style="border-bottom: #0088bb 1px solid"><td style="width: 12pt;border: #000 1px solid;padding: 2pt;">
+                                    <h:outputText value="#{work.id}"/></td>
+                                <td style="text-align: left; padding-left: 3pt"><h:outputText value="#{work.topic}"/></td>
+                                <td>
+                                    <h:link outcome="book">
+                                    <f:param name="id" value="#{work.id}" />
+                                        Book
+                                    </h:link>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
             </ui:define>
         </ui:composition>
 

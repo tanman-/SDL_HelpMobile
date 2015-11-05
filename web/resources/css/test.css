@@ -7,7 +7,7 @@ audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{bac
 html,body {
   font: 100%/1.4em 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: 0 auto;
-  color: #009900;
+  color: #FFFFF;
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
 }
@@ -152,7 +152,7 @@ a {
   border-radius: 4px;
   text-align: left;
   margin: 15px 15px;
-  position: relative;
+  position: static;
   height: 100px;
   width: 110px;
 }
