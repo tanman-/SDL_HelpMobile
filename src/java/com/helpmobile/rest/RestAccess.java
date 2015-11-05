@@ -75,7 +75,7 @@ public class RestAccess {
         }
         URL path;
         if (method.equalsIgnoreCase(METHOD_GET)) {
-            path = new URL(ADDRESS + request + postData.toString());
+            path = new URL(ADDRESS + request + "?" + postData.toString());
         } else {
             path = new URL(ADDRESS + request);
         }
@@ -112,6 +112,10 @@ public class RestAccess {
     public User getStudent() {
         return null;
     }
+    
+    public boolean bookWorkshop(String id){
+        return false;
+    }
 
     public boolean registerStudent(User user) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
@@ -119,6 +123,14 @@ public class RestAccess {
         String response = doJsonRequest("student/register", json, METHOD_POST);
         RegisterReply reply = mapper.readValue(response, RegisterReply.class);
         return reply.isSuccess();
+    }
+    
+    public String retriveId(String student) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("StudentId", student);
+        String data = doPostRequest("student/find", map, METHOD_GET);
+        return data;
     }
 
     public WorkshopSetList getWorkshops(boolean active) throws Exception {
@@ -131,16 +143,15 @@ public class RestAccess {
         return list;
     }
 
-    public WorkshopList getWorkshop(int id) throws Exception {
+    public WorkshopList getWorkshopList(int id) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("active", true);
         map.put("workshopSetId", id);
-        String data = doPostRequest("workshop/search/?", map, METHOD_GET);
+        String data = doPostRequest("workshop/search/", map, METHOD_GET);
 
         System.out.println(data);
         return mapper.readValue(data, WorkshopList.class);
-
     }
 
 }

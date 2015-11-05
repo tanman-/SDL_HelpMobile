@@ -83,7 +83,7 @@ public class RestTest {
     public void testAWorkshop() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
-        WorkshopList data = restAccess.getWorkshop(3);
+        WorkshopList data = restAccess.getWorkshopList(3);
         String json = mapper.writeValueAsString(data);
         System.out.println(json);
     }

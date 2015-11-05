@@ -282,5 +282,9 @@ public class Workshop {
         this.archived = archived;
     }
     
+    public boolean isBookedOut(){
+        return maximum==bookingCount;
+    }
+    
     
 }

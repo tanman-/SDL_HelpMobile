@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
 
         <ui:composition template="/panel/template/common/commonLayout.xhtml">
@@ -15,25 +16,31 @@
                         If there are no places left in this session, you can be put on the waiting list. 
                     </div>
                     <div class='restWords'>
-                        <font class='firstWord'>Title:</font> Exam Preparation (to be automatically filled)
+                        <font class='firstWord'>Title:</font> #{browseWorkshops.workshop.topic}
                     </div>
                     <div class='restWords'>
-                        <font class='firstWord'>Room:</font> CB02.07.008 (to be automatically filled)
+                        <font class='firstWord'>Room:</font> #{browseWorkshops.workshop.campus}
                     </div>
                     <div class='restWords'>
-                        <font class='firstWord'>Date:</font> 11/09/2015 (to be automatically filled)
+                        <font class='firstWord'>Date:</font> <h:outputText value="#{browseWorkshops.workshop.startDate}" >
+                            <f:convertDateTime pattern="dd/MM/YYYY" />
+                        </h:outputText>
                     </div>
                     <div class='restWords'>
-                        <font class='firstWord'>Time:</font> 12:00 - 13:30 (to be automatically filled)
+                        <font class='firstWord'>Time:</font> <h:outputText value="#{browseWorkshops.workshop.startDate}" >
+                            <f:convertDateTime pattern="HH:mm" /> - <h:outputText value="#{browseWorkshops.workshop.endDate}" >
+                                <f:convertDateTime pattern="HH:mm" />
+                            </h:outputText>
+                        </h:outputText>
                     </div>
                     <div class='restWords'>
-                        <font class='firstWord'>Target Group:</font> All Students (to be automatically filled)
+                        <font class='firstWord'>Target Group:</font> #{browseWorkshops.workshop.targetingGroup}
                     </div>
                     <div class='restWords'>
-                        <font class='firstWord'>What it Covers:</font>  "How do I prepare for my exams? What kind of questions will be asked? What is the best approach to answer them?" This workshop focuses on practical approaches to revise and prepare for your exams, the types of exam questions and how to plan strategically so that you can tackle an exam more confidently.(should be automatically filled)
+                        <font class='firstWord'>What it Covers:</font>  #{browseWorkshops.workshop.description}
                     </div>
                     <div class="restWords">
-                        <font class='firstWord'>Places Available:</font> 3 (to be automatically filled)
+                        <font class='firstWord'>Places Available:</font> #{browseWorkshops.workshop.maximum-browseWorkshops.workshop.bookingCount}
                     </div>
                 </ul>
                 <h:link outcome="done">
