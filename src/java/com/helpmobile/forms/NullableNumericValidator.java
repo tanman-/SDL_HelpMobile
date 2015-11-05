@@ -36,7 +36,7 @@ public class NullableNumericValidator implements Validator {
         matcher = pattern.matcher(value.toString());
         if(!matcher.matches()) {
             FacesMessage msg = new FacesMessage("NullNumeric validation failed.", 
-                    "Not number/ null.");
+                    "Must be a number");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }

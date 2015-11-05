@@ -36,7 +36,7 @@ public class NumericValidator implements Validator {
         matcher = pattern.matcher(value.toString());
         if(!matcher.matches()) {
             FacesMessage msg = new FacesMessage("Numeric validation failed.", 
-                    "Invalid numeric format.");
+                    "Must be a number");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }
