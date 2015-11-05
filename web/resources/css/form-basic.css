@@ -2,6 +2,11 @@ html{
     background-color: #f3f3f3;
 }
 
+.mandatory::after{
+    content: "*";
+    color: #F00;
+}
+
 .form-basic{
     max-width: 640px;
     margin: 0 auto;
