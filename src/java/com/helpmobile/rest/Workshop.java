@@ -46,7 +46,7 @@ public class Workshop {
     private int maximum;
     @JsonProperty("WorkShopSetID")
     private int setId;
-    private String cutoff;
+    private Integer cutoff;
     private String type;
     @JsonProperty("reminder_num")
     private int reminderNumber;
@@ -187,14 +187,14 @@ public class Workshop {
     /**
      * @return the cutoff
      */
-    public String getCutoff() {
+    public int getCutoff() {
         return cutoff;
     }
 
     /**
      * @param cutoff the cutoff to set
      */
-    public void setCutoff(String cutoff) {
+    public void setCutoff(int cutoff) {
         this.cutoff = cutoff;
     }
 
@@ -283,6 +283,9 @@ public class Workshop {
     }
     
     public boolean isBookedOut(){
+        if(cutoff!=null){
+            return cutoff<=bookingCount;
+        }
         return maximum<=bookingCount;
     }
     

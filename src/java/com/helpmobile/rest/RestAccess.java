@@ -213,7 +213,7 @@ public class RestAccess {
         map.put("studentId", studentId);
         map.put("userId", studentId);
         String result = doGetRequest("workshop/booking/create", map, METHOD_POST);
-        //System.out.println(result);
+        System.out.println(result);
         RestReply reply = mapper.readValue(result, RestReply.class);
         return reply.isAvailable();
     }

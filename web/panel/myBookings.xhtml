@@ -3,22 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:body>
 
         <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
+            <ui:define name="headExtend">
+                <h:outputStylesheet library="css" name="jquery.dataTables.min.css"/>
+                <h:outputScript library="js" name="jquery.js"/>
+                <h:outputScript library="js" name="jquery.dataTables.min.js"/>
+                <script>
+                    $(function () {
+                        $("#sortable").DataTable();
+                    });
+                </script>
+            </ui:define>
             <ui:define name="pageTitle">My Bookings</ui:define>
             <ui:define name="pageContent">
                 <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
 
                 <p> Your Bookings will be listed here</p>
-                <ui:repeat var="booking" value="#{bookingManager.bookings}">
-                    <div>
-                        <p>#{booking.workshop.topic}</p>
-                    </div>
-                    
-                    
-                </ui:repeat>
+                <table class="genericTable display" id="sortable">
+                    <thead>
+                        <tr>
+                            <th>Topic</th><th>Time</th><th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <ui:repeat var="booking" value="#{bookingManager.bookings}">
+
+                        <tr>
+                            <td>#{booking.workshop.topic}</td>
+                            <td>
+                                <h:outputText value="#{booking.workshop.startDate}">
+                                    <f:convertDateTime pattern="HH:mm dd/MM/YYYY" />
+                                </h:outputText>
+                            </td>
+                            <td>
+                                <h:outputText value="Need proof of Attendance" rendered="#{booking.attended==null}"/>
+                                <h:outputText value="Attendent" rendered="#{booking.attended!=null}"/>
+                            </td>
+                        </tr>
+                    </ui:repeat>
+                </table>
             </ui:define>
         </ui:composition>
 
