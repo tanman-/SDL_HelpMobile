@@ -82,13 +82,13 @@ public class HelpCache {
                     while (studentIterator.hasNext()) {
                         User student = studentIterator.next();
                         if (student.getId().equals(book.getStudentId().trim())) {
+                            System.out.println("Local user reference found");
                             book.setStudent(student);
                             student.getBookings().add(book);
                         }
                     }
 
                 }
-
             }
 
             {
@@ -99,6 +99,19 @@ public class HelpCache {
                 }
             }
 
+            {
+                Iterator<WorkshopBooking> bookingIterator = bookings.iterator();
+                while (bookingIterator.hasNext()) {
+                    WorkshopBooking book = bookingIterator.next();
+                    if(book.getStudent()==null){
+                        bookingIterator.remove();
+                    }
+                    else{
+                        book.setWorkshop(workshops.get(book.getWorkshopId()));
+                    }
+                }
+            }
+            
             List<Workshop> reduWorkshops = (List<Workshop>) tempWorkshops.clone();
             Iterator<WorkshopSet> workshopSetIterator = tempWorkshopSets.iterator();
             while (workshopSetIterator.hasNext()) {
