@@ -7,6 +7,7 @@ package com.helpmobile.managed;
 
 import com.helpmobile.dba.AccessFacade;
 import com.helpmobile.dba.User;
+import com.helpmobile.rest.RestAccess;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -29,6 +30,9 @@ public class UserManager implements Serializable{
     private AccessFacade facade;
     
     @Inject
+    private RestAccess rest;
+    
+    @Inject
     HttpServletRequest request;
     
     private User user;
@@ -37,6 +41,12 @@ public class UserManager implements Serializable{
 
         try{
             request.logout();
+            
+            user = facade.getUser(id);
+            if(user == null){
+                throw new Exception("Missing user");
+            }
+            
             request.login(id, pass);
             return "login";
         }

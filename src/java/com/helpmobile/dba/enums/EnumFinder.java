@@ -16,6 +16,7 @@ public class EnumFinder {
     }
     
     public static LabeledEnum getEnum(String label,LabeledEnum[] base) throws Exception{
+        label = label.trim();
         for(LabeledEnum check : base){
             if(check.getShort().equalsIgnoreCase(label)){
                 return check;

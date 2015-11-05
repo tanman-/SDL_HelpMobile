@@ -38,6 +38,11 @@ public class RegisterUser {
 
     public String register() {
         try {
+            User test = facade.getUser(user.getId());
+            if(test!=null){
+                return "failed";
+            }
+            
             if(rest.registerStudent(user)){
             
             String password = user.getPassword();
@@ -48,6 +53,7 @@ public class RegisterUser {
             manager.login(user.getId(), password);
             }
             else{
+                System.out.println("Refused reg");
                 return "failed";
             }
             return "done";
