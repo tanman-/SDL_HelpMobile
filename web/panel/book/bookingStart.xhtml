@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
 
-        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+        <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
             <ui:define name="pageTitle">Join</ui:define>
             <ui:define name="pageContent">
                 <ul class="information">
@@ -34,9 +34,9 @@
               <f:convertDateTime pattern="dd/MM/YYYY" />
 </h:outputText>, Number of Sessions: 1 Places Available: #{browseWorkshops.workshop.maximum-browseWorkshops.workshop.bookingCount}</textarea>
                 </p>
-                <h:link outcome="wShopRegistration3">
+                <h:link outcome="bookingFinal">
                     <f:param name="id" value="#{param['id']}"/>
-                    <img src="../resources/images/Next.png" alt="Make Your Booking"/>
+                    <h:graphicImage name="Next.png" library="images" alt="Make Your Booking"/>
                 </h:link>
             </ui:define>
         </ui:composition>

@@ -191,7 +191,7 @@ public class RestAccess {
         return mapper.readValue(data, WorkshopList.class);
     }
 
-    public boolean bookWorkshop(int workId,int studentId) throws IOException{
+    public boolean bookWorkshop(String workId,String studentId) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
         Map<String,Object> map = new LinkedHashMap<>();
         map.put("workshopId", workId);

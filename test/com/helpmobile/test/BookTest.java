@@ -50,7 +50,7 @@ public class BookTest {
     public void book() throws IOException{
                 ObjectMapper mapper = new ObjectMapper();
         RestAccess restAccess = new RestAccess();
-        boolean reply = restAccess.bookWorkshop(111, 12345);
+        boolean reply = restAccess.bookWorkshop("111", "12345");
         
         System.out.println(reply);
     }

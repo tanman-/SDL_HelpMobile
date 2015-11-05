@@ -6,12 +6,12 @@
       >
     <h:body>
 
-        <ui:composition template="/panel/template/common/commonLayout.xhtml">
+        <ui:composition template="/WEB-INF/template/common/commonLayout.xhtml">
             <ui:define name="pageTitle">Booking complete</ui:define>
             <ui:define name="pageContent">
                 <p> Congratulations ! You have successfully booked for your selected workshop.</p>
                 <h:link outcome="index">
-                    <img src="../resources/images/home.png" alt="Make Your Booking"/>
+                    <h:graphicImage library="images" name="home.png" alt="Home"/>
                 </h:link>
             </ui:define>
         </ui:composition>
