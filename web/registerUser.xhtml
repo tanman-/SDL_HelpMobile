@@ -31,7 +31,7 @@
                     <h:outputLabel for="id">
                         <span class="mandatory">UTS ID</span>
                     </h:outputLabel>
-                    <h:inputText id="id" value="#{registerUser.user.id}" required="true">
+                    <h:inputText id="id" value="#{registerUser.user.id}" required="true" requiredMessage="Required field">
                         <f:validator validatorId="com.helpmobile.NumericValidator"/>
                     </h:inputText>
                     <h:message for="id" style="color:red"/>
@@ -104,9 +104,11 @@
                     <h:outputLabel for="dob">
                         <span class="mandatory">Date of birth</span>
                     </h:outputLabel>
-                    <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}" required="true">
+                    <h:inputText id="dob" class="datepicker" value="#{registerUser.user.dob}" required="true" requiredMessage="Required field">
                         <f:convertDateTime pattern="dd/mm/yyyy"/>
                     </h:inputText>
+                    <!--This works better for phone: <input type="date"></input>-->
+                    <h:message for="dob" style="color:red"/>
                 </div>
 
                 <div class="form-row">
@@ -121,7 +123,7 @@
                         <span>Preferred phone</span>
                     </h:outputLabel>
                     <h:inputText id="preferredPhone" value="#{registerUser.user.preferredPhone}" required="false">
-                        <f:validator validatorId="com.helpmobile.NumericValidator"/>
+                        <f:validator validatorId="com.helpmobile.NullableNumericValidator"/>
                     </h:inputText>
                     <h:message for="preferredPhone" style="color:red"/>
                 </div>
@@ -141,11 +143,12 @@
                     <h:outputLabel for="degree">
                         <span class="mandatory">Degree</span>
                     </h:outputLabel>
-                    <h:selectOneMenu id="degree" value="#{registerUser.user.degreeLevel}" required="true">
+                    <h:selectOneMenu id="degree" value="#{registerUser.user.degreeLevel}" required="true" requiredMessage="Required field">
                         <f:selectItem itemValue="#{null}" itemLabel="" noSelectionOption="true"/>
                         <f:selectItems value="#{data.degreeLevels}" var="t"
                                        itemValue="#{t}" itemLabel="#{t.label}" />
                     </h:selectOneMenu>
+                    <h:message for="degree" style="color:red"/>
                 </div>
 
                 <div class="form-row">
@@ -163,33 +166,36 @@
                     <h:outputLabel for="residency">
                         <span class="mandatory">Residency</span>
                     </h:outputLabel>
-                    <h:selectOneMenu id="residency" value="#{registerUser.user.residency}" required="true">
+                    <h:selectOneMenu id="residency" value="#{registerUser.user.residency}" required="true" requiredMessage="Required field">
                         <f:selectItem itemValue="#{null}" itemLabel="" noSelectionOption="true"/>
                         <f:selectItems value="#{data.residencys}" var="t"
                                        itemValue="#{t}" itemLabel="#{t.label}" />
                     </h:selectOneMenu>
+                    <h:message for="residency" style="color:red"/>
                 </div>
 
                 <div class="form-row">
                     <h:outputLabel for="firstLanguage">
                         <span class="mandatory">First language</span>
                     </h:outputLabel>
-                    <h:selectOneMenu id="firstLanguage" value="#{registerUser.user.firstLanguage}" required="true">
+                    <h:selectOneMenu id="firstLanguage" value="#{registerUser.user.firstLanguage}" required="true" requiredMessage="Required field">
                         <f:selectItem itemValue="#{null}" itemLabel="" noSelectionOption="true"/>
                         <f:selectItems value="#{data.languages}" var="t"
                                        itemValue="#{t}" itemLabel="#{t.label}" />
                     </h:selectOneMenu> 
+                    <h:message for="firstLanguage" style="color:red"/>
                 </div>
 
                 <div class="form-row">
                     <h:outputLabel for="countryOrigin">
                         <span class="mandatory">Country of origin</span>
                     </h:outputLabel>
-                    <h:selectOneMenu id="countryOrigin" value="#{registerUser.user.countryOrigin}" required="true">
+                    <h:selectOneMenu id="countryOrigin" value="#{registerUser.user.countryOrigin}" required="true" requiredMessage="Required field">
                         <f:selectItem itemValue="#{null}" itemLabel="" noSelectionOption="true"/>
                         <f:selectItems value="#{data.countrys}" var="t"
                                        itemValue="#{t}" itemLabel="#{t.label}" />
                     </h:selectOneMenu>
+                    <h:message for="countryOrigin" style="color:red"/>
                 </div>
 
                 <div class="form-row">
