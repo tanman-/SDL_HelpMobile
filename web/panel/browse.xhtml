@@ -12,7 +12,7 @@
             <ui:define name="pageContent">
                 <ol class="information">
                     Step 1: Select Program <div class="restWords">To start the booking process please click on the skill-set that you want to improve</div>
-                    <li class="restWords" jsfc="ui:repeat" var="work" value="#{restAccess.getWorkshops(true).workshopSets}">
+                    <li class="restWords" jsfc="ui:repeat" var="work" value="#{browseWorkshops.workshopSets}">
                         <h:link outcome="select">
                             <f:param name="id" value="#{work.id}"/>
                             <h:outputText value="#{work.name}"/> 
