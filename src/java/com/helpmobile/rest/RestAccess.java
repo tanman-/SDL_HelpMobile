@@ -7,6 +7,7 @@ package com.helpmobile.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.helpmobile.dba.User;
+import com.helpmobile.rest.mapper.RestObjectMapper;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,9 +29,10 @@ import javax.inject.Named;
 @Stateless
 public class RestAccess {
 
-    private final String METHOD_POST = "POST";
-    private final String METHOD_GET = "GET";
+    public final String METHOD_POST = "POST";
+    public final String METHOD_GET = "GET";
     private final String KEY = "sdpmobile_test";
+    private final String USER_ID = "123456";
     private final String ADDRESS = "http://hitgub.cloudapp.net/api/";
 
     public String doJsonRequest(String request, String data, String method) throws MalformedURLException, IOException {
@@ -108,13 +110,46 @@ public class RestAccess {
         //print result
         return response.toString();
     }
-
-    public User getStudent() {
-        return null;
-    }
     
-    public boolean bookWorkshop(String id){
-        return false;
+       public String doGetRequest(String request, Map<String, Object> data, String method) throws MalformedURLException, IOException {
+
+        StringBuilder postData = new StringBuilder();
+        for (Map.Entry<String, Object> param : data.entrySet()) {
+            if (postData.length() != 0) {
+                postData.append('&');
+            }
+            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+            postData.append('=');
+            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+        }
+        URL path;
+        path = new URL(ADDRESS + request + "?" + postData.toString());
+
+        HttpURLConnection conn = (HttpURLConnection) path.openConnection();
+        conn.setRequestMethod(method);
+        conn.setRequestProperty("Content-Type", "application/json");
+
+        conn.setRequestProperty("AppKey", KEY);
+        conn.setUseCaches(false);
+        conn.setDoInput(true);
+
+        conn.setRequestProperty("Content-Length", "0");
+        conn.setDoOutput(true);
+        OutputStream output = conn.getOutputStream();
+        output.flush();
+        
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        conn.disconnect();
+        //print result
+        return response.toString();
     }
 
     public boolean registerStudent(User user) throws Exception {
@@ -122,15 +157,17 @@ public class RestAccess {
         String json = mapper.writeValueAsString(user);
         String response = doJsonRequest("student/register", json, METHOD_POST);
         RegisterReply reply = mapper.readValue(response, RegisterReply.class);
+        System.out.println(json);
+        System.out.println(response);
         return reply.isSuccess();
     }
     
-    public String retriveId(String student) throws IOException{
-        ObjectMapper mapper = new ObjectMapper();
+    public User retriveId(String student) throws IOException{
+        ObjectMapper mapper = new RestObjectMapper();
         Map<String, Object> map = new LinkedHashMap<>();
-        map.put("StudentId", student);
-        String data = doPostRequest("student/find", map, METHOD_GET);
-        return data;
+        map.put("studentId", student);
+        String data = doPostRequest("student/"+student, map, METHOD_GET);
+        return mapper.readValue(data, UserReply.class).getResult();
     }
 
     public WorkshopSetList getWorkshops(boolean active) throws Exception {
@@ -154,4 +191,16 @@ public class RestAccess {
         return mapper.readValue(data, WorkshopList.class);
     }
 
+    public boolean bookWorkshop(int workId,int studentId) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String,Object> map = new LinkedHashMap<>();
+        map.put("workshopId", workId);
+        map.put("studentId", studentId);
+        map.put("userId",studentId);
+        String result = doGetRequest("workshop/booking/create",map,METHOD_POST);
+        System.out.println(result);
+        RestReply reply = mapper.readValue(result, RestReply.class);
+        return reply.isAvailable();
+    }
+    
 }

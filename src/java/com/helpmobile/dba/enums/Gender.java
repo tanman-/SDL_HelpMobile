@@ -5,6 +5,7 @@
  */
 package com.helpmobile.dba.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -36,8 +37,9 @@ public enum Gender implements LabeledEnum {
         return label;
     }
     
-    public static Gender getEnum(){
-        return null;
+    @JsonCreator
+    public static Gender getEnum(String label) throws Exception{
+        return (Gender) EnumFinder.getEnum(label, Gender.values());
     }
 
     @Override

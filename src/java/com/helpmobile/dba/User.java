@@ -6,7 +6,9 @@
 package com.helpmobile.dba;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +37,7 @@ import javax.persistence.Transient;
  *
  * @author terra
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 @ManagedBean(name="user")
 @SessionScoped
 @Entity
@@ -49,14 +52,19 @@ public class User implements Serializable {
     
     @Id
     @Column(length = 16)
-    @JsonProperty("StudentId")
+    @JsonProperty("studentID")
     private String id;
     private String password;
     private String name;
     private String surname;
+    @Transient
+    private String degree;
+    @Transient
+    private String status;
     
     @Enumerated(EnumType.ORDINAL)
     private Faculty faculty;
+    
     
     private String courseNumber;
     private String email;
@@ -77,11 +85,31 @@ public class User implements Serializable {
     private YearLevel yearLevel;
     @Enumerated(EnumType.ORDINAL)
     private Residency residency;
+    //@JsonProperty("first_language")
     @Enumerated(EnumType.ORDINAL)
     private Language firstLanguage;
+    //@JsonProperty("country_origin")
     @Enumerated(EnumType.ORDINAL)
     private Country countryOrigin;
+    @JsonProperty("background")
     private String educationalBackground;
+    
+    @Transient
+    @JsonProperty("HSC")
+    private boolean hsc;
+    
+    @Transient
+    @JsonProperty("HSC_mark")
+    private int hscMark;
+    
+    @Transient
+    @JsonProperty("IELTS")
+    private boolean ielts;
+    
+    @Transient
+    @JsonProperty("IELTS_mark")
+    private int ieltsMark;
+    
     
     @JsonIgnore
     @OneToMany(mappedBy = "user")
@@ -290,5 +318,89 @@ public class User implements Serializable {
      */
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    /**
+     * @return the degree
+     */
+    public String getDegree() {
+        return degree;
+    }
+
+    /**
+     * @param degree the degree to set
+     */
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * @return the hscMark
+     */
+    public int getHscMark() {
+        return hscMark;
+    }
+
+    /**
+     * @param hscMark the hscMark to set
+     */
+    public void setHscMark(int hscMark) {
+        this.hscMark = hscMark;
+    }
+
+    /**
+     * @return the ieltsMark
+     */
+    public int getIeltsMark() {
+        return ieltsMark;
+    }
+
+    /**
+     * @param ieltsMark the ieltsMark to set
+     */
+    public void setIeltsMark(int ieltsMark) {
+        this.ieltsMark = ieltsMark;
+    }
+
+    /**
+     * @return the hsc
+     */
+    public boolean isHsc() {
+        return hsc;
+    }
+
+    /**
+     * @param hsc the hsc to set
+     */
+    public void setHsc(boolean hsc) {
+        this.hsc = hsc;
+    }
+
+    /**
+     * @return the ielts
+     */
+    public boolean isIelts() {
+        return ielts;
+    }
+
+    /**
+     * @param ielts the ielts to set
+     */
+    public void setIelts(boolean ielts) {
+        this.ielts = ielts;
     }
 }

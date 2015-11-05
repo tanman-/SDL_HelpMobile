@@ -5,12 +5,9 @@
  */
 package com.helpmobile.test;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.helpmobile.dba.User;
 import com.helpmobile.rest.RestAccess;
-import com.helpmobile.rest.UserReply;
-import com.helpmobile.rest.mapper.RestObjectMapper;
+import com.helpmobile.rest.RestReply;
 import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -23,9 +20,9 @@ import static org.junit.Assert.*;
  *
  * @author terra
  */
-public class UserTest {
+public class BookTest {
     
-    public UserTest() {
+    public BookTest() {
     }
     
     @BeforeClass
@@ -50,18 +47,11 @@ public class UserTest {
     // @Test
     // public void hello() {}
     @Test
-    public void test() throws IOException{
-        ObjectMapper mapper = new RestObjectMapper();
-        mapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
+    public void book() throws IOException{
+                ObjectMapper mapper = new ObjectMapper();
+        RestAccess restAccess = new RestAccess();
+        boolean reply = restAccess.bookWorkshop(111, 12345);
         
-        RestAccess rest = new RestAccess();
-        
-        
-        User result = rest.retriveId("12345");
-        String json = mapper.writeValueAsString(result);
-        
-        System.out.println(json);
-        //UserReply user = mapper.readValue(result, UserReply.class);
-        
+        System.out.println(reply);
     }
 }
