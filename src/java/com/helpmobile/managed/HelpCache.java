@@ -46,7 +46,8 @@ public class HelpCache {
     private AccessFacade facade;
 
     private List<Campus> campusList = new LinkedList<>();
-    private List<WorkshopBooking> bookings = new LinkedList<>();
+    private final List<WorkshopBooking> bookings = new LinkedList<>();
+    private int bookingsCounter;
     private final Map<Integer, WorkshopSet> workshopSets = new LinkedHashMap<>();
     private final Map<Integer, Workshop> workshops = new LinkedHashMap<>();
     private List<User> students;
@@ -57,12 +58,38 @@ public class HelpCache {
             System.out.println("Web Application Start");
             System.out.println("Synching HELPS Data");
 
-            //bookings = getRest().searchBooking();
+            bookings.addAll(getRest().searchBooking());
             List<WorkshopSet> tempWorkshopSets = getRest().getWorkshops(true).getWorkshopSets();
             LinkedList<Workshop> tempWorkshops = new LinkedList<>();
             tempWorkshops.addAll(getRest().getAllWorkshops());
             campusList = getRest().getCampuses();
             students = extractUsers();
+            System.out.println("Processing HELP Data");
+
+            {
+                Iterator<User> studentIterator = students.iterator();
+                while (studentIterator.hasNext()) {
+                    User student = studentIterator.next();
+                    student.setBookings(new LinkedList<WorkshopBooking>());
+                }
+            }
+
+            {
+                Iterator<WorkshopBooking> bookingIterator = bookings.iterator();
+                while (bookingIterator.hasNext()) {
+                    WorkshopBooking book = bookingIterator.next();
+                    Iterator<User> studentIterator = students.iterator();
+                    while (studentIterator.hasNext()) {
+                        User student = studentIterator.next();
+                        if (student.getId().equals(book.getStudentId().trim())) {
+                            book.setStudent(student);
+                            student.getBookings().add(book);
+                        }
+                    }
+
+                }
+
+            }
 
             {
                 Iterator<Workshop> workshopIterator = tempWorkshops.iterator();
@@ -72,7 +99,6 @@ public class HelpCache {
                 }
             }
 
-            System.out.println("Processing HELP Data");
             List<Workshop> reduWorkshops = (List<Workshop>) tempWorkshops.clone();
             Iterator<WorkshopSet> workshopSetIterator = tempWorkshopSets.iterator();
             while (workshopSetIterator.hasNext()) {

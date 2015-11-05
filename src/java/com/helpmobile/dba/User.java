@@ -30,6 +30,7 @@ import com.helpmobile.dba.enums.YearLevel;
 import com.helpmobile.dba.enums.Residency;
 import com.helpmobile.dba.enums.Language;
 import com.helpmobile.dba.enums.Country;
+import com.helpmobile.rest.WorkshopBooking;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Transient;
@@ -112,13 +113,10 @@ public class User implements Serializable {
     
     
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Reminder> reminders;
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Booking> bookings;
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @Transient
+    private List<WorkshopBooking> bookings;
+    
+    @Transient
     private List<WaitingList> waitingList;
 
     public User(){   
@@ -268,22 +266,6 @@ public class User implements Serializable {
         this.educationalBackground = educationalBackground;
     }
 
-    public List<Reminder> getReminders() {
-        return reminders;
-    }
-
-    public void setReminders(List<Reminder> reminders) {
-        this.reminders = reminders;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
     public List<WaitingList> getWaitingList() {
         return waitingList;
     }
@@ -402,5 +384,19 @@ public class User implements Serializable {
      */
     public void setIelts(boolean ielts) {
         this.ielts = ielts;
+    }
+
+    /**
+     * @return the bookings
+     */
+    public List<WorkshopBooking> getBookings() {
+        return bookings;
+    }
+
+    /**
+     * @param bookings the bookings to set
+     */
+    public void setBookings(List<WorkshopBooking> bookings) {
+        this.bookings = bookings;
     }
 }
