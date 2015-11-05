@@ -283,7 +283,7 @@ public class Workshop {
     }
     
     public boolean isBookedOut(){
-        return maximum==bookingCount;
+        return maximum<=bookingCount;
     }
     
     

@@ -6,6 +6,7 @@
 package com.helpmobile.managed;
 
 import com.helpmobile.rest.RestAccess;
+import com.helpmobile.rest.Workshop;
 import com.helpmobile.rest.WorkshopBooking;
 import java.io.IOException;
 import java.io.Serializable;
@@ -42,7 +43,9 @@ public class WorkshopManager implements Serializable {
 
         if (result) {
             WorkshopBooking newBooking = new WorkshopBooking();
-            newBooking.setWorkshop(cache.getWorkshops().get(Integer.decode(id)));
+            Workshop workshop = cache.getWorkshops().get(Integer.decode(id));
+            workshop.setBookingCount(workshop.getBookingCount()+1);
+            newBooking.setWorkshop(workshop);
             newBooking.setStudent(userManager.getUser());
             newBooking.setBookingId(cache.getNextBookingId());
             cache.getBookings().add(newBooking);

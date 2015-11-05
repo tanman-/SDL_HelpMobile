@@ -19,6 +19,14 @@
         <h:outputStylesheet library="css" name="mocha.min.css" />
         <h:outputStylesheet library="css" name="test.css" />
         <h:outputStylesheet library="css" name="index.css" />
+        <h:outputStylesheet library="css" name="jquery.dataTables.min.css"/>
+        <h:outputScript library="js" name="jquery.js"/>
+        <h:outputScript library="js" name="jquery.dataTables.min.js"/>\
+        <script>
+            $(function(){
+               $("#sortable").DataTable();
+            });
+        </script>
     </h:head>
 
     <h:body>
@@ -31,31 +39,54 @@
 
                     <p class="welcomeMsg">Welcome, #{userManager.user.name}</p>
                     <p>List of Programs</p>
-                    <table>
-                        <ui:repeat var="work" value="#{browseWorkshops.workshops}">
-                            <tr style="border-bottom: #0088bb 1px solid"><td style="width: 12pt;border: #000 1px solid;padding: 2pt;">
-                                    <h:outputText value="#{work.id}"/></td>
-                                <td style="text-align: left; padding-left: 3pt"><h:outputText value="#{work.topic}"/></td>
-                                <td>
-                                    <ui:fragment rendered="#{work.bookedOut}">
-                                        Full
-                                    </ui:fragment>
-                                    <ui:fragment rendered="#{not work.bookedOut}">
-                                        <h:outputText value="#{work.bookingCount}"/>/<h:outputText value="#{work.maximum}"/>4
-                                    </ui:fragment>
-                                </td>
-                                <td><h:link rendered="#{not work.bookedOut}" outcome="book">
-                                        <f:param name="id" value="#{work.id}" />
-                                        Book
-                                    </h:link>
-                                    <h:link rendered="#{work.bookedOut}" outcome="joinWait">
-                                        Submit For Waiting List
-                                    </h:link>
-                                </td>
-                            </tr>
-                        </ui:repeat>
-                    </table>
+                    <div class="tablePadder">
+                        <table class="genericTable" id="sortable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Topic
+                                    </th>
+                                    <th>
+                                        Start Time
+                                    </th>
+                                    <th>
+                                        Availability
+                                    </th>
+                                    <th>
 
+                                    </th>
+                                </tr>
+                            </thead>
+                            <ui:repeat var="work" value="#{browseWorkshops.workshops}">
+                                <tr style="border-bottom: #0088bb 1px solid">
+                                    <td style="text-align: left; padding-left: 3pt">
+                                        <h:outputText value="#{work.topic}"/>
+                                    </td>
+                                    <td>
+                                        <h:outputText value="#{work.startDate}">
+                                            <f:convertDateTime pattern="HH:mm dd/MM/YYYY" />
+                                        </h:outputText>    
+                                    </td>
+                                    <td>
+                                        <ui:fragment rendered="#{work.bookedOut}">
+                                            Full
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{not work.bookedOut}">
+                                            <h:outputText value="#{work.bookingCount}"/>/<h:outputText value="#{work.maximum}"/>
+                                        </ui:fragment>
+                                    </td>
+                                    <td><h:link rendered="#{not work.bookedOut}" outcome="book">
+                                            <f:param name="id" value="#{work.id}" />
+                                            Book
+                                        </h:link>
+                                        <h:link rendered="#{work.bookedOut}" outcome="joinWait">
+                                            Submit For Waiting List
+                                        </h:link>
+                                    </td>
+                                </tr>
+                            </ui:repeat>
+                        </table>
+                    </div>
                 </main>
 
                 <h:outputScript library="js" name="slideout.min.js" />

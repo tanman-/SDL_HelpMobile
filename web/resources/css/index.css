@@ -21,6 +21,16 @@ body {
   z-index: 1;
 }
 
+.genericTable{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tablePadder{
+    padding: 5pt;
+}
+
 .slideout-open,
 .slideout-open body,
 .slideout-open .slideout-panel {
